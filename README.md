@@ -6,7 +6,7 @@
 - npm: 3.x
 - Node: v7.x
 - Python: latest
-- pip: latest
+- pip: 9.x
 
 ----
 ### Pull from Docker Hub
