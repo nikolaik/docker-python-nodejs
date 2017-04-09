@@ -3,8 +3,9 @@
 [![Release](https://img.shields.io/github/release/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://github.com/nikolaik/docker-python-nodejs/releases)
 
 ## Python (latest) with Node.js 7.x based on [beevelop/nodejs-python](https://travis-ci.org/beevelop/docker-nodejs-python)
-- npm: 3.x
 - Node: v7.x
+- npm: 3.x
+- yarn: stable
 - Python: latest
 - pip: 9.x
 
