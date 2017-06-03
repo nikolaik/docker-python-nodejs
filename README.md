@@ -2,9 +2,9 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://links.shields.io/d-python-nodejs)
 [![Release](https://img.shields.io/github/release/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://github.com/nikolaik/docker-python-nodejs/releases)
 
-## Python (latest) with Node.js 7.x based on [beevelop/nodejs-python](https://travis-ci.org/beevelop/docker-nodejs-python)
-- Node: v7.x
-- npm: 3.x
+## Python (latest) with Node.js 8.x based on [beevelop/nodejs-python](https://github.com/beevelop/docker-nodejs-python)
+- Node: 8.x
+- npm: 5.x
 - yarn: stable
 - Python: latest
 - pip: 9.x
