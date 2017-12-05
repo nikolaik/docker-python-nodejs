@@ -5,4 +5,4 @@ services:
 
 script:
   - docker build -t python-nodejs .
-  - docker run python-nodejs /bin/sh -c "python -V && pip --version && node -v && npm -v && yarn -V"
+  - docker run python-nodejs /bin/sh -c "python -V && pip --version && node -v && npm -v && yarn --version"
