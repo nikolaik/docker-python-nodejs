@@ -2,12 +2,13 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![Release](https://img.shields.io/github/release/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://github.com/nikolaik/docker-python-nodejs/releases)
 
-## Python (latest) with Node.js 8.x based on [beevelop/nodejs-python](https://github.com/beevelop/docker-nodejs-python)
-- Node: 8.x
-- npm: 5.x
+## Python (latest) with Node.js 10.x based on [beevelop/nodejs-python](https://github.com/beevelop/docker-nodejs-python)
+- Node: 10.x
+- npm: 6.x
 - yarn: stable
 - Python: latest
-- pip: 9.x
+- pip: latest
+- pipenv: latest
 
 ----
 ### Pull from Docker Hub
