@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "cd:0e:48:63:be:a2:0e:f7:03:04:e7:7b:d8:51:8e:71"
+      - checkout
+      - restore_cache:
+          key: v2-deps-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install dependencies, check latest versions and generate Dockerfiles
+          command: |
+            sudo pip install pipenv
+            pipenv install
+            pipenv run python generate_versions.py
+      - run:
+          name: Build new or updated Dockerfiles, tag and push
+          command: |
+            echo "TODO"
+      - run:
+          name: Add new versions to git (if any)
+          command: |
+            ./git_archive.sh
+      - save_cache:
+          key: v2-deps-{{ checksum "Pipfile.lock" }}
+          paths: "~/.local/share/virtualenvs/"
+
+workflows:
+   version: 2
+   build_on_commit:
+     jobs:
+        - build
+   twice_a_day:
+     triggers:
+       - schedule:
+           cron: "0 0,12 * * *"  # Twice a day at 00:00 and 12:00
+           filters:
+             branches:
+               only:
+                 - master
+     jobs:
+       - build
