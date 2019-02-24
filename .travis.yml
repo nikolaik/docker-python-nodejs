@@ -1,8 +1,0 @@
-sudo: required
-
-services:
-  - docker
-
-script:
-  - docker build -t python-nodejs .
-  - docker run python-nodejs /bin/sh -c "python -V && pip --version && pipenv --version && node -v && npm -v && yarn --version"
