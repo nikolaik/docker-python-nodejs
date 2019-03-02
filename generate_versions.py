@@ -1,8 +1,11 @@
 import re
 from datetime import datetime
+from functools import cmp_to_key
 
 import requests
 from pprint import pprint
+
+import semver
 from requests_html import HTMLSession
 
 todays_date = datetime.now().date().isoformat()
@@ -16,10 +19,15 @@ nodejs_wanted_tag_pattern = re.compile(f'{major_re}|{patch_re}')
 python_wanted_tag_pattern = re.compile(f'{minor_re}|{patch_re}')
 
 
-def fetch_tags(package):
-    # Fetch available python docker tags
+def _fetch_tags(package):
+    # Fetch available docker tags
     result = requests.get(f'https://registry.hub.docker.com/v1/repositories/{package}/tags')
     return [r['name'] for r in result.json()]
+
+
+def _latest_patch(tags, ver):
+    tags = [tag for tag in tags if tag.startswith(ver) and patch_pattern.match(tag)]
+    return sorted(tags, key=cmp_to_key(semver.compare), reverse=True)[0]
 
 
 def scrape_supported_python_versions():
@@ -42,7 +50,7 @@ def fetch_supported_nodejs_versions():
 
 
 def decide_python_versions():
-    tags = [tag for tag in fetch_tags('python') if python_wanted_tag_pattern.match(tag)]
+    tags = [tag for tag in _fetch_tags('python') if python_wanted_tag_pattern.match(tag)]
     # Skip unreleased and unsupported
     supported_versions = [v for v in scrape_supported_python_versions() if v['start'] <= todays_date <= v['end']]
 
@@ -53,15 +61,13 @@ def decide_python_versions():
         if minor not in tags:
             print(f'Not good, {minor} not in tags, aborting...')
             exit(1)
-        # FIXME: lexical sorting is wrong, parse instead
-        latest_patch = max([tag for tag in tags if tag.startswith(ver) and patch_pattern.match(tag)])
-        versions.append({'version': latest_patch, 'image': minor, 'key': ver})
+        versions.append({'version': _latest_patch(tags, ver), 'image': minor, 'key': ver})
 
     return versions
 
 
 def decide_nodejs_versions():
-    tags = [tag for tag in fetch_tags('node') if nodejs_wanted_tag_pattern.match(tag)]
+    tags = [tag for tag in _fetch_tags('node') if nodejs_wanted_tag_pattern.match(tag)]
     # Skip unreleased and unsupported
     supported_versions = [v for v in fetch_supported_nodejs_versions() if v['start'] <= todays_date <= v['end']]
 
@@ -72,9 +78,7 @@ def decide_nodejs_versions():
         if major not in tags:
             print(f'Not good, {major} not in tags, aborting...')
             exit(1)
-        # FIXME: lexical sorting is wrong, parse instead
-        latest_patch = max([tag for tag in tags if tag.startswith(ver) and patch_pattern.match(tag)])
-        versions.append({'version': latest_patch, 'image': major, 'key': ver})
+        versions.append({'version': _latest_patch(tags, ver), 'image': major, 'key': ver})
     return versions
 
 
@@ -84,7 +88,6 @@ def main():
 
     # Use latest minor version from each major
     nodejs_versions = decide_nodejs_versions()
-
     versions = []
     for p in python_versions:
         for n in nodejs_versions:
