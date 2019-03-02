@@ -1,9 +1,9 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
-[![Release](https://img.shields.io/github/release/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://github.com/nikolaik/docker-python-nodejs/releases)
+[![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
 Last updated by bot: 2018-01-01
 
-## Python (latest) with Node.js 10.x based on [beevelop/nodejs-python](https://github.com/beevelop/docker-nodejs-python)
+## Python (latest) with Node.js 10.x
 - Node: 10.x
 - npm: 6.x
 - yarn: stable
@@ -11,19 +11,22 @@ Last updated by bot: 2018-01-01
 - pip: latest
 - pipenv: latest
 
-----
-### Pull from Docker Hub
-```
+## Tags
+To use a specific combination of python and node.js see the following table of available image tags.
+
+Tag | Python version | Node.js version
+--- | --- | ---
+`python3.7-nodejs6` | 3.7.2 | 6.17.0
+
+Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
+
+## Typical tasks
+```bash
+# Pull from Docker Hub
 docker pull nikolaik/python-nodejs:latest
-```
-
-### Build from GitHub
-```
+# Build from GitHub
 docker build -t nikolaik/python-nodejs github.com/nikolaik/docker-python-nodejs
-```
-
-### Run image
-```
+# Run image
 docker run -it nikolaik/python-nodejs bash
 ```
 

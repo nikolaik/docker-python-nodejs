@@ -1,15 +1,24 @@
+import json
+import os
 import re
 from datetime import datetime
 from functools import cmp_to_key
+from io import BytesIO
 from pathlib import Path
 
+import docker
+import docker.errors
 import requests
 import semver
+
 from requests_html import HTMLSession
+
+DOCKER_IMAGE_NAME = 'nikolaik/python-nodejs'
+VERSIONS_PATH = Path('versions.json')
 
 todays_date = datetime.utcnow().date().isoformat()
 
-# FIXME: Only standard Debian stretch
+# FIXME: Only building Debian stretch
 patch_re = r'^(\d+\.\d+\.\d+-stretch)$'
 minor_re = r'^(\d+\.\d+-stretch)$'
 major_re = r'^(\d+-stretch)$'
@@ -88,7 +97,6 @@ def version_combinations(nodejs_versions, python_versions):
             key = f'python{p["key"]}-nodejs{n["key"]}'
             versions.append({
                 'key': key,
-                'dockerfile': f'Dockerfile-{key}',
                 'python': p['key'],
                 'python_canonical': p['version'].replace('-stretch', ''),
                 'python_image': p['image'],
@@ -101,38 +109,112 @@ def version_combinations(nodejs_versions, python_versions):
     return versions
 
 
-def generate_dockerfiles(versions):
+def render_dockerfile(version):
     dockerfile_template = Path('Dockerfile-template').read_text()
     replace_pattern = re.compile('%%(.+?)%%')
-    dockerfiles_dir = Path('dockerfiles')
-
-    if not dockerfiles_dir.exists():
-        dockerfiles_dir.mkdir()
 
     now = datetime.utcnow().isoformat()[:-7]
-    for v in versions:
-        def repl(matchobj):
-            _key = matchobj.group(1).lower()
-            if _key == 'now':
-                return now
-            return v[_key]
 
-        content = replace_pattern.sub(repl, dockerfile_template)
-        path = dockerfiles_dir.joinpath(Path(v['dockerfile']))
-        with path.open('w+') as f:
-            f.write(content)
+    def repl(matchobj):
+        _key = matchobj.group(1).lower()
+        if _key == 'now':
+            return now
+        return version[_key]
+
+    return replace_pattern.sub(repl, dockerfile_template)
+
+
+def persist_versions(versions):
+    with VERSIONS_PATH.open('w+') as fp:
+        json.dump({'versions': versions}, fp, indent=2)
+
+
+def load_versions():
+    with VERSIONS_PATH.open() as fp:
+        return json.load(fp)['versions']
+
+
+def build_new_or_updated(current_versions, versions):
+    # Find new or updated
+    current_versions = {ver['key']: ver for ver in current_versions}
+    versions = {ver['key']: ver for ver in versions}
+    new_or_updated = []
+
+    for key, ver in versions.items():
+        updated = key in current_versions and ver != current_versions[key]
+        new = key not in current_versions
+        if new or updated:
+            new_or_updated.append(ver)
+
+    if not new_or_updated:
+        print("No new or updated versions")
+        return
+
+    # Login to docker hub
+    docker_client = docker.from_env()
+    dockerhub_username = os.getenv('DOCKERHUB_USERNAME')
+    try:
+        docker_client.login(dockerhub_username, os.getenv('DOCKERHUB_PASSWORD'))
+    except docker.errors.APIError:
+        print(f"Could not login to docker hub with username:'{dockerhub_username}'.")
+        print("Is env var DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD set correctly?")
+        exit(1)
+
+    # Build, tag and push images
+    for version in new_or_updated:
+        dockerfile = render_dockerfile(version)
+        # docker build wants bytes
+        with BytesIO(dockerfile.encode()) as fileobj:
+            tag = f"{DOCKER_IMAGE_NAME}:{version['key']}"
+            nodejs_version = version['nodejs_canonical']
+            python_version = version['python_canonical']
+            print(f"Building image {version['key']} python: {python_version} nodejs: {nodejs_version} ...", end='')
+            docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
+            print(f" pushing...")
+            docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
+
+
+def update_readme_tags_table(versions):
+    readme_path = Path('README.md')
+    with readme_path.open() as fp:
+        readme = fp.read()
+
+    headings = ['Tag', 'Python version', 'Node.js version']
+    rows = []
+    for v in versions:
+        rows.append([f"`{v['key']}`", v['python_canonical'], v['nodejs_canonical']])
+
+    head = f"{' | '.join(headings)}\n{' | '.join(['---' for h in headings])}"
+    body = '\n'.join([' | '.join(row) for row in rows])
+    table = f'{head}\n{body}\n'
+
+    start = 'the following table of available tags.\n'
+    end = '\nLovely!'
+    sub_pattern = re.compile(f'{start}(.+?){end}', re.MULTILINE | re.DOTALL)
+
+    readme_new = sub_pattern.sub(f'{start}\n{table}{end}', readme)
+    if readme != readme_new:
+        with readme_path.open('w+') as fp:
+            fp.write(readme_new)
 
 
 def main():
+    current_versions = load_versions()
     # Use latest patch version from each minor
     python_versions = decide_python_versions()
-
     # Use latest minor version from each major
     nodejs_versions = decide_nodejs_versions()
-
     versions = version_combinations(nodejs_versions, python_versions)
+    persist_versions(versions)
 
-    generate_dockerfiles(versions)
+    update_readme_tags_table(versions)
+
+    # Build tag and release docker images
+    build_new_or_updated(current_versions, versions)
+
+    # FIXME(perf): Generate a CircleCI config file with a workflow (parallell) and trigger this workflow via the API.
+    # Ref: https://circleci.com/docs/2.0/api-job-trigger/
+    # Ref: https://discuss.circleci.com/t/run-builds-on-circleci-using-a-local-config-file/17355?source_topic_id=19287
 
 
 if __name__ == '__main__':

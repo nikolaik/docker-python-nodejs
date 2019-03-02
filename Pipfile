@@ -9,6 +9,7 @@ verify_ssl = true
 requests = "*"
 requests-html = "*"
 semver = "*"
+docker = "*"
 
 [requires]
 python_version = "3.7"
