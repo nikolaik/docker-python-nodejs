@@ -1,14 +1,13 @@
 import re
 from datetime import datetime
 from functools import cmp_to_key
+from pathlib import Path
 
 import requests
-from pprint import pprint
-
 import semver
 from requests_html import HTMLSession
 
-todays_date = datetime.now().date().isoformat()
+todays_date = datetime.utcnow().date().isoformat()
 
 # FIXME: Only standard Debian stretch
 patch_re = r'^(\d+\.\d+\.\d+-stretch)$'
@@ -82,12 +81,7 @@ def decide_nodejs_versions():
     return versions
 
 
-def main():
-    # Use latest patch version from each minor
-    python_versions = decide_python_versions()
-
-    # Use latest minor version from each major
-    nodejs_versions = decide_nodejs_versions()
+def version_combinations(nodejs_versions, python_versions):
     versions = []
     for p in python_versions:
         for n in nodejs_versions:
@@ -96,16 +90,49 @@ def main():
                 'key': key,
                 'dockerfile': f'Dockerfile-{key}',
                 'python': p['key'],
+                'python_canonical': p['version'].replace('-stretch', ''),
                 'python_image': p['image'],
                 'python_image_canonical': p['version'],
                 'nodejs': n['key'],
+                'nodejs_canonical': n['version'].replace('-stretch', ''),
                 'nodejs_image': n['image'],
                 'nodejs_image_canonical': n['version']
             })
+    return versions
 
-    pprint(versions)
 
-    # TODO: Generate and commit all Dockerfiles on the format Dockerfile-python<NODE_VERSION>-nodejs<NODE_VERSION>
+def generate_dockerfiles(versions):
+    dockerfile_template = Path('Dockerfile-template').read_text()
+    replace_pattern = re.compile('%%(.+?)%%')
+    dockerfiles_dir = Path('dockerfiles')
+
+    if not dockerfiles_dir.exists():
+        dockerfiles_dir.mkdir()
+
+    now = datetime.utcnow().isoformat()[:-7]
+    for v in versions:
+        def repl(matchobj):
+            _key = matchobj.group(1).lower()
+            if _key == 'now':
+                return now
+            return v[_key]
+
+        content = replace_pattern.sub(repl, dockerfile_template)
+        path = dockerfiles_dir.joinpath(Path(v['dockerfile']))
+        with path.open('w+') as f:
+            f.write(content)
+
+
+def main():
+    # Use latest patch version from each minor
+    python_versions = decide_python_versions()
+
+    # Use latest minor version from each major
+    nodejs_versions = decide_nodejs_versions()
+
+    versions = version_combinations(nodejs_versions, python_versions)
+
+    generate_dockerfiles(versions)
 
 
 if __name__ == '__main__':
