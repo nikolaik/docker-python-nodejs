@@ -71,7 +71,7 @@ def decide_python_versions():
             exit(1)
         versions.append({'version': _latest_patch(tags, ver), 'image': minor, 'key': ver})
 
-    return versions
+    return sorted(versions, key=lambda v: cmp_to_key(semver.compare)(v['version']), reverse=True)
 
 
 def decide_nodejs_versions():
@@ -87,7 +87,7 @@ def decide_nodejs_versions():
             print(f'Not good, {major} not in tags, aborting...')
             exit(1)
         versions.append({'version': _latest_patch(tags, ver), 'image': major, 'key': ver})
-    return versions
+    return sorted(versions, key=lambda v: cmp_to_key(semver.compare)(v['version']), reverse=True)
 
 
 def version_combinations(nodejs_versions, python_versions):
@@ -169,9 +169,9 @@ def build_new_or_updated(current_versions, versions):
             nodejs_version = version['nodejs_canonical']
             python_version = version['python_canonical']
             print(f"Building image {version['key']} python: {python_version} nodejs: {nodejs_version} ...", end='')
-            docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
+            # docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
             print(f" pushing...")
-            docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
+            # docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
 
 
 def update_readme_tags_table(versions):
@@ -188,7 +188,7 @@ def update_readme_tags_table(versions):
     body = '\n'.join([' | '.join(row) for row in rows])
     table = f'{head}\n{body}\n'
 
-    start = 'the following table of available tags.\n'
+    start = 'the following table of available image tags.\n'
     end = '\nLovely!'
     sub_pattern = re.compile(f'{start}(.+?){end}', re.MULTILINE | re.DOTALL)
 
