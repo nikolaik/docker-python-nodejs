@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "e7:42:fa:02:36:d2:51:75:6d:a3:2c:09:ed:d8:36:7b"
+      - checkout
+      - run:
+          name: Verify on master branch
+          command: git branch --contains |grep -q '^[ |*] master$'
+      - setup_remote_docker
+      - restore_cache:
+          key: deps-v1-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install deps, get versions, build, tag and push to docker hub
+          command: |
+            sudo pip install pipenv
+            pipenv install
+            pipenv run python build_versions.py
+      - run:
+          name: Add new versions to git (if any)
+          command: |
+            ./git_archive.sh
+      - save_cache:
+          key: deps-v1-{{ checksum "Pipfile.lock" }}
+          paths: "~/.local/share/virtualenvs/"
+
+workflows:
+   version: 2
+   build_on_commit:
+     jobs:
+        - build
+   twice_a_day:
+     triggers:
+       - schedule:
+           cron: "0 0,12 * * *"  # Twice a day at 00:00 and 12:00
+           filters:
+             branches:
+               only:
+                 - master
+     jobs:
+       - build
