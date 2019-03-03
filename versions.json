@@ -208,17 +208,6 @@
       "nodejs_canonical": "8.15.1",
       "nodejs_image": "8-stretch",
       "nodejs_image_canonical": "8.15.1-stretch"
-    },
-    {
-      "key": "python2.7-nodejs6",
-      "python": "2.7",
-      "python_canonical": "2.7.15",
-      "python_image": "2.7-stretch",
-      "python_image_canonical": "2.7.15-stretch",
-      "nodejs": "6",
-      "nodejs_canonical": "6.17.0",
-      "nodejs_image": "6-stretch",
-      "nodejs_image_canonical": "6.17.0-stretch"
     }
   ]
 }

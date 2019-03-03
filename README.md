@@ -3,7 +3,9 @@
 
 Last updated by bot: 2018-01-01
 
-## Python (latest) with Node.js 10.x
+## Python with Node.js
+The latest tag is currently:
+
 - Node: 10.x
 - npm: 6.x
 - yarn: stable
