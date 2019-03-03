@@ -169,9 +169,9 @@ def build_new_or_updated(current_versions, versions):
             nodejs_version = version['nodejs_canonical']
             python_version = version['python_canonical']
             print(f"Building image {version['key']} python: {python_version} nodejs: {nodejs_version} ...", end='')
-            # docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
+            docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
             print(f" pushing...")
-            # docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
+            docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
 
 
 def update_readme_tags_table(versions):
