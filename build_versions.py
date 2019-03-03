@@ -168,9 +168,11 @@ def build_new_or_updated(current_versions, versions):
             tag = f"{DOCKER_IMAGE_NAME}:{version['key']}"
             nodejs_version = version['nodejs_canonical']
             python_version = version['python_canonical']
-            print(f"Building image {version['key']} python: {python_version} nodejs: {nodejs_version} ...", end='')
+            print(f"Building image {version['key']} python: {python_version} nodejs: {nodejs_version} ...",
+                  end='',
+                  flush=True)
             docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
-            print(f" pushing...")
+            print(f" pushing...", flush=True)
             docker_client.images.push(DOCKER_IMAGE_NAME, version['key'])
 
 

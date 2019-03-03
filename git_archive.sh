@@ -8,7 +8,7 @@ if ! [ -z "$(git status --porcelain)" ]; then
     # Update README.md
     sed -i -E "s/Last updated by bot: .*/Last updated by bot: $(date +%Y-%m-%d)/" README.md
 
-    git add data pdfs README.md
+    git add versions.json README.md
     git commit -m '🗃 Updated python/node versions [skip ci]'
     git push --quiet origin master
 else
