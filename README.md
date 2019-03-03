@@ -4,7 +4,7 @@
 Last updated by bot: 2018-01-01
 
 ## Python with Node.js
-The latest tag is currently:
+The `latest` tag is currently:
 
 - Node: 10.x
 - npm: 6.x
