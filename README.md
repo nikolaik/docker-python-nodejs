@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2019-03-03
+Last updated by bot: 2019-03-05
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -34,10 +34,10 @@ Tag | Python version | Node.js version
 `python3.4-nodejs10` | 3.4.9 | 10.15.2
 `python3.4-nodejs8` | 3.4.9 | 8.15.1
 `python3.4-nodejs6` | 3.4.9 | 6.17.0
-`python2.7-nodejs11` | 2.7.15 | 11.10.1
-`python2.7-nodejs10` | 2.7.15 | 10.15.2
-`python2.7-nodejs8` | 2.7.15 | 8.15.1
-`python2.7-nodejs6` | 2.7.15 | 6.17.0
+`python2.7-nodejs11` | 2.7.16 | 11.10.1
+`python2.7-nodejs10` | 2.7.16 | 10.15.2
+`python2.7-nodejs8` | 2.7.16 | 8.15.1
+`python2.7-nodejs6` | 2.7.16 | 6.17.0
 
 Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
