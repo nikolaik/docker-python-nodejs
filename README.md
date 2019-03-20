@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2019-03-19
+Last updated by bot: 2019-03-20
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -26,10 +26,10 @@ Tag | Python version | Node.js version
 `python3.6-nodejs10` | 3.6.8 | 10.15.3
 `python3.6-nodejs8` | 3.6.8 | 8.15.1
 `python3.6-nodejs6` | 3.6.8 | 6.17.0
-`python3.5-nodejs11` | 3.5.6 | 11.12.0
-`python3.5-nodejs10` | 3.5.6 | 10.15.3
-`python3.5-nodejs8` | 3.5.6 | 8.15.1
-`python3.5-nodejs6` | 3.5.6 | 6.17.0
+`python3.5-nodejs11` | 3.5.7 | 11.12.0
+`python3.5-nodejs10` | 3.5.7 | 10.15.3
+`python3.5-nodejs8` | 3.5.7 | 8.15.1
+`python3.5-nodejs6` | 3.5.7 | 6.17.0
 `python2.7-nodejs11` | 2.7.16 | 11.12.0
 `python2.7-nodejs10` | 2.7.16 | 10.15.3
 `python2.7-nodejs8` | 2.7.16 | 8.15.1
