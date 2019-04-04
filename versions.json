@@ -40,9 +40,9 @@
       "python_image": "3.7-stretch",
       "python_image_canonical": "3.7.3-stretch",
       "nodejs": "6",
-      "nodejs_canonical": "6.17.0",
+      "nodejs_canonical": "6.17.1",
       "nodejs_image": "6-stretch",
-      "nodejs_image_canonical": "6.17.0-stretch"
+      "nodejs_image_canonical": "6.17.1-stretch"
     },
     {
       "key": "python3.6-nodejs11",
@@ -84,9 +84,9 @@
       "python_image": "3.6-stretch",
       "python_image_canonical": "3.6.8-stretch",
       "nodejs": "6",
-      "nodejs_canonical": "6.17.0",
+      "nodejs_canonical": "6.17.1",
       "nodejs_image": "6-stretch",
-      "nodejs_image_canonical": "6.17.0-stretch"
+      "nodejs_image_canonical": "6.17.1-stretch"
     },
     {
       "key": "python3.5-nodejs11",
@@ -128,9 +128,9 @@
       "python_image": "3.5-stretch",
       "python_image_canonical": "3.5.7-stretch",
       "nodejs": "6",
-      "nodejs_canonical": "6.17.0",
+      "nodejs_canonical": "6.17.1",
       "nodejs_image": "6-stretch",
-      "nodejs_image_canonical": "6.17.0-stretch"
+      "nodejs_image_canonical": "6.17.1-stretch"
     },
     {
       "key": "python2.7-nodejs11",
@@ -172,9 +172,9 @@
       "python_image": "2.7-stretch",
       "python_image_canonical": "2.7.16-stretch",
       "nodejs": "6",
-      "nodejs_canonical": "6.17.0",
+      "nodejs_canonical": "6.17.1",
       "nodejs_image": "6-stretch",
-      "nodejs_image_canonical": "6.17.0-stretch"
+      "nodejs_image_canonical": "6.17.1-stretch"
     }
   ]
 }
