@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: Verify on master branch
-          command: git branch --contains |grep -q '^[ |*] master$'
+          command: test "$CIRCLECI_BRANCH" == "master"
       - setup_remote_docker
       - restore_cache:
           key: deps-v1-{{ checksum "Pipfile.lock" }}
@@ -32,7 +32,11 @@ workflows:
    version: 2
    build_on_commit:
      jobs:
-        - build
+       - build:
+           filters:
+              branches:
+                only:
+                  - master
    twice_a_day:
      triggers:
        - schedule:

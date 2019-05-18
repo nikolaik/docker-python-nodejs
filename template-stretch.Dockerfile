@@ -1,7 +1,7 @@
 # Generated %%NOW%%
 # python: %%PYTHON_CANONICAL%%
 # nodejs: %%NODEJS_CANONICAL%%
-FROM python:%%PYTHON_IMAGE_CANONICAL%%
+FROM python:%%PYTHON_IMAGE%%
 MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 
 # Install node prereqs, nodejs and yarn
