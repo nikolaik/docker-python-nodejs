@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: Verify on master branch
-          command: test "$CIRCLECI_BRANCH" == "master"
+          command: test "$CIRCLE_BRANCH" == "master"
       - setup_remote_docker
       - restore_cache:
           key: deps-v1-{{ checksum "Pipfile.lock" }}
