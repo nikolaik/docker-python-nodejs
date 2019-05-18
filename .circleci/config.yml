@@ -20,6 +20,7 @@ jobs:
             sudo pip install pipenv
             pipenv install
             pipenv run python build_versions.py
+          no_output_timeout: 20m  # FIXME: Speed up -alpine build
       - run:
           name: Add new versions to git (if any)
           command: |
