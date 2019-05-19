@@ -21,7 +21,7 @@ RUN tar -xf "node-v%%NODEJS_CANONICAL%%.tar.xz"
 RUN \
   cd "node-v%%NODEJS_CANONICAL%%" && \
   ./configure && \
-  make -j$(getconf _NPROCESSORS_ONLN) V= && \
+  make -j4 V= && \
   make install
 
 FROM python:%%PYTHON_IMAGE%%
