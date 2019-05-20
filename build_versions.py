@@ -16,7 +16,8 @@ from requests_html import HTMLSession
 DOCKER_IMAGE_NAME = 'nikolaik/python-nodejs'
 VERSIONS_PATH = Path('versions.json')
 DEFAULT_DISTRO = 'stretch'
-DISTROS = ['stretch', 'alpine']
+# DISTROS = ['stretch', 'alpine']
+DISTROS = ['stretch']
 
 todays_date = datetime.utcnow().date().isoformat()
 
