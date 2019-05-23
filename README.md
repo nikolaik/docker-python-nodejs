@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2019-05-20
+Last updated by bot: 2019-05-23
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -18,19 +18,19 @@ To use a specific combination of python and node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.7-nodejs12` | 3.7.3 | 12.2.0 | stretch
+`python3.7-nodejs12` | 3.7.3 | 12.3.0 | stretch
 `python3.7-nodejs11` | 3.7.3 | 11.15.0 | stretch
 `python3.7-nodejs10` | 3.7.3 | 10.15.3 | stretch
 `python3.7-nodejs8` | 3.7.3 | 8.16.0 | stretch
-`python3.6-nodejs12` | 3.6.8 | 12.2.0 | stretch
+`python3.6-nodejs12` | 3.6.8 | 12.3.0 | stretch
 `python3.6-nodejs11` | 3.6.8 | 11.15.0 | stretch
 `python3.6-nodejs10` | 3.6.8 | 10.15.3 | stretch
 `python3.6-nodejs8` | 3.6.8 | 8.16.0 | stretch
-`python3.5-nodejs12` | 3.5.7 | 12.2.0 | stretch
+`python3.5-nodejs12` | 3.5.7 | 12.3.0 | stretch
 `python3.5-nodejs11` | 3.5.7 | 11.15.0 | stretch
 `python3.5-nodejs10` | 3.5.7 | 10.15.3 | stretch
 `python3.5-nodejs8` | 3.5.7 | 8.16.0 | stretch
-`python2.7-nodejs12` | 2.7.16 | 12.2.0 | stretch
+`python2.7-nodejs12` | 2.7.16 | 12.3.0 | stretch
 `python2.7-nodejs11` | 2.7.16 | 11.15.0 | stretch
 `python2.7-nodejs10` | 2.7.16 | 10.15.3 | stretch
 `python2.7-nodejs8` | 2.7.16 | 8.16.0 | stretch
