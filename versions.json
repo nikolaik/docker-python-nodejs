@@ -3,8 +3,8 @@
     {
       "key": "python3.7-nodejs12",
       "python": "3.7",
-      "python_canonical": "3.7.3",
-      "python_image": "3.7.3-stretch",
+      "python_canonical": "3.7.4",
+      "python_image": "3.7.4-stretch",
       "nodejs": "12",
       "nodejs_canonical": "12.6.0",
       "distro": "stretch"
@@ -12,8 +12,8 @@
     {
       "key": "python3.7-nodejs10",
       "python": "3.7",
-      "python_canonical": "3.7.3",
-      "python_image": "3.7.3-stretch",
+      "python_canonical": "3.7.4",
+      "python_image": "3.7.4-stretch",
       "nodejs": "10",
       "nodejs_canonical": "10.16.0",
       "distro": "stretch"
@@ -21,8 +21,8 @@
     {
       "key": "python3.7-nodejs8",
       "python": "3.7",
-      "python_canonical": "3.7.3",
-      "python_image": "3.7.3-stretch",
+      "python_canonical": "3.7.4",
+      "python_image": "3.7.4-stretch",
       "nodejs": "8",
       "nodejs_canonical": "8.16.0",
       "distro": "stretch"
@@ -30,8 +30,8 @@
     {
       "key": "python3.6-nodejs12",
       "python": "3.6",
-      "python_canonical": "3.6.8",
-      "python_image": "3.6.8-stretch",
+      "python_canonical": "3.6.9",
+      "python_image": "3.6.9-stretch",
       "nodejs": "12",
       "nodejs_canonical": "12.6.0",
       "distro": "stretch"
@@ -39,8 +39,8 @@
     {
       "key": "python3.6-nodejs10",
       "python": "3.6",
-      "python_canonical": "3.6.8",
-      "python_image": "3.6.8-stretch",
+      "python_canonical": "3.6.9",
+      "python_image": "3.6.9-stretch",
       "nodejs": "10",
       "nodejs_canonical": "10.16.0",
       "distro": "stretch"
@@ -48,8 +48,8 @@
     {
       "key": "python3.6-nodejs8",
       "python": "3.6",
-      "python_canonical": "3.6.8",
-      "python_image": "3.6.8-stretch",
+      "python_canonical": "3.6.9",
+      "python_image": "3.6.9-stretch",
       "nodejs": "8",
       "nodejs_canonical": "8.16.0",
       "distro": "stretch"
