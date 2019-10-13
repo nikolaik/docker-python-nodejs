@@ -16,7 +16,7 @@ from requests_html import HTMLSession
 
 DOCKER_IMAGE_NAME = "nikolaik/python-nodejs"
 VERSIONS_PATH = Path("versions.json")
-DEFAULT_DISTRO = "stretch"
+DEFAULT_DISTRO = "buster"
 DISTROS = ["stretch", "buster", "alpine"]
 DEFAULT_DISTROS = ["stretch", "buster", "alpine"]
 
