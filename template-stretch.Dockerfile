@@ -16,7 +16,8 @@ RUN \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
   wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   apt-get update && \
-  apt-get install -yqq nodejs yarn && \
+  apt-get install -yqq nodejs=$(apt-cache show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
+  apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
   npm i -g npm@^6 && \
   rm -rf /var/lib/apt/lists/*
