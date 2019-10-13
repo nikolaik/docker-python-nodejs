@@ -10,24 +10,19 @@ jobs:
       - checkout
       - run:
           name: Verify on master branch
-          command: test "$CIRCLE_BRANCH" == "master"
+          command: test "$CIRCLECI_BRANCH" == "master"
       - setup_remote_docker
       - restore_cache:
           key: deps-v1-{{ checksum "Pipfile.lock" }}
       - run:
-          name: Install deps, get versions, build, tag and push to docker hub
-          command: |
-            sudo pip install pipenv
-            pipenv install
-            pipenv run python build_versions.py
-          no_output_timeout: 2h  # FIXME: Speed up -alpine build
-      - run:
-          name: Add new versions to git (if any)
-          command: |
-            ./git_archive.sh
+          name: Install python dependencies
+          command: pipenv install
       - save_cache:
           key: deps-v1-{{ checksum "Pipfile.lock" }}
           paths: "~/.local/share/virtualenvs/"
+      - run:
+          name: Get versions, build, tag and push to docker hub
+          command: pipenv run python build_versions.py
 
 workflows:
    version: 2
