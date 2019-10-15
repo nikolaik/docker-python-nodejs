@@ -34,7 +34,7 @@ def _fetch_tags(package):
 
 def _latest_patch(tags, ver, patch_pattern, distro):
     tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
-    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else ''
+    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else ""
 
 
 def _fetch_node_gpg_keys():
@@ -124,9 +124,9 @@ def version_combinations(nodejs_versions, python_versions):
                 }
             )
 
-    versions = sorted(versions, key=lambda v: DISTROS.index(v['distro']))
-    versions = sorted(versions, key=lambda v: by_semver_key(v['nodejs_canonical']), reverse=True)
-    versions = sorted(versions, key=lambda v: by_semver_key(v['python_canonical']), reverse=True)
+    versions = sorted(versions, key=lambda v: DISTROS.index(v["distro"]))
+    versions = sorted(versions, key=lambda v: by_semver_key(v["nodejs_canonical"]), reverse=True)
+    versions = sorted(versions, key=lambda v: by_semver_key(v["python_canonical"]), reverse=True)
     return versions
 
 
