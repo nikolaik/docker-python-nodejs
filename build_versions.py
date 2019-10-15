@@ -17,10 +17,13 @@ from requests_html import HTMLSession
 DOCKER_IMAGE_NAME = "nikolaik/python-nodejs"
 VERSIONS_PATH = Path("versions.json")
 DEFAULT_DISTRO = "buster"
-DISTROS = ["stretch", "buster", "alpine"]
-DEFAULT_DISTROS = ["stretch", "buster", "alpine"]
+DISTROS = ["buster", "stretch", "alpine"]
+DEFAULT_DISTROS = ["buster", "stretch", "alpine"]
 
 todays_date = datetime.utcnow().date().isoformat()
+
+
+by_semver_key = cmp_to_key(semver.compare)
 
 
 def _fetch_tags(package):
@@ -31,7 +34,7 @@ def _fetch_tags(package):
 
 def _latest_patch(tags, ver, patch_pattern, distro):
     tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
-    return sorted(tags, key=cmp_to_key(semver.compare), reverse=True)[0]
+    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else ''
 
 
 def _fetch_node_gpg_keys():
@@ -72,14 +75,14 @@ def decide_python_versions(distros):
         for distro in distros:
             canonical_image = _latest_patch(tags, ver, python_wanted_tag_pattern, distro)
             if not canonical_image:
-                print(f"Not good, {canonical_image} not in tags, aborting...")
-                exit(1)
+                print(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
+                continue
             canonical_version = canonical_image.replace(f"-{distro}", "")
             versions.append(
                 {"canonical_version": canonical_version, "image": canonical_image, "key": ver, "distro": distro}
             )
 
-    return sorted(versions, key=lambda v: cmp_to_key(semver.compare)(v["canonical_version"]), reverse=True)
+    return sorted(versions, key=lambda v: by_semver_key(v["canonical_version"]), reverse=True)
 
 
 def decide_nodejs_versions():
@@ -95,12 +98,12 @@ def decide_nodejs_versions():
         ver = supported_version["version"][1:]  # Remove v prefix
         canonical_image = _latest_patch(tags, ver, nodejs_wanted_tag_pattern, DEFAULT_DISTRO)
         if not canonical_image:
-            print(f"Not good, {canonical_image} not in tags, aborting...")
-            exit(1)
+            print(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
+            continue
         canonical_version = canonical_image.replace(f"-{DEFAULT_DISTRO}", "")
         versions.append({"canonical_version": canonical_version, "key": ver})
 
-    return sorted(versions, key=lambda v: cmp_to_key(semver.compare)(v["canonical_version"]), reverse=True)
+    return sorted(versions, key=lambda v: by_semver_key(v["canonical_version"]), reverse=True)
 
 
 def version_combinations(nodejs_versions, python_versions):
@@ -120,6 +123,10 @@ def version_combinations(nodejs_versions, python_versions):
                     "distro": p["distro"],
                 }
             )
+
+    versions = sorted(versions, key=lambda v: DISTROS.index(v['distro']))
+    versions = sorted(versions, key=lambda v: by_semver_key(v['nodejs_canonical']), reverse=True)
+    versions = sorted(versions, key=lambda v: by_semver_key(v['python_canonical']), reverse=True)
     return versions
 
 
