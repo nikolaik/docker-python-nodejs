@@ -1,6 +1,60 @@
 {
   "versions": [
     {
+      "key": "python3.8-nodejs12",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-buster",
+      "nodejs": "12",
+      "nodejs_canonical": "12.12.0",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.8-nodejs12-alpine",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-alpine",
+      "nodejs": "12",
+      "nodejs_canonical": "12.12.0",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.8-nodejs10",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-buster",
+      "nodejs": "10",
+      "nodejs_canonical": "10.16.3",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.8-nodejs10-alpine",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-alpine",
+      "nodejs": "10",
+      "nodejs_canonical": "10.16.3",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.8-nodejs8",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-buster",
+      "nodejs": "8",
+      "nodejs_canonical": "8.16.2",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.8-nodejs8-alpine",
+      "python": "3.8",
+      "python_canonical": "3.8.0",
+      "python_image": "3.8.0-alpine",
+      "nodejs": "8",
+      "nodejs_canonical": "8.16.2",
+      "distro": "alpine"
+    },
+    {
       "key": "python3.7-nodejs12",
       "python": "3.7",
       "python_canonical": "3.7.4",
