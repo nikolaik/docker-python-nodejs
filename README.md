@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2019-10-16
+Last updated by bot: 2019-10-19
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -24,15 +24,15 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs10-alpine` | 3.8.0 | 10.16.3 | alpine
 `python3.8-nodejs8` | 3.8.0 | 8.16.2 | buster
 `python3.8-nodejs8-alpine` | 3.8.0 | 8.16.2 | alpine
-`python3.7-nodejs12` | 3.7.4 | 12.12.0 | buster
-`python3.7-nodejs12-stretch` | 3.7.4 | 12.12.0 | stretch
-`python3.7-nodejs12-alpine` | 3.7.4 | 12.12.0 | alpine
-`python3.7-nodejs10` | 3.7.4 | 10.16.3 | buster
-`python3.7-nodejs10-stretch` | 3.7.4 | 10.16.3 | stretch
-`python3.7-nodejs10-alpine` | 3.7.4 | 10.16.3 | alpine
-`python3.7-nodejs8` | 3.7.4 | 8.16.2 | buster
-`python3.7-nodejs8-stretch` | 3.7.4 | 8.16.2 | stretch
-`python3.7-nodejs8-alpine` | 3.7.4 | 8.16.2 | alpine
+`python3.7-nodejs12` | 3.7.5 | 12.12.0 | buster
+`python3.7-nodejs12-stretch` | 3.7.5 | 12.12.0 | stretch
+`python3.7-nodejs12-alpine` | 3.7.5 | 12.12.0 | alpine
+`python3.7-nodejs10` | 3.7.5 | 10.16.3 | buster
+`python3.7-nodejs10-stretch` | 3.7.5 | 10.16.3 | stretch
+`python3.7-nodejs10-alpine` | 3.7.5 | 10.16.3 | alpine
+`python3.7-nodejs8` | 3.7.5 | 8.16.2 | buster
+`python3.7-nodejs8-stretch` | 3.7.5 | 8.16.2 | stretch
+`python3.7-nodejs8-alpine` | 3.7.5 | 8.16.2 | alpine
 `python3.6-nodejs12` | 3.6.9 | 12.12.0 | buster
 `python3.6-nodejs12-stretch` | 3.6.9 | 12.12.0 | stretch
 `python3.6-nodejs12-alpine` | 3.6.9 | 12.12.0 | alpine
