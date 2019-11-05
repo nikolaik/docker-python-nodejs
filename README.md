@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2019-11-01
+Last updated by bot: 2019-11-05
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -50,18 +50,18 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs8` | 3.6.9 | 8.16.2 | buster
 `python3.6-nodejs8-stretch` | 3.6.9 | 8.16.2 | stretch
 `python3.6-nodejs8-alpine` | 3.6.9 | 8.16.2 | alpine
-`python3.5-nodejs13` | 3.5.8 | 13.0.1 | buster
-`python3.5-nodejs13-stretch` | 3.5.8 | 13.0.1 | stretch
-`python3.5-nodejs13-alpine` | 3.5.8 | 13.0.1 | alpine
-`python3.5-nodejs12` | 3.5.8 | 12.13.0 | buster
-`python3.5-nodejs12-stretch` | 3.5.8 | 12.13.0 | stretch
-`python3.5-nodejs12-alpine` | 3.5.8 | 12.13.0 | alpine
-`python3.5-nodejs10` | 3.5.8 | 10.17.0 | buster
-`python3.5-nodejs10-stretch` | 3.5.8 | 10.17.0 | stretch
-`python3.5-nodejs10-alpine` | 3.5.8 | 10.17.0 | alpine
-`python3.5-nodejs8` | 3.5.8 | 8.16.2 | buster
-`python3.5-nodejs8-stretch` | 3.5.8 | 8.16.2 | stretch
-`python3.5-nodejs8-alpine` | 3.5.8 | 8.16.2 | alpine
+`python3.5-nodejs13` | 3.5.9 | 13.0.1 | buster
+`python3.5-nodejs13-stretch` | 3.5.9 | 13.0.1 | stretch
+`python3.5-nodejs13-alpine` | 3.5.9 | 13.0.1 | alpine
+`python3.5-nodejs12` | 3.5.9 | 12.13.0 | buster
+`python3.5-nodejs12-stretch` | 3.5.9 | 12.13.0 | stretch
+`python3.5-nodejs12-alpine` | 3.5.9 | 12.13.0 | alpine
+`python3.5-nodejs10` | 3.5.9 | 10.17.0 | buster
+`python3.5-nodejs10-stretch` | 3.5.9 | 10.17.0 | stretch
+`python3.5-nodejs10-alpine` | 3.5.9 | 10.17.0 | alpine
+`python3.5-nodejs8` | 3.5.9 | 8.16.2 | buster
+`python3.5-nodejs8-stretch` | 3.5.9 | 8.16.2 | stretch
+`python3.5-nodejs8-alpine` | 3.5.9 | 8.16.2 | alpine
 `python2.7-nodejs13` | 2.7.17 | 13.0.1 | buster
 `python2.7-nodejs13-stretch` | 2.7.17 | 13.0.1 | stretch
 `python2.7-nodejs13-alpine` | 2.7.17 | 13.0.1 | alpine
