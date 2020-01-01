@@ -55,24 +55,6 @@
       "distro": "alpine"
     },
     {
-      "key": "python3.8-nodejs8",
-      "python": "3.8",
-      "python_canonical": "3.8.1",
-      "python_image": "3.8.1-buster",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.8-nodejs8-alpine",
-      "python": "3.8",
-      "python_canonical": "3.8.1",
-      "python_image": "3.8.1-alpine",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "alpine"
-    },
-    {
       "key": "python3.7-nodejs13",
       "python": "3.7",
       "python_canonical": "3.7.6",
@@ -151,33 +133,6 @@
       "python_image": "3.7.6-alpine",
       "nodejs": "10",
       "nodejs_canonical": "10.18.0",
-      "distro": "alpine"
-    },
-    {
-      "key": "python3.7-nodejs8",
-      "python": "3.7",
-      "python_canonical": "3.7.6",
-      "python_image": "3.7.6-buster",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.7-nodejs8-stretch",
-      "python": "3.7",
-      "python_canonical": "3.7.6",
-      "python_image": "3.7.6-stretch",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "stretch"
-    },
-    {
-      "key": "python3.7-nodejs8-alpine",
-      "python": "3.7",
-      "python_canonical": "3.7.6",
-      "python_image": "3.7.6-alpine",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
       "distro": "alpine"
     },
     {
@@ -262,33 +217,6 @@
       "distro": "alpine"
     },
     {
-      "key": "python3.6-nodejs8",
-      "python": "3.6",
-      "python_canonical": "3.6.10",
-      "python_image": "3.6.10-buster",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.6-nodejs8-stretch",
-      "python": "3.6",
-      "python_canonical": "3.6.10",
-      "python_image": "3.6.10-stretch",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "stretch"
-    },
-    {
-      "key": "python3.6-nodejs8-alpine",
-      "python": "3.6",
-      "python_canonical": "3.6.10",
-      "python_image": "3.6.10-alpine",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "alpine"
-    },
-    {
       "key": "python3.5-nodejs13",
       "python": "3.5",
       "python_canonical": "3.5.9",
@@ -370,33 +298,6 @@
       "distro": "alpine"
     },
     {
-      "key": "python3.5-nodejs8",
-      "python": "3.5",
-      "python_canonical": "3.5.9",
-      "python_image": "3.5.9-buster",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.5-nodejs8-stretch",
-      "python": "3.5",
-      "python_canonical": "3.5.9",
-      "python_image": "3.5.9-stretch",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "stretch"
-    },
-    {
-      "key": "python3.5-nodejs8-alpine",
-      "python": "3.5",
-      "python_canonical": "3.5.9",
-      "python_image": "3.5.9-alpine",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "alpine"
-    },
-    {
       "key": "python2.7-nodejs13",
       "python": "2.7",
       "python_canonical": "2.7.17",
@@ -475,33 +376,6 @@
       "python_image": "2.7.17-alpine",
       "nodejs": "10",
       "nodejs_canonical": "10.18.0",
-      "distro": "alpine"
-    },
-    {
-      "key": "python2.7-nodejs8",
-      "python": "2.7",
-      "python_canonical": "2.7.17",
-      "python_image": "2.7.17-buster",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "buster"
-    },
-    {
-      "key": "python2.7-nodejs8-stretch",
-      "python": "2.7",
-      "python_canonical": "2.7.17",
-      "python_image": "2.7.17-stretch",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
-      "distro": "stretch"
-    },
-    {
-      "key": "python2.7-nodejs8-alpine",
-      "python": "2.7",
-      "python_canonical": "2.7.17",
-      "python_image": "2.7.17-alpine",
-      "nodejs": "8",
-      "nodejs_canonical": "8.17.0",
       "distro": "alpine"
     }
   ]
