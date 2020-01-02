@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-01-01
+Last updated by bot: 2020-01-02
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -51,15 +51,6 @@ Tag | Python version | Node.js version | Distro
 `python3.5-nodejs10` | 3.5.9 | 10.18.0 | buster
 `python3.5-nodejs10-stretch` | 3.5.9 | 10.18.0 | stretch
 `python3.5-nodejs10-alpine` | 3.5.9 | 10.18.0 | alpine
-`python2.7-nodejs13` | 2.7.17 | 13.5.0 | buster
-`python2.7-nodejs13-stretch` | 2.7.17 | 13.5.0 | stretch
-`python2.7-nodejs13-alpine` | 2.7.17 | 13.5.0 | alpine
-`python2.7-nodejs12` | 2.7.17 | 12.14.0 | buster
-`python2.7-nodejs12-stretch` | 2.7.17 | 12.14.0 | stretch
-`python2.7-nodejs12-alpine` | 2.7.17 | 12.14.0 | alpine
-`python2.7-nodejs10` | 2.7.17 | 10.18.0 | buster
-`python2.7-nodejs10-stretch` | 2.7.17 | 10.18.0 | stretch
-`python2.7-nodejs10-alpine` | 2.7.17 | 10.18.0 | alpine
 
 Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
