@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-03-11
+Last updated by bot: 2020-03-27
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -18,33 +18,33 @@ To use a specific combination of python and node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.8-nodejs13` | 3.8.2 | 13.10.1 | buster
-`python3.8-nodejs13-alpine` | 3.8.2 | 13.10.1 | alpine
+`python3.8-nodejs13` | 3.8.2 | 13.11.0 | buster
+`python3.8-nodejs13-alpine` | 3.8.2 | 13.11.0 | alpine
 `python3.8-nodejs12` | 3.8.2 | 12.16.1 | buster
 `python3.8-nodejs12-alpine` | 3.8.2 | 12.16.1 | alpine
 `python3.8-nodejs10` | 3.8.2 | 10.19.0 | buster
 `python3.8-nodejs10-alpine` | 3.8.2 | 10.19.0 | alpine
-`python3.7-nodejs13` | 3.7.7 | 13.10.1 | buster
-`python3.7-nodejs13-stretch` | 3.7.7 | 13.10.1 | stretch
-`python3.7-nodejs13-alpine` | 3.7.7 | 13.10.1 | alpine
+`python3.7-nodejs13` | 3.7.7 | 13.11.0 | buster
+`python3.7-nodejs13-stretch` | 3.7.7 | 13.11.0 | stretch
+`python3.7-nodejs13-alpine` | 3.7.7 | 13.11.0 | alpine
 `python3.7-nodejs12` | 3.7.7 | 12.16.1 | buster
 `python3.7-nodejs12-stretch` | 3.7.7 | 12.16.1 | stretch
 `python3.7-nodejs12-alpine` | 3.7.7 | 12.16.1 | alpine
 `python3.7-nodejs10` | 3.7.7 | 10.19.0 | buster
 `python3.7-nodejs10-stretch` | 3.7.7 | 10.19.0 | stretch
 `python3.7-nodejs10-alpine` | 3.7.7 | 10.19.0 | alpine
-`python3.6-nodejs13` | 3.6.10 | 13.10.1 | buster
-`python3.6-nodejs13-stretch` | 3.6.10 | 13.10.1 | stretch
-`python3.6-nodejs13-alpine` | 3.6.10 | 13.10.1 | alpine
+`python3.6-nodejs13` | 3.6.10 | 13.11.0 | buster
+`python3.6-nodejs13-stretch` | 3.6.10 | 13.11.0 | stretch
+`python3.6-nodejs13-alpine` | 3.6.10 | 13.11.0 | alpine
 `python3.6-nodejs12` | 3.6.10 | 12.16.1 | buster
 `python3.6-nodejs12-stretch` | 3.6.10 | 12.16.1 | stretch
 `python3.6-nodejs12-alpine` | 3.6.10 | 12.16.1 | alpine
 `python3.6-nodejs10` | 3.6.10 | 10.19.0 | buster
 `python3.6-nodejs10-stretch` | 3.6.10 | 10.19.0 | stretch
 `python3.6-nodejs10-alpine` | 3.6.10 | 10.19.0 | alpine
-`python3.5-nodejs13` | 3.5.9 | 13.10.1 | buster
-`python3.5-nodejs13-stretch` | 3.5.9 | 13.10.1 | stretch
-`python3.5-nodejs13-alpine` | 3.5.9 | 13.10.1 | alpine
+`python3.5-nodejs13` | 3.5.9 | 13.11.0 | buster
+`python3.5-nodejs13-stretch` | 3.5.9 | 13.11.0 | stretch
+`python3.5-nodejs13-alpine` | 3.5.9 | 13.11.0 | alpine
 `python3.5-nodejs12` | 3.5.9 | 12.16.1 | buster
 `python3.5-nodejs12-stretch` | 3.5.9 | 12.16.1 | stretch
 `python3.5-nodejs12-alpine` | 3.5.9 | 12.16.1 | alpine
