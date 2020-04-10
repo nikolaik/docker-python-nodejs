@@ -24,7 +24,7 @@
       "python_canonical": "3.8.2",
       "python_image": "3.8.2-buster",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "buster"
     },
     {
@@ -33,7 +33,7 @@
       "python_canonical": "3.8.2",
       "python_image": "3.8.2-alpine",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "alpine"
     },
     {
@@ -87,7 +87,7 @@
       "python_canonical": "3.7.7",
       "python_image": "3.7.7-buster",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "buster"
     },
     {
@@ -96,7 +96,7 @@
       "python_canonical": "3.7.7",
       "python_image": "3.7.7-stretch",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "stretch"
     },
     {
@@ -105,7 +105,7 @@
       "python_canonical": "3.7.7",
       "python_image": "3.7.7-alpine",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "alpine"
     },
     {
@@ -168,7 +168,7 @@
       "python_canonical": "3.6.10",
       "python_image": "3.6.10-buster",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "buster"
     },
     {
@@ -177,7 +177,7 @@
       "python_canonical": "3.6.10",
       "python_image": "3.6.10-stretch",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "stretch"
     },
     {
@@ -186,7 +186,7 @@
       "python_canonical": "3.6.10",
       "python_image": "3.6.10-alpine",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "alpine"
     },
     {
@@ -249,7 +249,7 @@
       "python_canonical": "3.5.9",
       "python_image": "3.5.9-buster",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "buster"
     },
     {
@@ -258,7 +258,7 @@
       "python_canonical": "3.5.9",
       "python_image": "3.5.9-stretch",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "stretch"
     },
     {
@@ -267,7 +267,7 @@
       "python_canonical": "3.5.9",
       "python_image": "3.5.9-alpine",
       "nodejs": "12",
-      "nodejs_canonical": "12.16.1",
+      "nodejs_canonical": "12.16.2",
       "distro": "alpine"
     },
     {
