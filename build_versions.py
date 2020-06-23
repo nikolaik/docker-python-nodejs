@@ -244,7 +244,7 @@ def main(distros, dry_run, debug):
     # Build tag and release docker images
     build_new_or_updated(current_versions, versions, dry_run, debug)
 
-    # FIXME(perf): Generate a CircleCI config file with a workflow (parallell) and trigger this workflow via the API.
+    # FIXME(perf): Generate a CircleCI config file with a workflow (parallel) and trigger this workflow via the API.
     # Ref: https://circleci.com/docs/2.0/api-job-trigger/
     # Ref: https://discuss.circleci.com/t/run-builds-on-circleci-using-a-local-config-file/17355?source_topic_id=19287
 
