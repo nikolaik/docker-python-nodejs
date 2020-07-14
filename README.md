@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-07-02
+Last updated by bot: 2020-07-14
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -18,12 +18,12 @@ To use a specific combination of python and node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.8-nodejs14` | 3.8.3 | 14.5.0 | buster
-`python3.8-nodejs14-alpine` | 3.8.3 | 14.5.0 | alpine
-`python3.8-nodejs12` | 3.8.3 | 12.18.2 | buster
-`python3.8-nodejs12-alpine` | 3.8.3 | 12.18.2 | alpine
-`python3.8-nodejs10` | 3.8.3 | 10.21.0 | buster
-`python3.8-nodejs10-alpine` | 3.8.3 | 10.21.0 | alpine
+`python3.8-nodejs14` | 3.8.4 | 14.5.0 | buster
+`python3.8-nodejs14-alpine` | 3.8.4 | 14.5.0 | alpine
+`python3.8-nodejs12` | 3.8.4 | 12.18.2 | buster
+`python3.8-nodejs12-alpine` | 3.8.4 | 12.18.2 | alpine
+`python3.8-nodejs10` | 3.8.4 | 10.21.0 | buster
+`python3.8-nodejs10-alpine` | 3.8.4 | 10.21.0 | alpine
 `python3.7-nodejs14` | 3.7.8 | 14.5.0 | buster
 `python3.7-nodejs14-stretch` | 3.7.8 | 14.5.0 | stretch
 `python3.7-nodejs14-alpine` | 3.7.8 | 14.5.0 | alpine
