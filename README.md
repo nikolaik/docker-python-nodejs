@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-08-29
+Last updated by bot: 2020-09-09
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -42,15 +42,15 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs10` | 3.6.12 | 10.22.0 | buster
 `python3.6-nodejs10-stretch` | 3.6.12 | 10.22.0 | stretch
 `python3.6-nodejs10-alpine` | 3.6.12 | 10.22.0 | alpine
-`python3.5-nodejs14` | 3.5.9 | 14.9.0 | buster
-`python3.5-nodejs14-stretch` | 3.5.9 | 14.9.0 | stretch
-`python3.5-nodejs14-alpine` | 3.5.9 | 14.9.0 | alpine
-`python3.5-nodejs12` | 3.5.9 | 12.18.3 | buster
-`python3.5-nodejs12-stretch` | 3.5.9 | 12.18.3 | stretch
-`python3.5-nodejs12-alpine` | 3.5.9 | 12.18.3 | alpine
-`python3.5-nodejs10` | 3.5.9 | 10.22.0 | buster
-`python3.5-nodejs10-stretch` | 3.5.9 | 10.22.0 | stretch
-`python3.5-nodejs10-alpine` | 3.5.9 | 10.22.0 | alpine
+`python3.5-nodejs14` | 3.5.10 | 14.9.0 | buster
+`python3.5-nodejs14-stretch` | 3.5.10 | 14.9.0 | stretch
+`python3.5-nodejs14-alpine` | 3.5.10 | 14.9.0 | alpine
+`python3.5-nodejs12` | 3.5.10 | 12.18.3 | buster
+`python3.5-nodejs12-stretch` | 3.5.10 | 12.18.3 | stretch
+`python3.5-nodejs12-alpine` | 3.5.10 | 12.18.3 | alpine
+`python3.5-nodejs10` | 3.5.10 | 10.22.0 | buster
+`python3.5-nodejs10-stretch` | 3.5.10 | 10.22.0 | stretch
+`python3.5-nodejs10-alpine` | 3.5.10 | 10.22.0 | alpine
 
 Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
