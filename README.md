@@ -12,6 +12,7 @@ The `latest` tag is currently:
 - Python: latest
 - pip: latest
 - pipenv: latest
+- poetry: latest
 
 ## Tags
 To use a specific combination of python and node.js see the following table of available image tags.
