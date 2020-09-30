@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.8
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -13,16 +13,18 @@ jobs:
           command: test "$CIRCLE_BRANCH" == "master"
       - setup_remote_docker
       - restore_cache:
-          key: deps-v1-{{ checksum "Pipfile.lock" }}
+          key: deps-v2-{{ checksum "Pipfile.lock" }}
       - run:
           name: Install python dependencies
           command: pipenv install
       - save_cache:
-          key: deps-v1-{{ checksum "Pipfile.lock" }}
+          key: deps-v2-{{ checksum "Pipfile.lock" }}
           paths: "~/.local/share/virtualenvs/"
       - run:
           name: Get versions, build, tag and push to docker hub
-          command: pipenv run python build_versions.py
+          command: |
+            FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
+            pipenv run python build_versions.py $FORCE
       - run:
           name: Add new versions to git (if any)
           command: |

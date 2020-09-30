@@ -155,7 +155,7 @@ def load_versions():
         return json.load(fp)["versions"]
 
 
-def build_new_or_updated(current_versions, versions, dry_run=False, debug=False):
+def build_new_or_updated(current_versions, versions, dry_run=False, debug=False, force=False):
     # Find new or updated
     current_versions = {ver["key"]: ver for ver in current_versions}
     versions = {ver["key"]: ver for ver in versions}
@@ -164,7 +164,7 @@ def build_new_or_updated(current_versions, versions, dry_run=False, debug=False)
     for key, ver in versions.items():
         updated = key in current_versions and ver != current_versions[key]
         new = key not in current_versions
-        if new or updated:
+        if new or updated or force:
             new_or_updated.append(ver)
 
     if not new_or_updated:
@@ -229,7 +229,7 @@ def update_readme_tags_table(versions, dry_run=False):
             fp.write(readme_new)
 
 
-def main(distros, dry_run, debug):
+def main(distros, dry_run, debug, force):
     distros = list(set(distros + [DEFAULT_DISTRO]))
     current_versions = load_versions()
     # Use latest patch version from each minor
@@ -242,7 +242,7 @@ def main(distros, dry_run, debug):
     update_readme_tags_table(versions, dry_run)
 
     # Build tag and release docker images
-    build_new_or_updated(current_versions, versions, dry_run, debug)
+    build_new_or_updated(current_versions, versions, dry_run, debug, force)
 
     # FIXME(perf): Generate a CircleCI config file with a workflow (parallel) and trigger this workflow via the API.
     # Ref: https://circleci.com/docs/2.0/api-job-trigger/
@@ -264,5 +264,6 @@ if __name__ == "__main__":
         "--dry-run", action="store_true", dest="dry_run", help="Skip persisting, README update, and pushing of builds"
     )
     parser.add_argument("--debug", action="store_true", help="Write generated dockerfiles to disk")
+    parser.add_argument("--force", action="store_true", help="Force build all versions (even old)")
     args = vars(parser.parse_args())
     main(**args)
