@@ -16,6 +16,6 @@ RUN \
   apt-get install -yqq nodejs=$(apt-cache show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
-  npm i -g npm@^6 && \
+  npm i -g npm@^%%NPM_VERSION%% && \
   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin && \
   rm -rf /var/lib/apt/lists/*

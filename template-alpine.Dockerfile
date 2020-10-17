@@ -20,5 +20,5 @@ RUN \
   apk add --no-cache libstdc++ && \
   pip install -U pip && pip install pipenv
 COPY --from=builder /node-v%%NODEJS_CANONICAL%%-linux-x64-musl /usr/local
-RUN npm i -g npm@^6 yarn
+RUN npm i -g npm@^%%NPM_VERSION%% yarn
 RUN wget -q -O - https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin
