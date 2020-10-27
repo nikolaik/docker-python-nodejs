@@ -1,6 +1,33 @@
 {
   "versions": [
     {
+      "key": "python3.9-nodejs15",
+      "python": "3.9",
+      "python_canonical": "3.9.0",
+      "python_image": "3.9.0-buster",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.9-nodejs15-slim",
+      "python": "3.9",
+      "python_canonical": "3.9.0",
+      "python_image": "3.9.0-slim",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.9-nodejs15-alpine",
+      "python": "3.9",
+      "python_canonical": "3.9.0",
+      "python_image": "3.9.0-alpine",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "alpine"
+    },
+    {
       "key": "python3.9-nodejs14",
       "python": "3.9",
       "python_canonical": "3.9.0",
@@ -82,6 +109,33 @@
       "distro": "alpine"
     },
     {
+      "key": "python3.8-nodejs15",
+      "python": "3.8",
+      "python_canonical": "3.8.6",
+      "python_image": "3.8.6-buster",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.8-nodejs15-slim",
+      "python": "3.8",
+      "python_canonical": "3.8.6",
+      "python_image": "3.8.6-slim",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.8-nodejs15-alpine",
+      "python": "3.8",
+      "python_canonical": "3.8.6",
+      "python_image": "3.8.6-alpine",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "alpine"
+    },
+    {
       "key": "python3.8-nodejs14",
       "python": "3.8",
       "python_canonical": "3.8.6",
@@ -160,6 +214,42 @@
       "python_image": "3.8.6-alpine",
       "nodejs": "10",
       "nodejs_canonical": "10.22.1",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.7-nodejs15",
+      "python": "3.7",
+      "python_canonical": "3.7.9",
+      "python_image": "3.7.9-buster",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.7-nodejs15-slim",
+      "python": "3.7",
+      "python_canonical": "3.7.9",
+      "python_image": "3.7.9-slim",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.7-nodejs15-stretch",
+      "python": "3.7",
+      "python_canonical": "3.7.9",
+      "python_image": "3.7.9-stretch",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "stretch"
+    },
+    {
+      "key": "python3.7-nodejs15-alpine",
+      "python": "3.7",
+      "python_canonical": "3.7.9",
+      "python_image": "3.7.9-alpine",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
       "distro": "alpine"
     },
     {
@@ -268,6 +358,42 @@
       "python_image": "3.7.9-alpine",
       "nodejs": "10",
       "nodejs_canonical": "10.22.1",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.6-nodejs15",
+      "python": "3.6",
+      "python_canonical": "3.6.12",
+      "python_image": "3.6.12-buster",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.6-nodejs15-slim",
+      "python": "3.6",
+      "python_canonical": "3.6.12",
+      "python_image": "3.6.12-slim",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.6-nodejs15-stretch",
+      "python": "3.6",
+      "python_canonical": "3.6.12",
+      "python_image": "3.6.12-stretch",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
+      "distro": "stretch"
+    },
+    {
+      "key": "python3.6-nodejs15-alpine",
+      "python": "3.6",
+      "python_canonical": "3.6.12",
+      "python_image": "3.6.12-alpine",
+      "nodejs": "15",
+      "nodejs_canonical": "15.0.1",
       "distro": "alpine"
     },
     {
