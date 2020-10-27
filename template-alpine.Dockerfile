@@ -20,5 +20,9 @@ RUN \
   apk add --no-cache libstdc++ && \
   pip install -U pip && pip install pipenv
 COPY --from=builder /node-v%%NODEJS_CANONICAL%%-linux-x64-musl /usr/local
-RUN npm i -g npm@^%%NPM_VERSION%% yarn
+# The mv's is a workaround for https://github.com/npm/arborist/issues/169
+RUN mv /usr/local/lib/node_modules /usr/local/lib/node_modules.tmp && \
+  mv /usr/local/lib/node_modules.tmp /usr/local/lib/node_modules && \
+  npm i -g npm@^%%NPM_VERSION%% yarn
+RUN npm i -g
 RUN wget -q -O - https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin
