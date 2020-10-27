@@ -24,5 +24,4 @@ COPY --from=builder /node-v%%NODEJS_CANONICAL%%-linux-x64-musl /usr/local
 RUN mv /usr/local/lib/node_modules /usr/local/lib/node_modules.tmp && \
   mv /usr/local/lib/node_modules.tmp /usr/local/lib/node_modules && \
   npm i -g npm@^%%NPM_VERSION%% yarn
-RUN npm i -g
 RUN wget -q -O - https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin
