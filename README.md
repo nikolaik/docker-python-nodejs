@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-11-05
+Last updated by bot: 2020-11-12
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -19,9 +19,9 @@ To use a specific combination of python and node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.9-nodejs15` | 3.9.0 | 15.1.0 | buster
-`python3.9-nodejs15-slim` | 3.9.0 | 15.1.0 | slim
-`python3.9-nodejs15-alpine` | 3.9.0 | 15.1.0 | alpine
+`python3.9-nodejs15` | 3.9.0 | 15.2.0 | buster
+`python3.9-nodejs15-slim` | 3.9.0 | 15.2.0 | slim
+`python3.9-nodejs15-alpine` | 3.9.0 | 15.2.0 | alpine
 `python3.9-nodejs14` | 3.9.0 | 14.15.0 | buster
 `python3.9-nodejs14-slim` | 3.9.0 | 14.15.0 | slim
 `python3.9-nodejs14-alpine` | 3.9.0 | 14.15.0 | alpine
@@ -31,9 +31,9 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs10` | 3.9.0 | 10.23.0 | buster
 `python3.9-nodejs10-slim` | 3.9.0 | 10.23.0 | slim
 `python3.9-nodejs10-alpine` | 3.9.0 | 10.23.0 | alpine
-`python3.8-nodejs15` | 3.8.6 | 15.1.0 | buster
-`python3.8-nodejs15-slim` | 3.8.6 | 15.1.0 | slim
-`python3.8-nodejs15-alpine` | 3.8.6 | 15.1.0 | alpine
+`python3.8-nodejs15` | 3.8.6 | 15.2.0 | buster
+`python3.8-nodejs15-slim` | 3.8.6 | 15.2.0 | slim
+`python3.8-nodejs15-alpine` | 3.8.6 | 15.2.0 | alpine
 `python3.8-nodejs14` | 3.8.6 | 14.15.0 | buster
 `python3.8-nodejs14-slim` | 3.8.6 | 14.15.0 | slim
 `python3.8-nodejs14-alpine` | 3.8.6 | 14.15.0 | alpine
@@ -43,10 +43,10 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs10` | 3.8.6 | 10.23.0 | buster
 `python3.8-nodejs10-slim` | 3.8.6 | 10.23.0 | slim
 `python3.8-nodejs10-alpine` | 3.8.6 | 10.23.0 | alpine
-`python3.7-nodejs15` | 3.7.9 | 15.1.0 | buster
-`python3.7-nodejs15-slim` | 3.7.9 | 15.1.0 | slim
-`python3.7-nodejs15-stretch` | 3.7.9 | 15.1.0 | stretch
-`python3.7-nodejs15-alpine` | 3.7.9 | 15.1.0 | alpine
+`python3.7-nodejs15` | 3.7.9 | 15.2.0 | buster
+`python3.7-nodejs15-slim` | 3.7.9 | 15.2.0 | slim
+`python3.7-nodejs15-stretch` | 3.7.9 | 15.2.0 | stretch
+`python3.7-nodejs15-alpine` | 3.7.9 | 15.2.0 | alpine
 `python3.7-nodejs14` | 3.7.9 | 14.15.0 | buster
 `python3.7-nodejs14-slim` | 3.7.9 | 14.15.0 | slim
 `python3.7-nodejs14-stretch` | 3.7.9 | 14.15.0 | stretch
@@ -59,10 +59,10 @@ Tag | Python version | Node.js version | Distro
 `python3.7-nodejs10-slim` | 3.7.9 | 10.23.0 | slim
 `python3.7-nodejs10-stretch` | 3.7.9 | 10.23.0 | stretch
 `python3.7-nodejs10-alpine` | 3.7.9 | 10.23.0 | alpine
-`python3.6-nodejs15` | 3.6.12 | 15.1.0 | buster
-`python3.6-nodejs15-slim` | 3.6.12 | 15.1.0 | slim
-`python3.6-nodejs15-stretch` | 3.6.12 | 15.1.0 | stretch
-`python3.6-nodejs15-alpine` | 3.6.12 | 15.1.0 | alpine
+`python3.6-nodejs15` | 3.6.12 | 15.2.0 | buster
+`python3.6-nodejs15-slim` | 3.6.12 | 15.2.0 | slim
+`python3.6-nodejs15-stretch` | 3.6.12 | 15.2.0 | stretch
+`python3.6-nodejs15-alpine` | 3.6.12 | 15.2.0 | alpine
 `python3.6-nodejs14` | 3.6.12 | 14.15.0 | buster
 `python3.6-nodejs14-slim` | 3.6.12 | 14.15.0 | slim
 `python3.6-nodejs14-stretch` | 3.6.12 | 14.15.0 | stretch
