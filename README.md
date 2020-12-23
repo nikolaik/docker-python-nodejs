@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2020-12-19
+Last updated by bot: 2020-12-23
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -31,18 +31,18 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs10` | 3.9.1 | 10.23.0 | buster
 `python3.9-nodejs10-slim` | 3.9.1 | 10.23.0 | slim
 `python3.9-nodejs10-alpine` | 3.9.1 | 10.23.0 | alpine
-`python3.8-nodejs15` | 3.8.6 | 15.4.0 | buster
-`python3.8-nodejs15-slim` | 3.8.6 | 15.4.0 | slim
-`python3.8-nodejs15-alpine` | 3.8.6 | 15.4.0 | alpine
-`python3.8-nodejs14` | 3.8.6 | 14.15.3 | buster
-`python3.8-nodejs14-slim` | 3.8.6 | 14.15.3 | slim
-`python3.8-nodejs14-alpine` | 3.8.6 | 14.15.3 | alpine
-`python3.8-nodejs12` | 3.8.6 | 12.20.0 | buster
-`python3.8-nodejs12-slim` | 3.8.6 | 12.20.0 | slim
-`python3.8-nodejs12-alpine` | 3.8.6 | 12.20.0 | alpine
-`python3.8-nodejs10` | 3.8.6 | 10.23.0 | buster
-`python3.8-nodejs10-slim` | 3.8.6 | 10.23.0 | slim
-`python3.8-nodejs10-alpine` | 3.8.6 | 10.23.0 | alpine
+`python3.8-nodejs15` | 3.8.7 | 15.4.0 | buster
+`python3.8-nodejs15-slim` | 3.8.7 | 15.4.0 | slim
+`python3.8-nodejs15-alpine` | 3.8.7 | 15.4.0 | alpine
+`python3.8-nodejs14` | 3.8.7 | 14.15.3 | buster
+`python3.8-nodejs14-slim` | 3.8.7 | 14.15.3 | slim
+`python3.8-nodejs14-alpine` | 3.8.7 | 14.15.3 | alpine
+`python3.8-nodejs12` | 3.8.7 | 12.20.0 | buster
+`python3.8-nodejs12-slim` | 3.8.7 | 12.20.0 | slim
+`python3.8-nodejs12-alpine` | 3.8.7 | 12.20.0 | alpine
+`python3.8-nodejs10` | 3.8.7 | 10.23.0 | buster
+`python3.8-nodejs10-slim` | 3.8.7 | 10.23.0 | slim
+`python3.8-nodejs10-alpine` | 3.8.7 | 10.23.0 | alpine
 `python3.7-nodejs15` | 3.7.9 | 15.4.0 | buster
 `python3.7-nodejs15-slim` | 3.7.9 | 15.4.0 | slim
 `python3.7-nodejs15-stretch` | 3.7.9 | 15.4.0 | stretch
