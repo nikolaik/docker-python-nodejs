@@ -6,7 +6,7 @@ Last updated by bot: 2021-02-04
 ## Python with Node.js
 The `latest` tag is currently:
 
-- Node: 12.x
+- Node: 14.x
 - npm: 6.x
 - yarn: stable
 - Python: latest
