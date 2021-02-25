@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.8.8
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -13,7 +13,7 @@ jobs:
           command: test "$CIRCLE_BRANCH" == "master"
       - setup_remote_docker
       - restore_cache:
-          key: deps-v2-{{ checksum "Pipfile.lock" }}
+          key: deps-v3-{{ checksum "Pipfile.lock" }}
       - run:
           name: Install python dependencies
           command: pipenv install
