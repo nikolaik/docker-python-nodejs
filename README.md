@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2021-03-19
+Last updated by bot: 2021-03-31
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -25,9 +25,9 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs14` | 3.9.2 | 14.16.0 | buster
 `python3.9-nodejs14-slim` | 3.9.2 | 14.16.0 | slim
 `python3.9-nodejs14-alpine` | 3.9.2 | 14.16.0 | alpine
-`python3.9-nodejs12` | 3.9.2 | 12.21.0 | buster
-`python3.9-nodejs12-slim` | 3.9.2 | 12.21.0 | slim
-`python3.9-nodejs12-alpine` | 3.9.2 | 12.21.0 | alpine
+`python3.9-nodejs12` | 3.9.2 | 12.22.0 | buster
+`python3.9-nodejs12-slim` | 3.9.2 | 12.22.0 | slim
+`python3.9-nodejs12-alpine` | 3.9.2 | 12.22.0 | alpine
 `python3.9-nodejs10` | 3.9.2 | 10.24.0 | buster
 `python3.9-nodejs10-slim` | 3.9.2 | 10.24.0 | slim
 `python3.9-nodejs10-alpine` | 3.9.2 | 10.24.0 | alpine
@@ -37,9 +37,9 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs14` | 3.8.8 | 14.16.0 | buster
 `python3.8-nodejs14-slim` | 3.8.8 | 14.16.0 | slim
 `python3.8-nodejs14-alpine` | 3.8.8 | 14.16.0 | alpine
-`python3.8-nodejs12` | 3.8.8 | 12.21.0 | buster
-`python3.8-nodejs12-slim` | 3.8.8 | 12.21.0 | slim
-`python3.8-nodejs12-alpine` | 3.8.8 | 12.21.0 | alpine
+`python3.8-nodejs12` | 3.8.8 | 12.22.0 | buster
+`python3.8-nodejs12-slim` | 3.8.8 | 12.22.0 | slim
+`python3.8-nodejs12-alpine` | 3.8.8 | 12.22.0 | alpine
 `python3.8-nodejs10` | 3.8.8 | 10.24.0 | buster
 `python3.8-nodejs10-slim` | 3.8.8 | 10.24.0 | slim
 `python3.8-nodejs10-alpine` | 3.8.8 | 10.24.0 | alpine
@@ -51,10 +51,10 @@ Tag | Python version | Node.js version | Distro
 `python3.7-nodejs14-slim` | 3.7.10 | 14.16.0 | slim
 `python3.7-nodejs14-stretch` | 3.7.10 | 14.16.0 | stretch
 `python3.7-nodejs14-alpine` | 3.7.10 | 14.16.0 | alpine
-`python3.7-nodejs12` | 3.7.10 | 12.21.0 | buster
-`python3.7-nodejs12-slim` | 3.7.10 | 12.21.0 | slim
-`python3.7-nodejs12-stretch` | 3.7.10 | 12.21.0 | stretch
-`python3.7-nodejs12-alpine` | 3.7.10 | 12.21.0 | alpine
+`python3.7-nodejs12` | 3.7.10 | 12.22.0 | buster
+`python3.7-nodejs12-slim` | 3.7.10 | 12.22.0 | slim
+`python3.7-nodejs12-stretch` | 3.7.10 | 12.22.0 | stretch
+`python3.7-nodejs12-alpine` | 3.7.10 | 12.22.0 | alpine
 `python3.7-nodejs10` | 3.7.10 | 10.24.0 | buster
 `python3.7-nodejs10-slim` | 3.7.10 | 10.24.0 | slim
 `python3.7-nodejs10-stretch` | 3.7.10 | 10.24.0 | stretch
@@ -67,10 +67,10 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs14-slim` | 3.6.13 | 14.16.0 | slim
 `python3.6-nodejs14-stretch` | 3.6.13 | 14.16.0 | stretch
 `python3.6-nodejs14-alpine` | 3.6.13 | 14.16.0 | alpine
-`python3.6-nodejs12` | 3.6.13 | 12.21.0 | buster
-`python3.6-nodejs12-slim` | 3.6.13 | 12.21.0 | slim
-`python3.6-nodejs12-stretch` | 3.6.13 | 12.21.0 | stretch
-`python3.6-nodejs12-alpine` | 3.6.13 | 12.21.0 | alpine
+`python3.6-nodejs12` | 3.6.13 | 12.22.0 | buster
+`python3.6-nodejs12-slim` | 3.6.13 | 12.22.0 | slim
+`python3.6-nodejs12-stretch` | 3.6.13 | 12.22.0 | stretch
+`python3.6-nodejs12-alpine` | 3.6.13 | 12.22.0 | alpine
 `python3.6-nodejs10` | 3.6.13 | 10.24.0 | buster
 `python3.6-nodejs10-slim` | 3.6.13 | 10.24.0 | slim
 `python3.6-nodejs10-stretch` | 3.6.13 | 10.24.0 | stretch
