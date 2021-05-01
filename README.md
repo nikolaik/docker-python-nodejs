@@ -1,7 +1,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2021-04-27
+Last updated by bot: 2021-05-01
 
 ## Python with Node.js
 The `latest` tag is currently:
@@ -31,9 +31,6 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs12` | 3.9.4 | 12.22.1 | buster
 `python3.9-nodejs12-slim` | 3.9.4 | 12.22.1 | slim
 `python3.9-nodejs12-alpine` | 3.9.4 | 12.22.1 | alpine
-`python3.9-nodejs10` | 3.9.4 | 10.24.1 | buster
-`python3.9-nodejs10-slim` | 3.9.4 | 10.24.1 | slim
-`python3.9-nodejs10-alpine` | 3.9.4 | 10.24.1 | alpine
 `python3.8-nodejs16` | 3.8.9 | 16.0.0 | buster
 `python3.8-nodejs16-slim` | 3.8.9 | 16.0.0 | slim
 `python3.8-nodejs16-alpine` | 3.8.9 | 16.0.0 | alpine
@@ -46,9 +43,6 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs12` | 3.8.9 | 12.22.1 | buster
 `python3.8-nodejs12-slim` | 3.8.9 | 12.22.1 | slim
 `python3.8-nodejs12-alpine` | 3.8.9 | 12.22.1 | alpine
-`python3.8-nodejs10` | 3.8.9 | 10.24.1 | buster
-`python3.8-nodejs10-slim` | 3.8.9 | 10.24.1 | slim
-`python3.8-nodejs10-alpine` | 3.8.9 | 10.24.1 | alpine
 `python3.7-nodejs16` | 3.7.10 | 16.0.0 | buster
 `python3.7-nodejs16-slim` | 3.7.10 | 16.0.0 | slim
 `python3.7-nodejs16-stretch` | 3.7.10 | 16.0.0 | stretch
@@ -65,10 +59,6 @@ Tag | Python version | Node.js version | Distro
 `python3.7-nodejs12-slim` | 3.7.10 | 12.22.1 | slim
 `python3.7-nodejs12-stretch` | 3.7.10 | 12.22.1 | stretch
 `python3.7-nodejs12-alpine` | 3.7.10 | 12.22.1 | alpine
-`python3.7-nodejs10` | 3.7.10 | 10.24.1 | buster
-`python3.7-nodejs10-slim` | 3.7.10 | 10.24.1 | slim
-`python3.7-nodejs10-stretch` | 3.7.10 | 10.24.1 | stretch
-`python3.7-nodejs10-alpine` | 3.7.10 | 10.24.1 | alpine
 `python3.6-nodejs16` | 3.6.13 | 16.0.0 | buster
 `python3.6-nodejs16-slim` | 3.6.13 | 16.0.0 | slim
 `python3.6-nodejs16-stretch` | 3.6.13 | 16.0.0 | stretch
@@ -85,10 +75,6 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs12-slim` | 3.6.13 | 12.22.1 | slim
 `python3.6-nodejs12-stretch` | 3.6.13 | 12.22.1 | stretch
 `python3.6-nodejs12-alpine` | 3.6.13 | 12.22.1 | alpine
-`python3.6-nodejs10` | 3.6.13 | 10.24.1 | buster
-`python3.6-nodejs10-slim` | 3.6.13 | 10.24.1 | slim
-`python3.6-nodejs10-stretch` | 3.6.13 | 10.24.1 | stretch
-`python3.6-nodejs10-alpine` | 3.6.13 | 10.24.1 | alpine
 
 Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
