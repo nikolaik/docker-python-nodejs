@@ -10,6 +10,7 @@ MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 RUN \
   apt-get update && \
   apt-get install -yqq apt-transport-https
+ENV POETRY_HOME=/usr/local
 RUN \
   echo "deb https://deb.nodesource.com/node_%%NODEJS%%.x stretch main" > /etc/apt/sources.list.d/nodesource.list && \
   wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
@@ -20,5 +21,5 @@ RUN \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
   npm i -g npm@^%%NPM_VERSION%% && \
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin && \
+  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
   rm -rf /var/lib/apt/lists/*
