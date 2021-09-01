@@ -1,6 +1,7 @@
 FROM python:buster
 MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 
+ENV POETRY_HOME=/usr/local
 # Install node prereqs, nodejs and yarn
 # Ref: https://deb.nodesource.com/setup_14.x
 # Ref: https://yarnpkg.com/en/docs/install
@@ -13,5 +14,5 @@ RUN \
   apt-get install -yqq nodejs yarn && \
   pip install -U pip && pip install pipenv && \
   npm i -g npm@^6 && \
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin && \
+  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
   rm -rf /var/lib/apt/lists/*

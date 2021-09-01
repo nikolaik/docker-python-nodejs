@@ -4,6 +4,7 @@
 FROM python:%%PYTHON_IMAGE%%
 MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 
+ENV POETRY_HOME=/usr/local
 # Install node prereqs, nodejs and yarn
 # Ref: https://deb.nodesource.com/setup_%%NODEJS%%.x
 # Ref: https://yarnpkg.com/en/docs/install
@@ -18,5 +19,5 @@ RUN \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
   npm i -g npm@^%%NPM_VERSION%% && \
-  wget -q -O - https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && ln -s /root/.poetry/bin/poetry /usr/local/bin && \
+  wget -q -O - https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
   rm -rf /var/lib/apt/lists/*
