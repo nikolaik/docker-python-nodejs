@@ -3,7 +3,7 @@
 
 Last updated by bot: 2021-09-01
 
-## Python with Node.js
+## 🐳 Python with Node.js 
 The `latest` tag is currently:
 
 - Node: 14.x
@@ -14,8 +14,8 @@ The `latest` tag is currently:
 - pipenv: latest
 - poetry: latest
 
-## Tags
-To use a specific combination of python and node.js see the following table of available image tags.
+## 🏷 Tags
+To use a specific combination of Python and Node.js see the following table of available image tags.
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
@@ -62,7 +62,7 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs12-stretch` | 3.6.14 | 12.22.6 | stretch
 `python3.6-nodejs12-alpine` | 3.6.14 | 12.22.6 | alpine
 
-Lovely! These tags are kept updated automatically (when new minor or patch version are released) by `build_versions.py` which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
+Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions.py`](./build_versions.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
 ## Typical tasks
 ```bash
