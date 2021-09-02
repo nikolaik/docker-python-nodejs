@@ -19,16 +19,17 @@ jobs:
           command: pipenv install
       - save_cache:
           key: deps-v2-{{ checksum "Pipfile.lock" }}
-          paths: "~/.local/share/virtualenvs/"
+          paths:
+           - "~/.local/share/virtualenvs/"
       - run:
           name: Get versions, build, tag and push to docker hub
           command: |
             FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
             pipenv run python build_versions.py $FORCE
+          no_output_timeout: 30m
       - run:
           name: Add new versions to git (if any)
-          command: |
-            ./git_archive.sh
+          command: ./git_archive.sh
 
 workflows:
    version: 2
