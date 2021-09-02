@@ -14,7 +14,7 @@ RUN curl -fsSLO --compressed "https://unofficial-builds.nodejs.org/download/rele
 RUN grep " node-v%%NODEJS_CANONICAL%%-linux-x64-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c -
 RUN tar -xf "node-v%%NODEJS_CANONICAL%%-linux-x64-musl.tar.xz"
 RUN pip install cryptography
-RUN find /root/.cache/pip/wheels -name '*cryptography*.whl' -exec cp {} / +
+RUN find /root/.cache/pip/wheels -name '*.whl' -exec cp {} / +
 
 FROM python:%%PYTHON_IMAGE%%
 MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
@@ -27,6 +27,12 @@ RUN mv /usr/local/lib/node_modules /usr/local/lib/node_modules.tmp && \
   npm i -g npm@^%%NPM_VERSION%% yarn
 
 # Poetry
-COPY --from=builder /*.whl .
-COPY install-poetry.sh .
-RUN ./install-poetry.sh
+# Mimic what install-poetry.py does without the flexibility (platforms, install sources, etc).
+# Also install wheels from builder image
+COPY --from=builder /*.whl /
+ENV VENV=/opt/poetryvenv
+RUN python -m venv $VENV && \
+    $VENV/bin/pip install /*.whl && \
+    rm /*.whl && \
+    $VENV/bin/pip install poetry && \
+    ln -s $VENV/bin/poetry /usr/local/bin/poetry
