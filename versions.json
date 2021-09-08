@@ -165,8 +165,8 @@
     {
       "key": "python3.7-nodejs16",
       "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-buster",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.8.0",
       "distro": "buster"
@@ -174,11 +174,74 @@
     {
       "key": "python3.7-nodejs16-slim",
       "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-slim",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.8.0",
       "distro": "slim"
+    },
+    {
+      "key": "python3.7-nodejs16-alpine",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-alpine",
+      "nodejs": "16",
+      "nodejs_canonical": "16.8.0",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.7-nodejs14",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-buster",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.7-nodejs14-slim",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-slim",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.7-nodejs14-alpine",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-alpine",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.7-nodejs12",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-buster",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.7-nodejs12-slim",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-slim",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.7-nodejs12-alpine",
+      "python": "3.7",
+      "python_canonical": "3.7.12",
+      "python_image": "3.7.12-alpine",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "alpine"
     },
     {
       "key": "python3.7-nodejs16-stretch",
@@ -190,33 +253,6 @@
       "distro": "stretch"
     },
     {
-      "key": "python3.7-nodejs16-alpine",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-alpine",
-      "nodejs": "16",
-      "nodejs_canonical": "16.8.0",
-      "distro": "alpine"
-    },
-    {
-      "key": "python3.7-nodejs14",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-buster",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.7-nodejs14-slim",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-slim",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "slim"
-    },
-    {
       "key": "python3.7-nodejs14-stretch",
       "python": "3.7",
       "python_canonical": "3.7.11",
@@ -224,33 +260,6 @@
       "nodejs": "14",
       "nodejs_canonical": "14.17.6",
       "distro": "stretch"
-    },
-    {
-      "key": "python3.7-nodejs14-alpine",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-alpine",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "alpine"
-    },
-    {
-      "key": "python3.7-nodejs12",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-buster",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.7-nodejs12-slim",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-slim",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "slim"
     },
     {
       "key": "python3.7-nodejs12-stretch",
@@ -262,19 +271,10 @@
       "distro": "stretch"
     },
     {
-      "key": "python3.7-nodejs12-alpine",
-      "python": "3.7",
-      "python_canonical": "3.7.11",
-      "python_image": "3.7.11-alpine",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "alpine"
-    },
-    {
       "key": "python3.6-nodejs16",
       "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-buster",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.8.0",
       "distro": "buster"
@@ -282,11 +282,74 @@
     {
       "key": "python3.6-nodejs16-slim",
       "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-slim",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.8.0",
       "distro": "slim"
+    },
+    {
+      "key": "python3.6-nodejs16-alpine",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-alpine",
+      "nodejs": "16",
+      "nodejs_canonical": "16.8.0",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.6-nodejs14",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-buster",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.6-nodejs14-slim",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-slim",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.6-nodejs14-alpine",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-alpine",
+      "nodejs": "14",
+      "nodejs_canonical": "14.17.6",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.6-nodejs12",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-buster",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.6-nodejs12-slim",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-slim",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.6-nodejs12-alpine",
+      "python": "3.6",
+      "python_canonical": "3.6.15",
+      "python_image": "3.6.15-alpine",
+      "nodejs": "12",
+      "nodejs_canonical": "12.22.6",
+      "distro": "alpine"
     },
     {
       "key": "python3.6-nodejs16-stretch",
@@ -298,33 +361,6 @@
       "distro": "stretch"
     },
     {
-      "key": "python3.6-nodejs16-alpine",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-alpine",
-      "nodejs": "16",
-      "nodejs_canonical": "16.8.0",
-      "distro": "alpine"
-    },
-    {
-      "key": "python3.6-nodejs14",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-buster",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.6-nodejs14-slim",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-slim",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "slim"
-    },
-    {
       "key": "python3.6-nodejs14-stretch",
       "python": "3.6",
       "python_canonical": "3.6.14",
@@ -334,33 +370,6 @@
       "distro": "stretch"
     },
     {
-      "key": "python3.6-nodejs14-alpine",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-alpine",
-      "nodejs": "14",
-      "nodejs_canonical": "14.17.6",
-      "distro": "alpine"
-    },
-    {
-      "key": "python3.6-nodejs12",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-buster",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "buster"
-    },
-    {
-      "key": "python3.6-nodejs12-slim",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-slim",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "slim"
-    },
-    {
       "key": "python3.6-nodejs12-stretch",
       "python": "3.6",
       "python_canonical": "3.6.14",
@@ -368,15 +377,6 @@
       "nodejs": "12",
       "nodejs_canonical": "12.22.6",
       "distro": "stretch"
-    },
-    {
-      "key": "python3.6-nodejs12-alpine",
-      "python": "3.6",
-      "python_canonical": "3.6.14",
-      "python_image": "3.6.14-alpine",
-      "nodejs": "12",
-      "nodejs_canonical": "12.22.6",
-      "distro": "alpine"
     }
   ]
 }
