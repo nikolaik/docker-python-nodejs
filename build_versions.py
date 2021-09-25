@@ -17,8 +17,7 @@ from requests_html import HTMLSession
 DOCKER_IMAGE_NAME = "nikolaik/python-nodejs"
 VERSIONS_PATH = Path("versions.json")
 DEFAULT_DISTRO = "buster"
-DISTROS = ["buster", "slim", "stretch", "alpine"]
-DEFAULT_DISTROS = ["buster", "slim", "stretch", "alpine"]
+DISTROS = ["buster", "bullseye", "slim", "alpine"]
 
 todays_date = datetime.utcnow().date().isoformat()
 
@@ -236,7 +235,7 @@ def update_readme_tags_table(versions, dry_run=False):
 
 
 def main(distros, dry_run, debug, force):
-    distros = list(set(distros + [DEFAULT_DISTRO]))
+    distros = list(set(distros))
     current_versions = load_versions()
     # Use latest patch version from each minor
     python_versions = decide_python_versions(distros)
@@ -264,7 +263,7 @@ if __name__ == "__main__":
         nargs="*",
         choices=DISTROS,
         help="Specify which distros to build",
-        default=DEFAULT_DISTROS,
+        default=DISTROS,
     )
     parser.add_argument(
         "--dry-run", action="store_true", dest="dry_run", help="Skip persisting, README update, and pushing of builds"
