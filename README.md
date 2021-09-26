@@ -77,7 +77,12 @@ docker run -it nikolaik/python-nodejs bash
 ### Use as base image
 ```Dockerfile
 FROM nikolaik/python-nodejs:latest
+
+USER pn
+WORKDIR /home/pn/app
 ```
+
+All images have a default user `pn` with uid 1000 and gid 1000.
 
 ## Disclaimer
 > This is experimental and might break from time to time. Use at your own risk!

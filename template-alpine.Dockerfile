@@ -18,6 +18,7 @@ RUN tar -xf "node-v%%NODEJS_CANONICAL%%-linux-x64-musl.tar.xz"
 FROM python:%%PYTHON_IMAGE%%
 MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 
+RUN addgroup -g 1000 pn && adduser -u 1000 -G pn -s /bin/sh -D pn
 RUN apk add libstdc++
 COPY --from=builder /node-v%%NODEJS_CANONICAL%%-linux-x64-musl /usr/local
 RUN npm i -g npm@^%%NPM_VERSION%% yarn
