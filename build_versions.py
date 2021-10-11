@@ -5,7 +5,7 @@ import re
 from datetime import datetime
 from functools import cmp_to_key
 from io import BytesIO
-from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from jinja2 import Environment, select_autoescape, FileSystemLoader
 from pathlib import Path
 
 import docker
@@ -138,22 +138,18 @@ def version_combinations(nodejs_versions, python_versions):
 
 
 def render_dockerfile(version, node_gpg_keys):
-    dockerfile_template = Path(f'templates/{version["distro"]}.Dockerfile').read_text()
-    replace_pattern = re.compile("%%(.+?)%%")
+    distro = "debian" if version["distro"] != "alpine" else version["distro"]
 
-    replacements = {
+    context = {
         # NPM: Hold back on v7 for nodejs<15 until `npm install -g npm` installs v7
         "npm_version": "6" if int(version["nodejs"]) < 15 else "7",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,
+        "distro": "bullseye" if version["distro"] == "slim" else version["distro"],  # slim is an image variant
     }
 
-    def repl(matchobj):
-        key = matchobj.group(1).lower()
-        return replacements[key]
-
-    return replace_pattern.sub(repl, dockerfile_template)
+    return _render_template(f"{distro}.Dockerfile", **context)
 
 
 def persist_versions(versions, dry_run=False):
