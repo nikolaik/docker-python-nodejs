@@ -5,6 +5,7 @@ import re
 from datetime import datetime
 from functools import cmp_to_key
 from io import BytesIO
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from pathlib import Path
 
 import docker
@@ -23,6 +24,13 @@ todays_date = datetime.utcnow().date().isoformat()
 
 
 by_semver_key = cmp_to_key(semver.compare)
+
+env = Environment(loader=FileSystemLoader("./templates"), autoescape=select_autoescape())
+
+
+def _render_template(template_name, **context):
+    template = env.get_template(template_name)
+    return template.render(**context)
 
 
 def _fetch_tags(package):
@@ -130,12 +138,12 @@ def version_combinations(nodejs_versions, python_versions):
 
 
 def render_dockerfile(version, node_gpg_keys):
-    dockerfile_template = Path(f'template-{version["distro"]}.Dockerfile').read_text()
+    dockerfile_template = Path(f'templates/{version["distro"]}.Dockerfile').read_text()
     replace_pattern = re.compile("%%(.+?)%%")
 
     replacements = {
         # NPM: Hold back on v7 for nodejs<15 until `npm install -g npm` installs v7
-        "npm_version": "6" if int(version['nodejs']) < 15 else "7",
+        "npm_version": "6" if int(version["nodejs"]) < 15 else "7",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,

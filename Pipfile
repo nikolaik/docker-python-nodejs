@@ -11,6 +11,7 @@ requests = "*"
 requests-html = "*"
 semver = "*"
 docker = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.8"
