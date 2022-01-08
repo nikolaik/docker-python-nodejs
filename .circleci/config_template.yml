@@ -67,8 +67,8 @@ jobs:
           name: Put version config in a file
           command: echo '<< parameters.version_config >>' >> version_config.json
       - run:
-          name: Generate dockerimage from version config (unique ber job)
-          command: pipenv run python build_versions.main --dockerfile-from-config version_config.json
+          name: Generate Dockerfile from version config (unique ber job)
+          command: pipenv run python -m build_versions.main --dockerfile-from-config version_config.json
       - run:
           name: Build Docker image
           command: docker build -f "dockerfiles/${VERSION_KEY}.Dockerfile" -t nikolaik/python-nodejs:$VERSION_KEY .
