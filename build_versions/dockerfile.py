@@ -15,8 +15,8 @@ def render_dockerfile(version, node_gpg_keys):
     replace_pattern = re.compile("%%(.+?)%%")
 
     replacements = {
-        # NPM: Hold back on v7 for nodejs<15 until `npm install -g npm` installs v7
-        "npm_version": "6" if int(version["nodejs"]) < 15 else "7",
+        # NPM: Hold back on v8 for nodejs<15
+        "npm_version": "6" if int(version["nodejs"]) < 15 else "8",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,
