@@ -34,7 +34,7 @@ def scrape_supported_python_versions():
     res = requests.get("https://devguide.python.org/")
     res.raise_for_status()
 
-    soup = BeautifulSoup(res.text, 'html.parser')
+    soup = BeautifulSoup(res.text, "html.parser")
     version_table_rows = soup.select(version_table_row_selector)
     for ver in version_table_rows:
         branch, _, _, first_release, end_of_life, _ = [v.text for v in ver.find_all("td")]
