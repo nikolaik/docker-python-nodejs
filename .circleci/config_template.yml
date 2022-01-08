@@ -90,7 +90,7 @@ jobs:
           at: ~/project
       - run:
           name: Update versions.json and README.md
-          command: python -m build_versions.main --verbose --release
+          command: pipenv run python -m build_versions.main --verbose --release
       - run:
           name: Add new versions to git (if any)
           command: ./git_archive.sh
