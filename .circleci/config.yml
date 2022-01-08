@@ -24,13 +24,6 @@ jobs:
           command: |
             FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
             pipenv run python -m build_versions.main --ci-config $FORCE
-      # Try saving README.md, versions.json and dockerfiles/ to use in the continued generated config
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - dockerfiles/
-            - README.md
-            - versions.json
       - continuation/continue:
           configuration_path: .circleci/config_generated.yml
 

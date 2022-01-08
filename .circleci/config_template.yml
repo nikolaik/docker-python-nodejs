@@ -42,6 +42,9 @@ jobs:
       version_key:
         type: string
         default: ""
+      version_config:
+        type: string
+        default: ""
     docker:
       - image: cimg/python:3.9.9
         environment:
@@ -61,13 +64,19 @@ jobs:
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
       - run:
+          name: Put version config in a file
+          command: echo '<< parameters.version_config >>' >> version_config.json
+      - run:
+          name: Generate dockerimage from version config (unique ber job)
+          command: pipenv run python build_versions.main --dockerfile-from-config version_config.json
+      - run:
           name: Build Docker image
           command: docker build -f "dockerfiles/${VERSION_KEY}.Dockerfile" -t nikolaik/python-nodejs:$VERSION_KEY .
       - run:
           name: Push Docker image
           command: docker push nikolaik/python-nodejs:$VERSION_KEY
 
-  git_archive:
+  release:
     docker:
       - image: cimg/base
     steps:
@@ -77,6 +86,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Update versions.json and README.md
+          command: python -m build_versions.main --verbose --release
       - run:
           name: Add new versions to git (if any)
           command: ./git_archive.sh
@@ -96,7 +108,7 @@ workflows:
               branches:
                 only:
                   - main
-       - git_archive:
+       - release:
            requires:
              - deploy
            filters:
@@ -120,6 +132,6 @@ workflows:
        - deploy:
            requires:
              - test
-       - git_archive:
+       - release:
            requires:
              - deploy

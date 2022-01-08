@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 from datetime import datetime
 from functools import cmp_to_key
@@ -11,8 +12,9 @@ from build_versions.settings import DEFAULT_DISTRO, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.utcnow().date().isoformat()
 
-
 by_semver_key = cmp_to_key(semver.compare)
+
+logger = logging.getLogger("dpn")
 
 
 def _fetch_tags(package):
@@ -128,6 +130,7 @@ def decide_version_combinations(distros):
 
 def persist_versions(versions, dry_run=False):
     if dry_run:
+        logger.debug(versions)
         return
     with VERSIONS_PATH.open("w+") as fp:
         json.dump({"versions": versions}, fp, indent=2)

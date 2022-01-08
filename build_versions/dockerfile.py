@@ -1,3 +1,4 @@
+import json
 import logging
 import re
 from datetime import datetime
@@ -34,19 +35,17 @@ def render_dockerfile(version, node_gpg_keys):
     return replace_pattern.sub(repl, dockerfile_template)
 
 
-def render_all_dockerfiles(new_or_updated):
+def render_dockerfile_by_config(config, dry_run=False):
     node_gpg_keys = _fetch_node_gpg_keys()
-    return [ver | {"dockerfile": render_dockerfile(ver, node_gpg_keys)} for ver in new_or_updated]
+    with config as fp:
+        version = json.load(fp)
 
+    dockerfile = render_dockerfile(version, node_gpg_keys)
 
-def persist_dockerfiles(dockerfiles, dry_run=False):
-    if not DOCKERFILES_PATH.exists() and not dry_run:
-        DOCKERFILES_PATH.mkdir()
-
-    for version in dockerfiles:
-        file_name = f"{version['key']}.Dockerfile"
-        dockerfile_path = DOCKERFILES_PATH / file_name
-        logger.debug(f"Writing {file_name}")
-        if not dry_run:
-            with dockerfile_path.open("w") as fp:
-                fp.write(version["dockerfile"])
+    filename = f"{version['key']}.Dockerfile"
+    logger.debug(f"Writing {filename}")
+    if not dry_run:
+        if not DOCKERFILES_PATH.exists():
+            DOCKERFILES_PATH.mkdir()
+        with (DOCKERFILES_PATH / filename).open("w") as fp:
+            fp.write(dockerfile)
