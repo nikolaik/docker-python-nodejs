@@ -46,8 +46,8 @@ jobs:
           fingerprints:
             - "e7:42:fa:02:36:d2:51:75:6d:a3:2c:09:ed:d8:36:7b"
       - run:
-          name: Verify on master branch
-          command: test "$CIRCLE_BRANCH" == "master"
+          name: Verify on main branch
+          command: test "$CIRCLE_BRANCH" == "main"
       - attach_workspace:
           at: ~/project
       - setup_remote_docker
@@ -75,7 +75,7 @@ workflows:
            filters:
               branches:
                 only:
-                  - master
+                  - main
 
    twice_a_day:
      triggers:
@@ -84,7 +84,7 @@ workflows:
            filters:
              branches:
                only:
-                 - master
+                 - main
      jobs:
        - build
        - test:
