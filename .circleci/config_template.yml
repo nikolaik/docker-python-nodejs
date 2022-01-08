@@ -19,7 +19,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - ~/project/.venv
+            - .venv
 
   test:
     docker:
