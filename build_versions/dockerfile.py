@@ -1,8 +1,13 @@
+import logging
 import re
 from datetime import datetime
 from pathlib import Path
 
 import requests
+
+from build_versions.settings import DOCKERFILES_PATH
+
+logger = logging.getLogger("dpn")
 
 
 def _fetch_node_gpg_keys():
@@ -32,3 +37,16 @@ def render_dockerfile(version, node_gpg_keys):
 def render_all_dockerfiles(new_or_updated):
     node_gpg_keys = _fetch_node_gpg_keys()
     return [ver | {"dockerfile": render_dockerfile(ver, node_gpg_keys)} for ver in new_or_updated]
+
+
+def persist_dockerfiles(dockerfiles, dry_run=False):
+    if not DOCKERFILES_PATH.exists() and not dry_run:
+        DOCKERFILES_PATH.mkdir()
+
+    for version in dockerfiles:
+        file_name = f"{version['key']}.Dockerfile"
+        dockerfile_path = DOCKERFILES_PATH / file_name
+        logger.debug(f"Writing {file_name}")
+        if not dry_run:
+            with dockerfile_path.open("w") as fp:
+                fp.write(version["dockerfile"])

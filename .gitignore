@@ -1,2 +1,4 @@
 debug-*.Dockerfile
 .idea/
+dockerfiles/
+.circleci/config_generated.yml
