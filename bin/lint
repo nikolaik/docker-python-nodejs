@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eu
+SRC_DIR="build_versions"
+
+black --check "$SRC_DIR" &
+BLACK_PID=$!
+isort --diff "$SRC_DIR" &
+ISORT_PID=$!
+wait $BLACK_PID $ISORT_PID
