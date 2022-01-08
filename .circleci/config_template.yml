@@ -78,7 +78,7 @@ jobs:
 
   release:
     docker:
-      - image: cimg/base
+      - image: cimg/base:2022.01
     steps:
       - add_ssh_keys:
           fingerprints:
