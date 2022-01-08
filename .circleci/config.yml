@@ -11,7 +11,7 @@ jobs:
           key: deps-v4-{{ checksum "Pipfile.lock" }}
       - run:
           name: Install python dependencies
-          command: pipenv install
+          command: pipenv install --deploy --dev
       - save_cache:
           key: deps-v4-{{ checksum "Pipfile.lock" }}
           paths:
