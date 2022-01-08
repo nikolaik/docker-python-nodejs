@@ -25,7 +25,7 @@ jobs:
           name: Get versions, build, tag and push to docker hub
           command: |
             FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
-            pipenv run python build_versions/main.py $FORCE
+            pipenv run python -m build_versions.main $FORCE
           no_output_timeout: 30m
       - run:
           name: Add new versions to git (if any)
