@@ -78,7 +78,9 @@ jobs:
 
   release:
     docker:
-      - image: cimg/base:2022.01
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
     steps:
       - add_ssh_keys:
           fingerprints:
