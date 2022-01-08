@@ -10,7 +10,7 @@ if ! [ -z "$(git status --porcelain)" ]; then
 
     git add versions.json README.md
     git commit -m '🗃 Updated python/node versions [skip ci]'
-    git push --quiet origin master
+    git push --quiet origin main
 else
     echo "Nothing changed, nothing to archive."
 fi

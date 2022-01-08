@@ -1,31 +1,61 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/python:3.8.8
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps-v4-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install python dependencies
+          command: pipenv install --deploy --dev
+      - save_cache:
+          key: deps-v4-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/project/.venv
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - "*"
+
+  test:
+    docker:
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Lint
+          command: pipenv run bin/lint
+      - run:
+          name: Run tests
+          command: pipenv run bin/test
+
+  deploy:
+    docker:
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
     steps:
       - add_ssh_keys:
           fingerprints:
             - "e7:42:fa:02:36:d2:51:75:6d:a3:2c:09:ed:d8:36:7b"
-      - checkout
       - run:
-          name: Verify on master branch
-          command: test "$CIRCLE_BRANCH" == "master"
+          name: Verify on main branch
+          command: test "$CIRCLE_BRANCH" == "main"
+      - attach_workspace:
+          at: ~/project
       - setup_remote_docker
-      - restore_cache:
-          key: deps-v3-{{ checksum "Pipfile.lock" }}
-      - run:
-          name: Install python dependencies
-          command: pipenv install
-      - save_cache:
-          key: deps-v2-{{ checksum "Pipfile.lock" }}
-          paths:
-           - "~/.local/share/virtualenvs/"
       - run:
           name: Get versions, build, tag and push to docker hub
           command: |
             FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
-            pipenv run python build_versions.py $FORCE
+            pipenv run python -m build_versions.main $FORCE
           no_output_timeout: 30m
       - run:
           name: Add new versions to git (if any)
@@ -35,11 +65,18 @@ workflows:
    version: 2
    build_on_commit:
      jobs:
-       - build:
+       - build
+       - test:
+           requires:
+             - build
+       - deploy:
+           requires:
+             - test
            filters:
               branches:
                 only:
-                  - master
+                  - main
+
    twice_a_day:
      triggers:
        - schedule:
@@ -47,6 +84,12 @@ workflows:
            filters:
              branches:
                only:
-                 - master
+                 - main
      jobs:
        - build
+       - test:
+           requires:
+             - build
+       - deploy:
+           requires:
+             - test

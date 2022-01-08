@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -eu
+SRC_DIR="build_versions"
+pids=();
+
+black --check "$SRC_DIR" &
+pids+=($!)
+isort --diff "$SRC_DIR" &
+pids+=($!)
+
+ret=0;
+for i in "${pids[@]}"; do
+     if ! wait "$i"; then ret=1; fi
+done
+exit "$ret"
