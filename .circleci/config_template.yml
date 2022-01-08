@@ -27,6 +27,7 @@ jobs:
         environment:
           PIPENV_VENV_IN_PROJECT: "1"
     steps:
+      - checkout
       - attach_workspace:
           at: ~/project
       - run:
