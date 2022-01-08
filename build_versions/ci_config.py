@@ -1,7 +1,8 @@
 import copy
 
-from build_versions.settings import CONFIG_TEMPLATE_PATH, CONFIG_GENERATED_PATH
 import yaml
+
+from build_versions.settings import CONFIG_GENERATED_PATH, CONFIG_TEMPLATE_PATH
 
 
 def job_with_name(job, name):
@@ -23,7 +24,7 @@ def generate_config(new_or_updated):
         jobs = []
         version_jobs_names = []
         for job in workflow["jobs"]:
-            if isinstance(job, dict) and 'deploy' in job:
+            if isinstance(job, dict) and "deploy" in job:
                 for version in new_or_updated:
                     version_job = copy.deepcopy(job)
                     job_name = f"deploy_{version['key']}"
@@ -31,7 +32,7 @@ def generate_config(new_or_updated):
                     version_job["deploy"]["version_key"] = version["key"]
                     version_jobs_names.append(job_name)
                     jobs.append(version_job)
-            elif isinstance(job, dict) and 'git_archive' in job:
+            elif isinstance(job, dict) and "git_archive" in job:
                 # Make git archive job depend on all others
                 job["git_archive"]["requires"] = version_jobs_names
                 jobs.append(job)

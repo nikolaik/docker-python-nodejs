@@ -7,6 +7,7 @@ verify_ssl = true
 black = "==21.12b0"
 pytest = "*"
 isort = "*"
+pre-commit = "*"
 
 [packages]
 requests = "*"

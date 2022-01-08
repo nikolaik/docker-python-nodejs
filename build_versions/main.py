@@ -1,7 +1,7 @@
 import argparse
 
 from build_versions.ci_config import generate_config
-from build_versions.dockerfile import render_all_dockerfiles, persist_dockerfiles
+from build_versions.dockerfile import persist_dockerfiles, render_all_dockerfiles
 from build_versions.logger import init_logging
 from build_versions.readme import update_readme_tags_table
 from build_versions.settings import DISTROS
