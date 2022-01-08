@@ -38,7 +38,7 @@ def build_tag_release(dockerfiles, dry_run=False, debug=False):
                 flush=True,
             )
             if not dry_run:
-                docker_client.images.build_tag_release(fileobj=fileobj, tag=tag, rm=True, pull=True)
+                docker_client.images.build(fileobj=fileobj, tag=tag, rm=True, pull=True)
             if debug:
                 with Path(f"debug-{version['key']}.Dockerfile").open("w") as debug_file:
                     debug_file.write(fileobj.read().decode("utf-8"))
