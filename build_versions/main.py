@@ -237,9 +237,9 @@ def update_readme_tags_table(versions, dry_run=False):
 def main(distros, dry_run, debug, force):
     distros = list(set(distros))
     current_versions = load_versions()
-    # Use latest patch version from each minor
+    # Use the latest patch version from each minor
     python_versions = decide_python_versions(distros)
-    # Use latest minor version from each major
+    # Use the latest minor version from each major
     nodejs_versions = decide_nodejs_versions()
     versions = version_combinations(nodejs_versions, python_versions)
 

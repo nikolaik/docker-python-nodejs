@@ -100,7 +100,7 @@ Tag | Python version | Node.js version | Distro
 `python3.6-nodejs12-slim` | 3.6.15 | 12.22.7 | slim
 `python3.6-nodejs12-alpine` | 3.6.15 | 12.22.7 | alpine
 
-Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions.py`](./build_versions.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
+Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions/main.py`](./build_versions/main.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
 ## Typical tasks
 ```bash
