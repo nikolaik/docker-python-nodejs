@@ -1,0 +1,125 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps-v4-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install python dependencies
+          command: pipenv install --deploy --dev
+      - save_cache:
+          key: deps-v4-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/project/.venv
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .venv
+
+  test:
+    docker:
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Lint
+          command: pipenv run bin/lint
+      - run:
+          name: Run tests
+          command: pipenv run bin/test
+
+  deploy:
+    parameters:
+      version_key:
+        type: string
+        default: ""
+    docker:
+      - image: cimg/python:3.9.9
+        environment:
+          PIPENV_VENV_IN_PROJECT: "1"
+          # Version key is injected via the setup workflow in build_versions/main.py and depends on which versions are new or have been updated since last run
+          VERSION_KEY: << parameters.version_key >>
+    steps:
+      - checkout
+      - run:
+          name: Verify on main branch
+          command: test "$CIRCLE_BRANCH" == "main"
+      - attach_workspace:
+          at: ~/project
+      - setup_remote_docker
+      - run:
+          name: Dockerhub login
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - run:
+          name: Build Docker image
+          command: docker build -f "dockerfiles/${VERSION_KEY}.Dockerfile" -t nikolaik/python-nodejs:$VERSION_KEY .
+      - run:
+          name: Push Docker image
+          command: docker push nikolaik/python-nodejs:$VERSION_KEY
+
+  git_archive:
+    docker:
+      - image: cimg/base
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "e7:42:fa:02:36:d2:51:75:6d:a3:2c:09:ed:d8:36:7b"
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Add new versions to git (if any)
+          command: ./git_archive.sh
+
+workflows:
+   version: 2
+   build_on_commit:
+     jobs:
+       - build
+       - test:
+           requires:
+             - build
+       - deploy:
+           requires:
+             - test
+           filters:
+              branches:
+                only:
+                  - main
+       - git_archive:
+           requires:
+             - deploy
+           filters:
+              branches:
+                only:
+                  - main
+
+   build_on_schedule:
+     triggers:
+       - schedule:
+           cron: "0 0,12 * * *"  # Twice a day at 00:00 and 12:00
+           filters:
+             branches:
+               only:
+                 - main
+     jobs:
+       - build
+       - test:
+           requires:
+             - build
+       - deploy:
+           requires:
+             - test
+       - git_archive:
+           requires:
+             - deploy
