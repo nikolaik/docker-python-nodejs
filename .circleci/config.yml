@@ -1,8 +1,10 @@
 # Setup workflow to allow simpler CI config for our kindly-plugins monorepo
 #
 # References:
+# - https://circleci.com/docs/2.0/dynamic-config/
 # - https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/setup-workflows.md
 # - https://discuss.circleci.com/t/setup-workflows-open-preview/39516
+# - https://discuss.circleci.com/t/workaround-using-scheduled-workflows-with-dynamic-config/40344/4
 version: 2.1
 
 orbs:

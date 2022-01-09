@@ -12,7 +12,6 @@ pre-commit = "*"
 [packages]
 requests = "*"
 semver = "*"
-docker = "*"
 beautifulsoup4 = "*"
 pyyaml = "*"
 
