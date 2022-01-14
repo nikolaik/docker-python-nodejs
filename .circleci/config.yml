@@ -16,6 +16,8 @@ jobs:
   setup:
     docker:
       - image: cimg/python:3.9.9
+        environment:
+          CI_TRIGGER: << pipeline.trigger_source >>
     steps:
       - checkout
       - run:
@@ -25,14 +27,11 @@ jobs:
           name: Generate config
           command: |
             FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
-            pipenv run python -m build_versions.main --ci-config $FORCE
+            pipenv run python -m build_versions.main --ci-config $FORCE --ci-trigger $CI_TRIGGER
       - continuation/continue:
           configuration_path: .circleci/config_generated.yml
 
 workflows:
   setup:
     jobs:
-      - setup:
-          filters:
-            tags:
-              only: /.*/
+      - setup

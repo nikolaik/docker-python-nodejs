@@ -8,7 +8,7 @@ from build_versions.settings import DISTROS
 from build_versions.versions import decide_version_combinations, find_new_or_updated, load_versions, persist_versions
 
 
-def main(distros, dry_run, force, ci_config, dockerfile_config, release):
+def main(distros, dry_run, force, ci_config, ci_trigger, dockerfile_config, release):
     if dockerfile_config:
         render_dockerfile_by_config(dockerfile_config, dry_run)
         return
@@ -18,9 +18,9 @@ def main(distros, dry_run, force, ci_config, dockerfile_config, release):
     new_or_updated = find_new_or_updated(current_versions, versions, force)
 
     if ci_config:
-        generate_config(new_or_updated)
+        generate_config(new_or_updated, ci_trigger)
 
-    if not new_or_updated:
+    if not new_or_updated and not ci_config:
         print("No new or updated versions")
         return
 
@@ -44,6 +44,11 @@ if __name__ == "__main__":
         "--dry-run", action="store_true", dest="dry_run", help="Skip persisting, README update, and pushing of builds"
     )
     parser.add_argument("--ci-config", action="store_true", help="Generate CI Config")
+    parser.add_argument(
+        "--ci-trigger",
+        default="webhook",
+        help="CI parameter pipeline.trigger_source (https://circleci.com/docs/2.0/pipeline-variables/#pipeline-values)",
+    )
     parser.add_argument("--release", action="store_true", help="Persist versions and make a release")
     parser.add_argument(
         "--dockerfile-from-config",
@@ -55,4 +60,12 @@ if __name__ == "__main__":
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
     args = parser.parse_args()
     init_logging(args.verbose)
-    main(args.distros, args.dry_run, args.force, args.ci_config, args.dockerfile_from_config, args.release)
+    main(
+        args.distros,
+        args.dry_run,
+        args.force,
+        args.ci_config,
+        args.ci_trigger,
+        args.dockerfile_from_config,
+        args.release,
+    )
