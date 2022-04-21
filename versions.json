@@ -1,6 +1,42 @@
 {
   "versions": [
     {
+      "key": "python3.10-nodejs18",
+      "python": "3.10",
+      "python_canonical": "3.10.4",
+      "python_image": "3.10.4-buster",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.10-nodejs18-bullseye",
+      "python": "3.10",
+      "python_canonical": "3.10.4",
+      "python_image": "3.10.4-bullseye",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "bullseye"
+    },
+    {
+      "key": "python3.10-nodejs18-slim",
+      "python": "3.10",
+      "python_canonical": "3.10.4",
+      "python_image": "3.10.4-slim",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.10-nodejs18-alpine",
+      "python": "3.10",
+      "python_canonical": "3.10.4",
+      "python_image": "3.10.4-alpine",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "alpine"
+    },
+    {
       "key": "python3.10-nodejs17",
       "python": "3.10",
       "python_canonical": "3.10.4",
@@ -142,6 +178,42 @@
       "python_image": "3.10.4-alpine",
       "nodejs": "12",
       "nodejs_canonical": "12.22.12",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.9-nodejs18",
+      "python": "3.9",
+      "python_canonical": "3.9.12",
+      "python_image": "3.9.12-buster",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.9-nodejs18-bullseye",
+      "python": "3.9",
+      "python_canonical": "3.9.12",
+      "python_image": "3.9.12-bullseye",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "bullseye"
+    },
+    {
+      "key": "python3.9-nodejs18-slim",
+      "python": "3.9",
+      "python_canonical": "3.9.12",
+      "python_image": "3.9.12-slim",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.9-nodejs18-alpine",
+      "python": "3.9",
+      "python_canonical": "3.9.12",
+      "python_image": "3.9.12-alpine",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
       "distro": "alpine"
     },
     {
@@ -289,6 +361,42 @@
       "distro": "alpine"
     },
     {
+      "key": "python3.8-nodejs18",
+      "python": "3.8",
+      "python_canonical": "3.8.13",
+      "python_image": "3.8.13-buster",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.8-nodejs18-bullseye",
+      "python": "3.8",
+      "python_canonical": "3.8.13",
+      "python_image": "3.8.13-bullseye",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "bullseye"
+    },
+    {
+      "key": "python3.8-nodejs18-slim",
+      "python": "3.8",
+      "python_canonical": "3.8.13",
+      "python_image": "3.8.13-slim",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.8-nodejs18-alpine",
+      "python": "3.8",
+      "python_canonical": "3.8.13",
+      "python_image": "3.8.13-alpine",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "alpine"
+    },
+    {
       "key": "python3.8-nodejs17",
       "python": "3.8",
       "python_canonical": "3.8.13",
@@ -430,6 +538,42 @@
       "python_image": "3.8.13-alpine",
       "nodejs": "12",
       "nodejs_canonical": "12.22.12",
+      "distro": "alpine"
+    },
+    {
+      "key": "python3.7-nodejs18",
+      "python": "3.7",
+      "python_canonical": "3.7.13",
+      "python_image": "3.7.13-buster",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "buster"
+    },
+    {
+      "key": "python3.7-nodejs18-bullseye",
+      "python": "3.7",
+      "python_canonical": "3.7.13",
+      "python_image": "3.7.13-bullseye",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "bullseye"
+    },
+    {
+      "key": "python3.7-nodejs18-slim",
+      "python": "3.7",
+      "python_canonical": "3.7.13",
+      "python_image": "3.7.13-slim",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
+      "distro": "slim"
+    },
+    {
+      "key": "python3.7-nodejs18-alpine",
+      "python": "3.7",
+      "python_canonical": "3.7.13",
+      "python_image": "3.7.13-alpine",
+      "nodejs": "18",
+      "nodejs_canonical": "18.0.0",
       "distro": "alpine"
     },
     {
