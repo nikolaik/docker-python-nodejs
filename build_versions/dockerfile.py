@@ -1,8 +1,6 @@
 import json
 import logging
-import re
 from datetime import datetime
-from pathlib import Path
 
 import requests
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -34,6 +32,7 @@ def render_dockerfile(version, node_gpg_keys):
         "node_gpg_keys": node_gpg_keys,
         **version,
         "distro": "bullseye" if version["distro"] == "slim" else version["distro"],  # slim is an image variant
+        "distro_variant": "slim" if version["distro"] == "slim" else "full",
     }
 
     return _render_template(f"{distro}.Dockerfile", **context)

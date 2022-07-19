@@ -10,7 +10,7 @@ ENV POETRY_HOME=/usr/local
 # Ref: https://deb.nodesource.com/setup_{{ nodejs }}.x
 # Ref: https://yarnpkg.com/en/docs/install
 RUN \
-{% if distro_variant == "slim" %}apt-get update && apt-get install wget gnupg2 -y && \{% endif %}
+{% if distro_variant == "slim" %}  apt-get update && apt-get install wget gnupg2 -y && \{% endif %}
   echo "deb https://deb.nodesource.com/node_{{ nodejs }}.x bullseye main" > /etc/apt/sources.list.d/nodesource.list && \
   wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
@@ -20,5 +20,5 @@ RUN \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
   npm i -g npm@^{{ npm_version }} && \
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
+  wget -qO- https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
   rm -rf /var/lib/apt/lists/*
