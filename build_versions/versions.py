@@ -31,9 +31,9 @@ def _latest_patch(tags, ver, patch_pattern, distro):
 def scrape_supported_python_versions():
     """Scrape supported python versions (risky)"""
     versions = []
-    version_table_row_selector = "#status-of-python-branches tbody tr"
+    version_table_row_selector = "#supported-versions tbody tr"
 
-    res = requests.get("https://devguide.python.org/")
+    res = requests.get("https://devguide.python.org/versions/")
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
