@@ -5,15 +5,13 @@ repos:
   hooks:
   - id: black
     name: black
-    entry: pipenv run black
-    exclude: model_config.py
+    entry: black
     args: [--check]
     language: system
-    require_serial: true
     types: [python]
   - id: isort
     name: isort
-    entry: pipenv run isort
+    entry: isort
     args: [--check-only]
     language: system
     types: [python]
