@@ -14,6 +14,7 @@ requests = "*"
 semver = "*"
 beautifulsoup4 = "*"
 pyyaml = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.9"

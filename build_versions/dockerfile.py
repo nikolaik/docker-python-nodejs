@@ -5,10 +5,13 @@ from datetime import datetime
 from pathlib import Path
 
 import requests
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from build_versions.settings import DOCKERFILES_PATH
 
 logger = logging.getLogger("dpn")
+
+env = Environment(loader=FileSystemLoader("./templates"), autoescape=select_autoescape())
 
 
 def _fetch_node_gpg_keys():
@@ -16,23 +19,24 @@ def _fetch_node_gpg_keys():
     return requests.get(url).text.replace("\n", " ")
 
 
-def render_dockerfile(version, node_gpg_keys):
-    dockerfile_template = Path(f'template-{version["distro"]}.Dockerfile').read_text()
-    replace_pattern = re.compile("%%(.+?)%%")
+def _render_template(template_name, **context):
+    template = env.get_template(template_name)
+    return template.render(**context)
 
-    replacements = {
+
+def render_dockerfile(version, node_gpg_keys):
+    distro = "debian" if version["distro"] != "alpine" else version["distro"]
+
+    context = {
         # NPM: Hold back on v8 for nodejs<15
         "npm_version": "6" if int(version["nodejs"]) < 15 else "8",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,
+        "distro": "bullseye" if version["distro"] == "slim" else version["distro"],  # slim is an image variant
     }
 
-    def repl(matchobj):
-        key = matchobj.group(1).lower()
-        return replacements[key]
-
-    return replace_pattern.sub(repl, dockerfile_template)
+    return _render_template(f"{distro}.Dockerfile", **context)
 
 
 def render_dockerfile_by_config(config, dry_run=False):
