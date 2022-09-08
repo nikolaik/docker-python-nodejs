@@ -17,10 +17,18 @@ by_semver_key = cmp_to_key(semver.compare)
 logger = logging.getLogger("dpn")
 
 
-def _fetch_tags(package):
-    # Fetch available docker tags
-    result = requests.get(f"https://registry.hub.docker.com/v1/repositories/{package}/tags")
-    return [r["name"] for r in result.json()]
+def _fetch_tags(package, page=1):
+    """Fetch available docker tags"""
+    result = requests.get(
+        f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
+        params={"page": page, "page_size": 100},
+    )
+    result.raise_for_status()
+    data = result.json()
+    tags = [tag["name"] for tag in data["results"]]
+    if not data["next"]:
+        return tags
+    return tags + _fetch_tags(package, page=page + 1)
 
 
 def _latest_patch(tags, ver, patch_pattern, distro):
@@ -54,6 +62,7 @@ def decide_python_versions(distros):
     python_patch_re = "|".join([r"^(\d+\.\d+\.\d+-{})$".format(distro) for distro in distros])
     python_wanted_tag_pattern = re.compile(python_patch_re)
 
+    # FIXME: can we avoid enumerating all tags to speed up things?
     tags = [tag for tag in _fetch_tags("python") if python_wanted_tag_pattern.match(tag)]
     # Skip unreleased and unsupported
     supported_versions = [v for v in scrape_supported_python_versions() if v["start"] <= todays_date <= v["end"]]
