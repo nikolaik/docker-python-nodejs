@@ -35,5 +35,6 @@ RUN python -m venv $VENV && $VENV/bin/pip install -U pip wheel
 # Workaround for missing cffi musllinux wheels on older pythons
 COPY --from=builder /*.whl /
 RUN $VENV/bin/pip install /*.whl && rm /*.whl
-{% endif %}
-RUN $VENV/bin/pip install poetry && ln -s $VENV/bin/poetry /usr/local/bin/poetry
+{% endif %} \
+# FIXME: Pin poetry version awaiting new dulwich release
+RUN $VENV/bin/pip install poetry==1.1.15 && ln -s $VENV/bin/poetry /usr/local/bin/poetry
