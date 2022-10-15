@@ -6,7 +6,7 @@
       "python_canonical": "3.10.8",
       "python_image": "3.10.8-buster",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "buster"
     },
     {
@@ -15,7 +15,7 @@
       "python_canonical": "3.10.8",
       "python_image": "3.10.8-bullseye",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "bullseye"
     },
     {
@@ -24,7 +24,7 @@
       "python_canonical": "3.10.8",
       "python_image": "3.10.8-slim",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "slim"
     },
     {
@@ -33,7 +33,7 @@
       "python_canonical": "3.10.8",
       "python_image": "3.10.8-alpine",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "alpine"
     },
     {
@@ -114,7 +114,7 @@
       "python_canonical": "3.9.15",
       "python_image": "3.9.15-buster",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "buster"
     },
     {
@@ -123,7 +123,7 @@
       "python_canonical": "3.9.15",
       "python_image": "3.9.15-bullseye",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "bullseye"
     },
     {
@@ -132,7 +132,7 @@
       "python_canonical": "3.9.15",
       "python_image": "3.9.15-slim",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "slim"
     },
     {
@@ -141,7 +141,7 @@
       "python_canonical": "3.9.15",
       "python_image": "3.9.15-alpine",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "alpine"
     },
     {
@@ -222,7 +222,7 @@
       "python_canonical": "3.8.15",
       "python_image": "3.8.15-buster",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "buster"
     },
     {
@@ -231,7 +231,7 @@
       "python_canonical": "3.8.15",
       "python_image": "3.8.15-bullseye",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "bullseye"
     },
     {
@@ -240,7 +240,7 @@
       "python_canonical": "3.8.15",
       "python_image": "3.8.15-slim",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "slim"
     },
     {
@@ -249,7 +249,7 @@
       "python_canonical": "3.8.15",
       "python_image": "3.8.15-alpine",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "alpine"
     },
     {
@@ -330,7 +330,7 @@
       "python_canonical": "3.7.15",
       "python_image": "3.7.15-buster",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "buster"
     },
     {
@@ -339,7 +339,7 @@
       "python_canonical": "3.7.15",
       "python_image": "3.7.15-bullseye",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "bullseye"
     },
     {
@@ -348,7 +348,7 @@
       "python_canonical": "3.7.15",
       "python_image": "3.7.15-slim",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "slim"
     },
     {
@@ -357,7 +357,7 @@
       "python_canonical": "3.7.15",
       "python_image": "3.7.15-alpine",
       "nodejs": "18",
-      "nodejs_canonical": "18.10.0",
+      "nodejs_canonical": "18.11.0",
       "distro": "alpine"
     },
     {
