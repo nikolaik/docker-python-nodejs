@@ -3,10 +3,11 @@
 
 Last updated by bot: 2022-11-02
 
-## 🐳 Python with Node.js 
+## 🐳 Python with Node.js
+
 The `latest` tag is currently:
 
-- Node: 16.x
+- Node: 18.x
 - npm: 8.x
 - yarn: stable
 - Python: latest
@@ -15,6 +16,7 @@ The `latest` tag is currently:
 - poetry: latest
 
 ## 🏷 Tags
+
 To use a specific combination of Python and Node.js see the following table of available image tags.
 
 Tag | Python version | Node.js version | Distro
@@ -103,6 +105,7 @@ Tag | Python version | Node.js version | Distro
 Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions/main.py`](./build_versions/main.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
 ## Typical tasks
+
 ```bash
 # Pull from Docker Hub
 docker pull nikolaik/python-nodejs:latest
@@ -113,6 +116,7 @@ docker run -it nikolaik/python-nodejs bash
 ```
 
 ### Use as base image
+
 ```Dockerfile
 FROM nikolaik/python-nodejs:latest
 
@@ -123,4 +127,5 @@ WORKDIR /home/pn/app
 All images have a default user `pn` with uid 1000 and gid 1000.
 
 ## Disclaimer
+
 > This is experimental and might break from time to time. Use at your own risk!
