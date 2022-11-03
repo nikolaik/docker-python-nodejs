@@ -1,5 +1,5 @@
 FROM python:bullseye
-MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
+LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.com>"
 
 RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --create-home pn
 ENV POETRY_HOME=/usr/local
