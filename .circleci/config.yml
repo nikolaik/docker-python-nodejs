@@ -15,7 +15,7 @@ setup: true
 jobs:
   setup:
     docker:
-      - image: cimg/python:3.9.9
+      - image: cimg/python:3.11.0
         environment:
           CI_TRIGGER: << pipeline.trigger_source >>
     steps:

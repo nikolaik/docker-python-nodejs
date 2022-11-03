@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/python:3.9.9
+      - image: cimg/python:3.11.0
         environment:
           PIPENV_VENV_IN_PROJECT: "1"
     steps:
@@ -23,7 +23,7 @@ jobs:
 
   test:
     docker:
-      - image: cimg/python:3.9.9
+      - image: cimg/python:3.11.0
         environment:
           PIPENV_VENV_IN_PROJECT: "1"
     steps:
@@ -46,7 +46,7 @@ jobs:
         type: string
         default: ""
     docker:
-      - image: cimg/python:3.9.9
+      - image: cimg/python:3.11.0
         environment:
           PIPENV_VENV_IN_PROJECT: "1"
           # Version key is injected via the setup workflow in build_versions/main.py and depends on which versions are new or have been updated since last run
@@ -78,7 +78,7 @@ jobs:
 
   release:
     docker:
-      - image: cimg/python:3.9.9
+      - image: cimg/python:3.11.0
         environment:
           PIPENV_VENV_IN_PROJECT: "1"
     steps:
