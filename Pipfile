@@ -6,8 +6,8 @@ verify_ssl = true
 [dev-packages]
 black = "==22.12.*"
 pytest = "*"
-isort = "*"
 pre-commit = "*"
+ruff = "*"
 
 [packages]
 requests = "*"

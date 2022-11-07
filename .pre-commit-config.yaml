@@ -6,12 +6,11 @@ repos:
   - id: black
     name: black
     entry: black
-    args: [--check]
     language: system
     types: [python]
-  - id: isort
-    name: isort
-    entry: isort
-    args: [--check-only]
+  - id: ruff
+    name: ruff
+    entry: ruff
     language: system
+    args: [--fix, --force-exclude]
     types: [python]

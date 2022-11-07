@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-SRC_DIR="build_versions"
-
-black "$SRC_DIR"
-isort "$SRC_DIR"
