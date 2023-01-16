@@ -7,5 +7,6 @@ DOCKERFILES_PATH = BASE_PATH / "dockerfiles"
 CONFIG_TEMPLATE_PATH = BASE_PATH / ".circleci/config_template.yml"
 CONFIG_GENERATED_PATH = BASE_PATH / ".circleci/config_generated.yml"
 
+DEFAULT_PLATFORMS = ["linux/amd64", "linux/arm64"]
 DEFAULT_DISTRO = "buster"
 DISTROS = ["buster", "bullseye", "slim", "alpine"]

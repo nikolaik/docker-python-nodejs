@@ -5,9 +5,9 @@ ignore = [
   "T201",  # This is a cli
   "DTZ003", # Allow naive datetimes
   "FBT002", # Allow boolean traps
+  "G004", # Allow using f-strings when logging
   "D", # FIXME: docs
   "ANN", # FIXME: typing
-  "PTH123", # FIXME: https://github.com/charliermarsh/ruff/issues/2140
 ]
 
 [tool.ruff.per-file-ignores]
