@@ -8,7 +8,7 @@ import requests
 import semver
 from bs4 import BeautifulSoup
 
-from build_versions.settings import DEFAULT_DISTRO, DISTROS, VERSIONS_PATH
+from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.utcnow().date().isoformat()
 
@@ -64,6 +64,7 @@ def decide_python_versions(distros):
     python_wanted_tag_pattern = re.compile(python_patch_re)
 
     # FIXME: can we avoid enumerating all tags to speed up things?
+    logger.debug("Fetching tags for python")
     tags = [tag for tag in _fetch_tags("python") if python_wanted_tag_pattern.match(tag)]
     # Skip unreleased and unsupported
     supported_versions = [v for v in scrape_supported_python_versions() if v["start"] <= todays_date <= v["end"]]
@@ -74,7 +75,7 @@ def decide_python_versions(distros):
         for distro in distros:
             canonical_image = _latest_patch(tags, ver, python_wanted_tag_pattern, distro)
             if not canonical_image:
-                print(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
+                logger.warning(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
                 continue
             canonical_version = canonical_image.replace(f"-{distro}", "")
             versions.append(
@@ -88,6 +89,7 @@ def decide_nodejs_versions():
     nodejs_patch_re = rf"^(\d+\.\d+\.\d+-{DEFAULT_DISTRO})$"
     nodejs_wanted_tag_pattern = re.compile(nodejs_patch_re)
 
+    logger.debug("Fetching tags for node")
     tags = [tag for tag in _fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag)]
     # Skip unreleased and unsupported
     supported_versions = [v for v in fetch_supported_nodejs_versions() if v["start"] <= todays_date <= v["end"]]
@@ -97,7 +99,7 @@ def decide_nodejs_versions():
         ver = supported_version["version"][1:]  # Remove v prefix
         canonical_image = _latest_patch(tags, ver, nodejs_wanted_tag_pattern, DEFAULT_DISTRO)
         if not canonical_image:
-            print(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
+            logger.warning(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
             continue
         canonical_version = canonical_image.replace(f"-{DEFAULT_DISTRO}", "")
         versions.append({"canonical_version": canonical_version, "key": ver})
@@ -111,6 +113,12 @@ def version_combinations(nodejs_versions, python_versions):
         for n in nodejs_versions:
             distro = f'-{p["distro"]}' if p["distro"] != DEFAULT_DISTRO else ""
             key = f'python{p["key"]}-nodejs{n["key"]}{distro}'
+            platforms = DEFAULT_PLATFORMS
+            # FIXME: Enable when:
+            #  - https://github.com/nodejs/node/pull/45756 is fixed
+            #  - https://github.com/nodejs/unofficial-builds adds builds for musl + arm64
+            if p["distro"] == "alpine":
+                platforms = ["linux/amd64"]
             versions.append(
                 {
                     "key": key,
@@ -120,6 +128,7 @@ def version_combinations(nodejs_versions, python_versions):
                     "nodejs": n["key"],
                     "nodejs_canonical": n["canonical_version"],
                     "distro": p["distro"],
+                    "platforms": platforms,
                 },
             )
 
@@ -152,11 +161,15 @@ def load_versions():
 
 
 def find_new_or_updated(current_versions, versions, force=False):
+    if force:
+        logger.warning("Generating full build matrix because --force is set")
+
     current_versions = {ver["key"]: ver for ver in current_versions}
     versions = {ver["key"]: ver for ver in versions}
     new_or_updated = []
 
     for key, ver in versions.items():
+        # does key exist and are version dicts equal?
         updated = key in current_versions and ver != current_versions[key]
         new = key not in current_versions
         if new or updated or force:

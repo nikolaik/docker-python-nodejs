@@ -39,10 +39,9 @@ def render_dockerfile(version, node_gpg_keys):
     return _render_template(f"{distro}.Dockerfile", **context)
 
 
-def render_dockerfile_by_config(config, dry_run=False):
+def render_dockerfile_with_context(config: str, dry_run=False):
     node_gpg_keys = _fetch_node_gpg_keys()
-    with config as fp:
-        version = json.load(fp)
+    version = json.loads(config)
 
     dockerfile = render_dockerfile(version, node_gpg_keys)
 

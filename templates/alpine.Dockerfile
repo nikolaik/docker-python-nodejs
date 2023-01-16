@@ -13,6 +13,9 @@ RUN pip install cffi
 RUN find /root/.cache/pip/wheels -name '*.whl' -exec cp {} / +
 {% endif %}
 RUN apk add curl
+# FIXME: no arm + musl build yet
+# Ref: https://github.com/nodejs/unofficial-builds/pull/59
+# Ref: https://github.com/nodejs/node/pull/45756
 RUN curl -fsSLO --compressed "https://unofficial-builds.nodejs.org/download/release/v{{ nodejs_canonical }}/node-v{{ nodejs_canonical }}-linux-x64-musl.tar.xz"
 RUN curl -fsSLO --compressed "https://unofficial-builds.nodejs.org/download/release/v{{ nodejs_canonical }}/SHASUMS256.txt"
 RUN grep " node-v{{ nodejs_canonical }}-linux-x64-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c -

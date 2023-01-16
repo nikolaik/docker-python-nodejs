@@ -3,14 +3,30 @@ from pathlib import Path
 
 
 def update_readme_tags_table(versions, dry_run=False):
+    """Read out current README, format fresh README, write back possible changes"""
     readme_path = Path("README.md")
     with readme_path.open() as fp:
         readme = fp.read()
 
-    headings = ["Tag", "Python version", "Node.js version", "Distro"]
+    readme_new = format_readme(versions, readme)
+    if readme == readme_new:
+        return
+
+    if not dry_run:
+        with readme_path.open("w+") as fp:
+            fp.write(readme_new)
+    else:
+        print(readme_new)
+
+
+def format_readme(versions, readme):
+    """Format fresh README based on passed in version. Replaces the whole table with new versions."""
+    headings = ["Tag", "Python version", "Node.js version", "Distro", "Platforms"]
     rows = []
     for v in versions:
-        rows.append([f"`{v['key']}`", v["python_canonical"], v["nodejs_canonical"], v["distro"]])
+        rows.append(
+            [f"`{v['key']}`", v["python_canonical"], v["nodejs_canonical"], v["distro"], ", ".join(v["platforms"])],
+        )
 
     head = f"{' | '.join(headings)}\n{' | '.join(['---' for h in headings])}"
     body = "\n".join([" | ".join(row) for row in rows])
@@ -20,7 +36,4 @@ def update_readme_tags_table(versions, dry_run=False):
     end = "\nLovely!"
     sub_pattern = re.compile(f"{start}(.+?){end}", re.MULTILINE | re.DOTALL)
 
-    readme_new = sub_pattern.sub(f"{start}\n{table}{end}", readme)
-    if readme != readme_new and not dry_run:
-        with readme_path.open("w+") as fp:
-            fp.write(readme_new)
+    return sub_pattern.sub(f"{start}\n{table}{end}", readme)

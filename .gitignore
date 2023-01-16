@@ -3,3 +3,4 @@ debug-*.Dockerfile
 dockerfiles/
 .circleci/config_generated.yml
 version_config.json
+__pycache__
