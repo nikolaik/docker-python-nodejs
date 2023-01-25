@@ -34,7 +34,7 @@ def generate_config(new_or_updated: list, trigger: str):
 
     # Read template CI config
     with CONFIG_TEMPLATE_PATH.open() as fp:
-        config = yaml.safe_load(fp, Loader=yaml.FullLoader)
+        config = yaml.safe_load(fp)
 
     # Update config template workflow with per version jobs
     # Add deploy jobs for each new or updated version based on deploy job in template...
