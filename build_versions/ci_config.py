@@ -16,17 +16,13 @@ EMPTY_CONFIG = {
         "build": {
             "docker": [{"image": "cimg/base:2022.01"}],
             "steps": [{"run": {"name": "noop", "command": 'echo "nothing changed"'}}],
-        }
+        },
     },
 }
 
 
-def job_with_name(job, name):
-    return isinstance(job, dict) and name in job
-
-
 def write_config(config: dict):
-    with open(CONFIG_GENERATED_PATH, "w+") as fp_out:
+    with CONFIG_GENERATED_PATH.open("w+") as fp_out:
         yaml.dump(config, fp_out, sort_keys=False)
 
 
@@ -37,8 +33,8 @@ def generate_config(new_or_updated: list, trigger: str):
         return
 
     # Read template CI config
-    with open(CONFIG_TEMPLATE_PATH) as fp:
-        config = yaml.load(fp, Loader=yaml.FullLoader)
+    with CONFIG_TEMPLATE_PATH.open() as fp:
+        config = yaml.safe_load(fp, Loader=yaml.FullLoader)
 
     # Update config template workflow with per version jobs
     # Add deploy jobs for each new or updated version based on deploy job in template...

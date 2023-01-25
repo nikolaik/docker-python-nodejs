@@ -14,7 +14,7 @@ env = Environment(loader=FileSystemLoader("./templates"), autoescape=select_auto
 
 def _fetch_node_gpg_keys():
     url = "https://raw.githubusercontent.com/nodejs/docker-node/master/keys/node.keys"
-    return requests.get(url).text.replace("\n", " ")
+    return requests.get(url, timeout=10.0).text.replace("\n", " ")
 
 
 def _render_template(template_name, **context):
@@ -25,9 +25,10 @@ def _render_template(template_name, **context):
 def render_dockerfile(version, node_gpg_keys):
     distro = "debian" if version["distro"] != "alpine" else version["distro"]
 
+    node_major_version = 15
     context = {
         # NPM: Hold back on v8 for nodejs<15
-        "npm_version": "6" if int(version["nodejs"]) < 15 else "8",
+        "npm_version": "6" if int(version["nodejs"]) < node_major_version else "8",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,

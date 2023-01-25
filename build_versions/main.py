@@ -41,7 +41,10 @@ if __name__ == "__main__":
         default=DISTROS,
     )
     parser.add_argument(
-        "--dry-run", action="store_true", dest="dry_run", help="Skip persisting, README update, and pushing of builds"
+        "--dry-run",
+        action="store_true",
+        dest="dry_run",
+        help="Skip persisting, README update, and pushing of builds",
     )
     parser.add_argument("--ci-config", action="store_true", help="Generate CI Config")
     parser.add_argument(

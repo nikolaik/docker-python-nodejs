@@ -18,10 +18,11 @@ logger = logging.getLogger("dpn")
 
 
 def _fetch_tags(package, page=1):
-    """Fetch available docker tags"""
+    """Fetch available docker tags."""
     result = requests.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
         params={"page": page, "page_size": 100},
+        timeout=10.0,
     )
     result.raise_for_status()
     data = result.json()
@@ -37,29 +38,29 @@ def _latest_patch(tags, ver, patch_pattern, distro):
 
 
 def scrape_supported_python_versions():
-    """Scrape supported python versions (risky)"""
+    """Scrape supported python versions (risky)."""
     versions = []
     version_table_row_selector = "#supported-versions tbody tr"
 
-    res = requests.get("https://devguide.python.org/versions/")
+    res = requests.get("https://devguide.python.org/versions/", timeout=10.0)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
     version_table_rows = soup.select(version_table_row_selector)
     for ver in version_table_rows:
-        branch, _, _, first_release, end_of_life, _ = [v.text for v in ver.find_all("td")]
+        branch, _, _, first_release, end_of_life, _ = (v.text for v in ver.find_all("td"))
         versions.append({"version": branch, "start": first_release, "end": end_of_life})
 
     return versions
 
 
 def fetch_supported_nodejs_versions():
-    result = requests.get("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json")
+    result = requests.get("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json", timeout=10.0)
     return [{"version": ver, "start": detail["start"], "end": detail["end"]} for ver, detail in result.json().items()]
 
 
 def decide_python_versions(distros):
-    python_patch_re = "|".join([r"^(\d+\.\d+\.\d+-{})$".format(distro) for distro in distros])
+    python_patch_re = "|".join([rf"^(\d+\.\d+\.\d+-{distro})$" for distro in distros])
     python_wanted_tag_pattern = re.compile(python_patch_re)
 
     # FIXME: can we avoid enumerating all tags to speed up things?
@@ -77,14 +78,14 @@ def decide_python_versions(distros):
                 continue
             canonical_version = canonical_image.replace(f"-{distro}", "")
             versions.append(
-                {"canonical_version": canonical_version, "image": canonical_image, "key": ver, "distro": distro}
+                {"canonical_version": canonical_version, "image": canonical_image, "key": ver, "distro": distro},
             )
 
     return sorted(versions, key=lambda v: by_semver_key(v["canonical_version"]), reverse=True)
 
 
 def decide_nodejs_versions():
-    nodejs_patch_re = r"^(\d+\.\d+\.\d+-{})$".format(DEFAULT_DISTRO)
+    nodejs_patch_re = rf"^(\d+\.\d+\.\d+-{DEFAULT_DISTRO})$"
     nodejs_wanted_tag_pattern = re.compile(nodejs_patch_re)
 
     tags = [tag for tag in _fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag)]
@@ -119,7 +120,7 @@ def version_combinations(nodejs_versions, python_versions):
                     "nodejs": n["key"],
                     "nodejs_canonical": n["canonical_version"],
                     "distro": p["distro"],
-                }
+                },
             )
 
     versions = sorted(versions, key=lambda v: DISTROS.index(v["distro"]))
