@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2023-04-12
+Last updated by bot: 2023-04-14
 
 The `latest` tag is currently:
 
@@ -25,10 +25,10 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs19-bullseye` | 3.11.3 | 19.9.0 | bullseye
 `python3.11-nodejs19-slim` | 3.11.3 | 19.9.0 | slim
 `python3.11-nodejs19-alpine` | 3.11.3 | 19.9.0 | alpine
-`python3.11-nodejs18` | 3.11.3 | 18.15.0 | buster
-`python3.11-nodejs18-bullseye` | 3.11.3 | 18.15.0 | bullseye
-`python3.11-nodejs18-slim` | 3.11.3 | 18.15.0 | slim
-`python3.11-nodejs18-alpine` | 3.11.3 | 18.15.0 | alpine
+`python3.11-nodejs18` | 3.11.3 | 18.16.0 | buster
+`python3.11-nodejs18-bullseye` | 3.11.3 | 18.16.0 | bullseye
+`python3.11-nodejs18-slim` | 3.11.3 | 18.16.0 | slim
+`python3.11-nodejs18-alpine` | 3.11.3 | 18.16.0 | alpine
 `python3.11-nodejs16` | 3.11.3 | 16.20.0 | buster
 `python3.11-nodejs16-bullseye` | 3.11.3 | 16.20.0 | bullseye
 `python3.11-nodejs16-slim` | 3.11.3 | 16.20.0 | slim
@@ -41,10 +41,10 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs19-bullseye` | 3.10.11 | 19.9.0 | bullseye
 `python3.10-nodejs19-slim` | 3.10.11 | 19.9.0 | slim
 `python3.10-nodejs19-alpine` | 3.10.11 | 19.9.0 | alpine
-`python3.10-nodejs18` | 3.10.11 | 18.15.0 | buster
-`python3.10-nodejs18-bullseye` | 3.10.11 | 18.15.0 | bullseye
-`python3.10-nodejs18-slim` | 3.10.11 | 18.15.0 | slim
-`python3.10-nodejs18-alpine` | 3.10.11 | 18.15.0 | alpine
+`python3.10-nodejs18` | 3.10.11 | 18.16.0 | buster
+`python3.10-nodejs18-bullseye` | 3.10.11 | 18.16.0 | bullseye
+`python3.10-nodejs18-slim` | 3.10.11 | 18.16.0 | slim
+`python3.10-nodejs18-alpine` | 3.10.11 | 18.16.0 | alpine
 `python3.10-nodejs16` | 3.10.11 | 16.20.0 | buster
 `python3.10-nodejs16-bullseye` | 3.10.11 | 16.20.0 | bullseye
 `python3.10-nodejs16-slim` | 3.10.11 | 16.20.0 | slim
@@ -57,10 +57,10 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs19-bullseye` | 3.9.16 | 19.9.0 | bullseye
 `python3.9-nodejs19-slim` | 3.9.16 | 19.9.0 | slim
 `python3.9-nodejs19-alpine` | 3.9.16 | 19.9.0 | alpine
-`python3.9-nodejs18` | 3.9.16 | 18.15.0 | buster
-`python3.9-nodejs18-bullseye` | 3.9.16 | 18.15.0 | bullseye
-`python3.9-nodejs18-slim` | 3.9.16 | 18.15.0 | slim
-`python3.9-nodejs18-alpine` | 3.9.16 | 18.15.0 | alpine
+`python3.9-nodejs18` | 3.9.16 | 18.16.0 | buster
+`python3.9-nodejs18-bullseye` | 3.9.16 | 18.16.0 | bullseye
+`python3.9-nodejs18-slim` | 3.9.16 | 18.16.0 | slim
+`python3.9-nodejs18-alpine` | 3.9.16 | 18.16.0 | alpine
 `python3.9-nodejs16` | 3.9.16 | 16.20.0 | buster
 `python3.9-nodejs16-bullseye` | 3.9.16 | 16.20.0 | bullseye
 `python3.9-nodejs16-slim` | 3.9.16 | 16.20.0 | slim
@@ -73,10 +73,10 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs19-bullseye` | 3.8.16 | 19.9.0 | bullseye
 `python3.8-nodejs19-slim` | 3.8.16 | 19.9.0 | slim
 `python3.8-nodejs19-alpine` | 3.8.16 | 19.9.0 | alpine
-`python3.8-nodejs18` | 3.8.16 | 18.15.0 | buster
-`python3.8-nodejs18-bullseye` | 3.8.16 | 18.15.0 | bullseye
-`python3.8-nodejs18-slim` | 3.8.16 | 18.15.0 | slim
-`python3.8-nodejs18-alpine` | 3.8.16 | 18.15.0 | alpine
+`python3.8-nodejs18` | 3.8.16 | 18.16.0 | buster
+`python3.8-nodejs18-bullseye` | 3.8.16 | 18.16.0 | bullseye
+`python3.8-nodejs18-slim` | 3.8.16 | 18.16.0 | slim
+`python3.8-nodejs18-alpine` | 3.8.16 | 18.16.0 | alpine
 `python3.8-nodejs16` | 3.8.16 | 16.20.0 | buster
 `python3.8-nodejs16-bullseye` | 3.8.16 | 16.20.0 | bullseye
 `python3.8-nodejs16-slim` | 3.8.16 | 16.20.0 | slim
@@ -89,10 +89,10 @@ Tag | Python version | Node.js version | Distro
 `python3.7-nodejs19-bullseye` | 3.7.16 | 19.9.0 | bullseye
 `python3.7-nodejs19-slim` | 3.7.16 | 19.9.0 | slim
 `python3.7-nodejs19-alpine` | 3.7.16 | 19.9.0 | alpine
-`python3.7-nodejs18` | 3.7.16 | 18.15.0 | buster
-`python3.7-nodejs18-bullseye` | 3.7.16 | 18.15.0 | bullseye
-`python3.7-nodejs18-slim` | 3.7.16 | 18.15.0 | slim
-`python3.7-nodejs18-alpine` | 3.7.16 | 18.15.0 | alpine
+`python3.7-nodejs18` | 3.7.16 | 18.16.0 | buster
+`python3.7-nodejs18-bullseye` | 3.7.16 | 18.16.0 | bullseye
+`python3.7-nodejs18-slim` | 3.7.16 | 18.16.0 | slim
+`python3.7-nodejs18-alpine` | 3.7.16 | 18.16.0 | alpine
 `python3.7-nodejs16` | 3.7.16 | 16.20.0 | buster
 `python3.7-nodejs16-bullseye` | 3.7.16 | 16.20.0 | bullseye
 `python3.7-nodejs16-slim` | 3.7.16 | 16.20.0 | slim
