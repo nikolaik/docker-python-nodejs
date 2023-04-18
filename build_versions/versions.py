@@ -27,9 +27,7 @@ def _fetch_tags(package, page=1):
     result.raise_for_status()
     data = result.json()
     tags = [tag["name"] for tag in data["results"]]
-    if not data["next"]:
-        return tags
-    return tags + _fetch_tags(package, page=page + 1)
+    return tags + _fetch_tags(package, page=page + 1) if data["next"] else tags
 
 
 def _latest_patch(tags, ver, patch_pattern, distro):

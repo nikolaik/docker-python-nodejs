@@ -65,4 +65,8 @@ def generate_config(new_or_updated: list, trigger: str):
     write_config(config)
 
     print("\n# New or updated versions:")
-    print("Nothing" if not new_or_updated else "\n".join(version["key"] for version in new_or_updated))
+    print(
+        "\n".join(version["key"] for version in new_or_updated)
+        if new_or_updated
+        else "Nothing"
+    )

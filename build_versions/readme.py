@@ -8,11 +8,16 @@ def update_readme_tags_table(versions, dry_run=False):
         readme = fp.read()
 
     headings = ["Tag", "Python version", "Node.js version", "Distro"]
-    rows = []
-    for v in versions:
-        rows.append([f"`{v['key']}`", v["python_canonical"], v["nodejs_canonical"], v["distro"]])
-
-    head = f"{' | '.join(headings)}\n{' | '.join(['---' for h in headings])}"
+    rows = [
+        [
+            f"`{v['key']}`",
+            v["python_canonical"],
+            v["nodejs_canonical"],
+            v["distro"],
+        ]
+        for v in versions
+    ]
+    head = f"{' | '.join(headings)}\n{' | '.join(['---' for _ in headings])}"
     body = "\n".join([" | ".join(row) for row in rows])
     table = f"{head}\n{body}\n"
 
