@@ -7,7 +7,11 @@
       "python_image": "3.11.3-buster",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs20-bullseye",
@@ -16,7 +20,11 @@
       "python_image": "3.11.3-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs20-slim",
@@ -25,7 +33,11 @@
       "python_image": "3.11.3-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs20-alpine",
@@ -34,7 +46,10 @@
       "python_image": "3.11.3-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.11-nodejs19",
@@ -43,7 +58,11 @@
       "python_image": "3.11.3-buster",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs19-bullseye",
@@ -52,7 +71,11 @@
       "python_image": "3.11.3-bullseye",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs19-slim",
@@ -61,7 +84,11 @@
       "python_image": "3.11.3-slim",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs19-alpine",
@@ -70,7 +97,10 @@
       "python_image": "3.11.3-alpine",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.11-nodejs18",
@@ -79,7 +109,11 @@
       "python_image": "3.11.3-buster",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs18-bullseye",
@@ -88,7 +122,11 @@
       "python_image": "3.11.3-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs18-slim",
@@ -97,7 +135,11 @@
       "python_image": "3.11.3-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs18-alpine",
@@ -106,7 +148,10 @@
       "python_image": "3.11.3-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.11-nodejs16",
@@ -115,7 +160,11 @@
       "python_image": "3.11.3-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs16-bullseye",
@@ -124,7 +173,11 @@
       "python_image": "3.11.3-bullseye",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs16-slim",
@@ -133,7 +186,11 @@
       "python_image": "3.11.3-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.11-nodejs16-alpine",
@@ -142,7 +199,10 @@
       "python_image": "3.11.3-alpine",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.10-nodejs20",
@@ -151,7 +211,11 @@
       "python_image": "3.10.11-buster",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs20-bullseye",
@@ -160,7 +224,11 @@
       "python_image": "3.10.11-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs20-slim",
@@ -169,7 +237,11 @@
       "python_image": "3.10.11-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs20-alpine",
@@ -178,7 +250,10 @@
       "python_image": "3.10.11-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.10-nodejs19",
@@ -187,7 +262,11 @@
       "python_image": "3.10.11-buster",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs19-bullseye",
@@ -196,7 +275,11 @@
       "python_image": "3.10.11-bullseye",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs19-slim",
@@ -205,7 +288,11 @@
       "python_image": "3.10.11-slim",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs19-alpine",
@@ -214,7 +301,10 @@
       "python_image": "3.10.11-alpine",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.10-nodejs18",
@@ -223,7 +313,11 @@
       "python_image": "3.10.11-buster",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs18-bullseye",
@@ -232,7 +326,11 @@
       "python_image": "3.10.11-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs18-slim",
@@ -241,7 +339,11 @@
       "python_image": "3.10.11-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs18-alpine",
@@ -250,7 +352,10 @@
       "python_image": "3.10.11-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.10-nodejs16",
@@ -259,7 +364,11 @@
       "python_image": "3.10.11-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs16-bullseye",
@@ -268,7 +377,11 @@
       "python_image": "3.10.11-bullseye",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs16-slim",
@@ -277,7 +390,11 @@
       "python_image": "3.10.11-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.10-nodejs16-alpine",
@@ -286,7 +403,10 @@
       "python_image": "3.10.11-alpine",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.9-nodejs20",
@@ -295,7 +415,11 @@
       "python_image": "3.9.16-buster",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs20-bullseye",
@@ -304,7 +428,11 @@
       "python_image": "3.9.16-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs20-slim",
@@ -313,7 +441,11 @@
       "python_image": "3.9.16-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs20-alpine",
@@ -322,7 +454,10 @@
       "python_image": "3.9.16-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.9-nodejs19",
@@ -331,7 +466,11 @@
       "python_image": "3.9.16-buster",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs19-bullseye",
@@ -340,7 +479,11 @@
       "python_image": "3.9.16-bullseye",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs19-slim",
@@ -349,7 +492,11 @@
       "python_image": "3.9.16-slim",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs19-alpine",
@@ -358,7 +505,10 @@
       "python_image": "3.9.16-alpine",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.9-nodejs18",
@@ -367,7 +517,11 @@
       "python_image": "3.9.16-buster",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs18-bullseye",
@@ -376,7 +530,11 @@
       "python_image": "3.9.16-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs18-slim",
@@ -385,7 +543,11 @@
       "python_image": "3.9.16-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs18-alpine",
@@ -394,7 +556,10 @@
       "python_image": "3.9.16-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.9-nodejs16",
@@ -403,7 +568,11 @@
       "python_image": "3.9.16-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs16-bullseye",
@@ -412,7 +581,11 @@
       "python_image": "3.9.16-bullseye",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs16-slim",
@@ -421,7 +594,11 @@
       "python_image": "3.9.16-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.9-nodejs16-alpine",
@@ -430,7 +607,10 @@
       "python_image": "3.9.16-alpine",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.8-nodejs20",
@@ -439,7 +619,11 @@
       "python_image": "3.8.16-buster",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs20-bullseye",
@@ -448,7 +632,11 @@
       "python_image": "3.8.16-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs20-slim",
@@ -457,7 +645,11 @@
       "python_image": "3.8.16-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs20-alpine",
@@ -466,7 +658,10 @@
       "python_image": "3.8.16-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.8-nodejs19",
@@ -475,7 +670,11 @@
       "python_image": "3.8.16-buster",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs19-bullseye",
@@ -484,7 +683,11 @@
       "python_image": "3.8.16-bullseye",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs19-slim",
@@ -493,7 +696,11 @@
       "python_image": "3.8.16-slim",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs19-alpine",
@@ -502,7 +709,10 @@
       "python_image": "3.8.16-alpine",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.8-nodejs18",
@@ -511,7 +721,11 @@
       "python_image": "3.8.16-buster",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs18-bullseye",
@@ -520,7 +734,11 @@
       "python_image": "3.8.16-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs18-slim",
@@ -529,7 +747,11 @@
       "python_image": "3.8.16-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs18-alpine",
@@ -538,7 +760,10 @@
       "python_image": "3.8.16-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.8-nodejs16",
@@ -547,7 +772,11 @@
       "python_image": "3.8.16-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs16-bullseye",
@@ -556,7 +785,11 @@
       "python_image": "3.8.16-bullseye",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs16-slim",
@@ -565,7 +798,11 @@
       "python_image": "3.8.16-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.8-nodejs16-alpine",
@@ -574,7 +811,10 @@
       "python_image": "3.8.16-alpine",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.7-nodejs20",
@@ -583,7 +823,11 @@
       "python_image": "3.7.16-buster",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs20-bullseye",
@@ -592,7 +836,11 @@
       "python_image": "3.7.16-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs20-slim",
@@ -601,7 +849,11 @@
       "python_image": "3.7.16-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs20-alpine",
@@ -610,7 +862,10 @@
       "python_image": "3.7.16-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.1.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.7-nodejs19",
@@ -619,7 +874,11 @@
       "python_image": "3.7.16-buster",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs19-bullseye",
@@ -628,7 +887,11 @@
       "python_image": "3.7.16-bullseye",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs19-slim",
@@ -637,7 +900,11 @@
       "python_image": "3.7.16-slim",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs19-alpine",
@@ -646,7 +913,10 @@
       "python_image": "3.7.16-alpine",
       "nodejs": "19",
       "nodejs_canonical": "19.9.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.7-nodejs18",
@@ -655,7 +925,11 @@
       "python_image": "3.7.16-buster",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs18-bullseye",
@@ -664,7 +938,11 @@
       "python_image": "3.7.16-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs18-slim",
@@ -673,7 +951,11 @@
       "python_image": "3.7.16-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs18-alpine",
@@ -682,7 +964,10 @@
       "python_image": "3.7.16-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.16.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     },
     {
       "key": "python3.7-nodejs16",
@@ -691,7 +976,11 @@
       "python_image": "3.7.16-buster",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "buster"
+      "distro": "buster",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs16-bullseye",
@@ -700,7 +989,11 @@
       "python_image": "3.7.16-bullseye",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "bullseye"
+      "distro": "bullseye",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs16-slim",
@@ -709,7 +1002,11 @@
       "python_image": "3.7.16-slim",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "slim"
+      "distro": "slim",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ]
     },
     {
       "key": "python3.7-nodejs16-alpine",
@@ -718,7 +1015,10 @@
       "python_image": "3.7.16-alpine",
       "nodejs": "16",
       "nodejs_canonical": "16.20.0",
-      "distro": "alpine"
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
     }
   ]
 }
