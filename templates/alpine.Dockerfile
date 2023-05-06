@@ -38,5 +38,4 @@ RUN python -m venv $VENV && $VENV/bin/pip install -U pip wheel
 COPY --from=builder /*.whl /
 RUN $VENV/bin/pip install /*.whl && rm /*.whl
 {% endif %} \
-# FIXME: Pin poetry version awaiting new dulwich release
-RUN $VENV/bin/pip install poetry==1.1.15 && ln -s $VENV/bin/poetry /usr/local/bin/poetry
+RUN $VENV/bin/pip install poetry && ln -s $VENV/bin/poetry /usr/local/bin/poetry
