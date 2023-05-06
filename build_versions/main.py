@@ -23,7 +23,7 @@ def main(args):
     if args.ci_matrix:
         generate_matrix(new_or_updated, args.ci_event)
 
-    if not new_or_updated and not args.ci_config:
+    if not new_or_updated and not args.ci_matrix:
         logger.info("No new or updated versions")
         return
 
