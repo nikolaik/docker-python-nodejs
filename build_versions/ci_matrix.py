@@ -21,6 +21,7 @@ def generate_matrix(new_or_updated: list, ci_event: str):
         logger.info("\n# Scheduled run with no new or updated versions. Doing nothing.")
         return
 
-    _github_action_set_output("MATRIX", json.dumps({"include": new_or_updated}))
+    matrix = json.dumps({"include": new_or_updated}) if new_or_updated else ""
+    _github_action_set_output("MATRIX", matrix)
     logger.info("\n# New or updated versions:")
     logger.info("Nothing" if not new_or_updated else "\n".join(version["key"] for version in new_or_updated))
