@@ -19,6 +19,5 @@ RUN \
   apt-get install -yqq nodejs=$(apt-cache show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
-  npm i -g npm@^{{ npm_version }} && \
   wget -qO- https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - && \
   rm -rf /var/lib/apt/lists/*

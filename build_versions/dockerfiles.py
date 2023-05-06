@@ -25,10 +25,7 @@ def _render_template(template_name, **context):
 def render_dockerfile(version, node_gpg_keys):
     distro = "debian" if version["distro"] != "alpine" else version["distro"]
 
-    node_major_version = 15
     context = {
-        # NPM: Hold back on v8 for nodejs<15
-        "npm_version": "6" if int(version["nodejs"]) < node_major_version else "8",
         "now": datetime.utcnow().isoformat()[:-7],
         "node_gpg_keys": node_gpg_keys,
         **version,
