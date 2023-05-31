@@ -1,23 +1,50 @@
 import argparse
 import logging
+from typing import cast
 
 from build_versions.ci_matrix import generate_matrix
 from build_versions.dockerfiles import render_dockerfile_with_context
 from build_versions.logger import init_logging
-from build_versions.readme import update_readme_tags_table
+from build_versions.readme import format_supported_versions, update_dynamic_readme
 from build_versions.settings import DISTROS
-from build_versions.versions import decide_version_combinations, find_new_or_updated, load_versions, persist_versions
+from build_versions.versions import (
+    decide_version_combinations,
+    fetch_supported_nodejs_versions,
+    find_new_or_updated,
+    load_versions,
+    persist_versions,
+    scrape_supported_python_versions,
+)
 
 logger = logging.getLogger("dpn")
 
 
-def main(args):
+class CLIArgs(argparse.Namespace):
+    dry_run: bool
+    distros: list[str]
+    ci_matrix: bool
+    dockerfile_with_context: str
+    ci_event: str
+    release: bool
+    force: bool
+    verbose: bool
+
+
+def main(args: CLIArgs):
+    if args.dry_run:
+        logger.debug("Dry run, outputing only.")
+
     if args.dockerfile_with_context:
         render_dockerfile_with_context(args.dockerfile_with_context, args.dry_run)
         return
 
     current_versions = load_versions()
-    versions = decide_version_combinations(args.distros)
+    suported_python_versions = scrape_supported_python_versions()
+    suported_nodejs_versions = fetch_supported_nodejs_versions()
+    supported_versions = format_supported_versions(suported_python_versions, suported_nodejs_versions)
+    logger.debug(f"Found the following supported versions:\n{supported_versions}")
+
+    versions = decide_version_combinations(args.distros, suported_python_versions, suported_nodejs_versions)
     new_or_updated = find_new_or_updated(current_versions, versions, args.force)
 
     if args.ci_matrix:
@@ -29,10 +56,10 @@ def main(args):
 
     if args.release:
         persist_versions(versions, args.dry_run)
-        update_readme_tags_table(versions, args.dry_run)
+        update_dynamic_readme(versions, suported_python_versions, suported_nodejs_versions, args.dry_run)
 
 
-def parse_args():
+def parse_args() -> CLIArgs:
     parser = argparse.ArgumentParser(usage="🐳 Build Python with Node.js docker images")
     parser.add_argument(
         "-d",
@@ -61,7 +88,7 @@ def parse_args():
     parser.add_argument("--force", action="store_true", help="Force build all versions (even old)")
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
 
-    return parser.parse_args()
+    return cast(CLIArgs, parser.parse_args())
 
 
 if __name__ == "__main__":

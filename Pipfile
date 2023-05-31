@@ -4,16 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-black = "==23.3.*"
+black = "==23.3.0"
 pytest = "*"
 pre-commit = "*"
-ruff = "*"
+ruff = "==0.0.270"
 
 [packages]
 requests = "*"
 semver = "*"
 beautifulsoup4 = "*"
-pyyaml = "*"
 jinja2 = "*"
 
 [requires]

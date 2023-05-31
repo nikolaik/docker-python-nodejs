@@ -7,7 +7,7 @@ Last updated by bot: 2023-05-17
 
 The `latest` tag is currently:
 
-- Node: 20.x
+- Node.js: 20.x
 - npm: 9.x
 - yarn: stable
 - Python: latest
@@ -18,6 +18,8 @@ The `latest` tag is currently:
 ## 🏷 Tags
 
 To use a specific combination of Python and Node.js see the following table of available image tags.
+
+<!-- TAGS_START -->
 
 Tag | Python version | Node.js version | Distro | Platforms
 --- | --- | --- | --- | ---
@@ -102,7 +104,32 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.7-nodejs16-slim` | 3.7.16 | 16.20.0 | slim | linux/amd64, linux/arm64
 `python3.7-nodejs16-alpine` | 3.7.16 | 16.20.0 | alpine | linux/amd64
 
+<!-- TAGS_END -->
+
 Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions/main.py`](./build_versions/main.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
+
+## Supported versions
+
+<!-- SUPPORTED_VERSIONS_START -->
+
+Python version | Start | End
+--- | --- | ---
+3.11 | 2022-10-24 | 2027-10
+3.10 | 2021-10-04 | 2026-10
+3.9 | 2020-10-05 | 2025-10
+3.8 | 2019-10-14 | 2024-10
+3.7 | 2018-06-27 | 2023-06-27
+
+Node.js version | Start | End
+--- | --- | ---
+v20 | 2023-04-18 | 2026-04-30
+v19 | 2022-10-18 | 2023-06-01
+v18 | 2022-04-19 | 2025-04-30
+v16 | 2021-04-20 | 2023-09-11
+
+<!-- SUPPORTED_VERSIONS_END -->
+
+Versions are kept up to date using official sources. For python we scrape the _Supported Versions_ table at [devguide.python.org/versions](https://devguide.python.org/versions/#supported-versions) and for Node.js we fetch the release schedule JSON from [github.com/nodejs/Release](https://github.com/nodejs/Release/blob/main/schedule.json).
 
 ## Typical tasks
 
