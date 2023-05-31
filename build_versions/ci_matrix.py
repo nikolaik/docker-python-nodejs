@@ -7,12 +7,14 @@ CI_EVENT_SCHEDULED = "scheduled"
 
 logger = logging.getLogger("dpn")
 
+GITHUB_OUTPUT = os.getenv("GITHUB_OUTPUT", "")
+
 
 def _github_action_set_output(key: str, value: str):
     """Write
     https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
     """
-    with Path(os.getenv("GITHUB_OUTPUT")).open("a") as fp:
+    with Path(GITHUB_OUTPUT).open("a") as fp:
         fp.write(f"{key}={value}")
 
 
