@@ -40,5 +40,6 @@ def render_dockerfile_with_context(config_json: str, dry_run: bool = False) -> N
     if not dry_run:
         if not DOCKERFILES_PATH.exists():
             DOCKERFILES_PATH.mkdir()
-        with (DOCKERFILES_PATH / filename).open("w") as fp:
-            fp.write(dockerfile)
+
+        dockerfile_path = DOCKERFILES_PATH / filename
+        dockerfile_path.write_text(dockerfile)
