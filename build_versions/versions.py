@@ -1,3 +1,4 @@
+import dataclasses
 import json
 import logging
 import re
@@ -19,13 +20,48 @@ logger = logging.getLogger("dpn")
 
 
 @dataclass
-class LanguageVersion:
+class SupportedVersion:
+    """A supported version of either Python or Node.js with start and end of support dates"""
+
     start: str
     end: str
     version: str
 
 
-def _fetch_tags(package, page=1):
+@dataclass
+class LanguageVersion:
+    canonical_version: str
+    key: str
+    image: str | None = None
+    distro: str | None = None
+
+
+@dataclass
+class NodeJsVersion(LanguageVersion):
+    pass
+
+
+@dataclass
+class PythonVersion(LanguageVersion):
+    canonical_version: str
+    key: str
+    image: str
+    distro: str
+
+
+@dataclass
+class BuildVersion:
+    key: str
+    python: str
+    python_canonical: str
+    python_image: str
+    nodejs: str
+    nodejs_canonical: str
+    distro: str
+    platforms: list[str]
+
+
+def _fetch_tags(package: str, page=1) -> list[str]:
     """Fetch available docker tags."""
     result = requests.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
@@ -40,12 +76,12 @@ def _fetch_tags(package, page=1):
     return tags + _fetch_tags(package, page=page + 1)
 
 
-def _latest_patch(tags, ver, patch_pattern, distro):
+def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern, distro: str):
     tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
     return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else ""
 
 
-def scrape_supported_python_versions() -> list[LanguageVersion]:
+def scrape_supported_python_versions() -> list[SupportedVersion]:
     """Scrape supported python versions (risky)."""
     versions = []
     version_table_row_selector = "#supported-versions tbody tr"
@@ -58,12 +94,12 @@ def scrape_supported_python_versions() -> list[LanguageVersion]:
     for ver in version_table_rows:
         branch, _, _, first_release, end_of_life, _ = (v.text for v in ver.find_all("td"))
         if first_release <= todays_date <= end_of_life:
-            versions.append(LanguageVersion(version=branch, start=first_release, end=end_of_life))
+            versions.append(SupportedVersion(version=branch, start=first_release, end=end_of_life))
 
     return versions
 
 
-def fetch_supported_nodejs_versions() -> list[LanguageVersion]:
+def fetch_supported_nodejs_versions() -> list[SupportedVersion]:
     """Download list of official releases, skipping unreleased and unsupported versions"""
     result = requests.get("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json", timeout=10.0)
     release_schedule = result.json()
@@ -71,12 +107,12 @@ def fetch_supported_nodejs_versions() -> list[LanguageVersion]:
     versions = []
     for ver, detail in release_schedule.items():
         if detail["start"] <= todays_date <= detail["end"]:
-            versions.append(LanguageVersion(version=ver, start=detail["start"], end=detail["end"]))
+            versions.append(SupportedVersion(version=ver, start=detail["start"], end=detail["end"]))
 
     return versions
 
 
-def decide_python_versions(distros, supported_versions: list[LanguageVersion]):
+def decide_python_versions(distros: list[str], supported_versions: list[SupportedVersion]) -> list[PythonVersion]:
     python_patch_re = "|".join([rf"^(\d+\.\d+\.\d+-{distro})$" for distro in distros])
     python_wanted_tag_pattern = re.compile(python_patch_re)
 
@@ -84,7 +120,7 @@ def decide_python_versions(distros, supported_versions: list[LanguageVersion]):
     logger.debug("Fetching tags for python")
     tags = [tag for tag in _fetch_tags("python") if python_wanted_tag_pattern.match(tag)]
 
-    versions = []
+    versions: list[PythonVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version
         for distro in distros:
@@ -92,70 +128,78 @@ def decide_python_versions(distros, supported_versions: list[LanguageVersion]):
             if not canonical_image:
                 logger.warning(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
                 continue
-            canonical_version = canonical_image.replace(f"-{distro}", "")
+
             versions.append(
-                {"canonical_version": canonical_version, "image": canonical_image, "key": ver, "distro": distro},
+                PythonVersion(
+                    canonical_version=canonical_image.replace(f"-{distro}", ""),
+                    image=canonical_image,
+                    key=ver,
+                    distro=distro,
+                ),
             )
 
-    return sorted(versions, key=lambda v: by_semver_key(v["canonical_version"]), reverse=True)
+    return sorted(versions, key=lambda v: by_semver_key(v.canonical_version), reverse=True)
 
 
-def decide_nodejs_versions(supported_versions: list[LanguageVersion]):
+def decide_nodejs_versions(supported_versions: list[SupportedVersion]) -> list[NodeJsVersion]:
     nodejs_patch_re = rf"^(\d+\.\d+\.\d+-{DEFAULT_DISTRO})$"
     nodejs_wanted_tag_pattern = re.compile(nodejs_patch_re)
 
     logger.debug("Fetching tags for node")
     tags = [tag for tag in _fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag)]
 
-    versions = []
+    versions: list[NodeJsVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version[1:]  # Remove v prefix
         canonical_image = _latest_patch(tags, ver, nodejs_wanted_tag_pattern, DEFAULT_DISTRO)
         if not canonical_image:
             logger.warning(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
             continue
-        canonical_version = canonical_image.replace(f"-{DEFAULT_DISTRO}", "")
-        versions.append({"canonical_version": canonical_version, "key": ver})
 
-    return sorted(versions, key=lambda v: by_semver_key(v["canonical_version"]), reverse=True)
+        versions.append(NodeJsVersion(canonical_version=canonical_image.replace(f"-{DEFAULT_DISTRO}", ""), key=ver))
+
+    return sorted(versions, key=lambda v: by_semver_key(v.canonical_version), reverse=True)
 
 
-def version_combinations(nodejs_versions, python_versions):
-    versions = []
+def version_combinations(
+    nodejs_versions: list[NodeJsVersion],
+    python_versions: list[PythonVersion],
+) -> list[BuildVersion]:
+    versions: list[BuildVersion] = []
     for p in python_versions:
         for n in nodejs_versions:
-            distro = f'-{p["distro"]}' if p["distro"] != DEFAULT_DISTRO else ""
-            key = f'python{p["key"]}-nodejs{n["key"]}{distro}'
+            distro = f"-{p.distro}" if p.distro != DEFAULT_DISTRO else ""
+            key = f"python{p.key}-nodejs{n.key}{distro}"
             platforms = DEFAULT_PLATFORMS
             # FIXME: Enable when:
             #  - https://github.com/nodejs/node/pull/45756 is fixed
             #  - https://github.com/nodejs/unofficial-builds adds builds for musl + arm64
-            if p["distro"] == "alpine":
+            if p.distro == "alpine":
                 platforms = ["linux/amd64"]
             versions.append(
-                {
-                    "key": key,
-                    "python": p["key"],
-                    "python_canonical": p["canonical_version"],
-                    "python_image": p["image"],
-                    "nodejs": n["key"],
-                    "nodejs_canonical": n["canonical_version"],
-                    "distro": p["distro"],
-                    "platforms": platforms,
-                },
+                BuildVersion(
+                    key=key,
+                    python=p.key,
+                    python_canonical=p.canonical_version,
+                    python_image=p.image,
+                    nodejs=n.key,
+                    nodejs_canonical=n.canonical_version,
+                    distro=p.distro,
+                    platforms=platforms,
+                ),
             )
 
-    versions = sorted(versions, key=lambda v: DISTROS.index(v["distro"]))
-    versions = sorted(versions, key=lambda v: by_semver_key(v["nodejs_canonical"]), reverse=True)
-    versions = sorted(versions, key=lambda v: by_semver_key(v["python_canonical"]), reverse=True)
+    versions = sorted(versions, key=lambda v: DISTROS.index(v.distro))
+    versions = sorted(versions, key=lambda v: by_semver_key(v.nodejs_canonical), reverse=True)
+    versions = sorted(versions, key=lambda v: by_semver_key(v.python_canonical), reverse=True)
     return versions
 
 
 def decide_version_combinations(
-    distros,
-    supported_python_versions: list[LanguageVersion],
-    supported_node_versions: list[LanguageVersion],
-):
+    distros: list[str],
+    supported_python_versions: list[SupportedVersion],
+    supported_node_versions: list[SupportedVersion],
+) -> list[BuildVersion]:
     distros = list(set(distros))
     # Use the latest patch version from each minor
     python_versions = decide_python_versions(distros, supported_python_versions)
@@ -164,17 +208,19 @@ def decide_version_combinations(
     return version_combinations(nodejs_versions, python_versions)
 
 
-def persist_versions(versions, dry_run=False):
+def persist_versions(versions: list[BuildVersion], dry_run=False):
     if dry_run:
         logger.debug(versions)
         return
     with VERSIONS_PATH.open("w+") as fp:
-        json.dump({"versions": versions}, fp, indent=2)
+        version_dicts = [dataclasses.asdict(version) for version in versions]
+        json.dump({"versions": version_dicts}, fp, indent=2)
 
 
-def load_versions():
+def load_versions() -> list[BuildVersion]:
     with VERSIONS_PATH.open() as fp:
-        return json.load(fp)["versions"]
+        version_dicts = json.load(fp)["versions"]
+        return [BuildVersion(**version) for version in version_dicts]
 
 
 def find_new_or_updated(current_versions, versions, force=False):
