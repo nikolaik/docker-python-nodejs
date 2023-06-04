@@ -61,7 +61,7 @@ class BuildVersion:
     platforms: list[str]
 
 
-def _fetch_tags(package: str, page=1) -> list[str]:
+def _fetch_tags(package: str, page: int = 1) -> list[str]:
     """Fetch available docker tags."""
     result = requests.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
@@ -76,9 +76,9 @@ def _fetch_tags(package: str, page=1) -> list[str]:
     return tags + _fetch_tags(package, page=page + 1)
 
 
-def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern, distro: str):
+def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern, distro: str) -> str | None:
     tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
-    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else ""
+    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else None
 
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
@@ -208,7 +208,7 @@ def decide_version_combinations(
     return version_combinations(nodejs_versions, python_versions)
 
 
-def persist_versions(versions: list[BuildVersion], dry_run=False):
+def persist_versions(versions: list[BuildVersion], dry_run: bool = False) -> None:
     if dry_run:
         logger.debug(versions)
         return
@@ -223,18 +223,22 @@ def load_versions() -> list[BuildVersion]:
         return [BuildVersion(**version) for version in version_dicts]
 
 
-def find_new_or_updated(current_versions, versions, force=False):
+def find_new_or_updated(
+    current_versions: list[BuildVersion],
+    versions: list[BuildVersion],
+    force: bool = False,
+) -> list[BuildVersion]:
     if force:
         logger.warning("Generating full build matrix because --force is set")
 
-    current_versions = {ver["key"]: ver for ver in current_versions}
-    versions = {ver["key"]: ver for ver in versions}
-    new_or_updated = []
+    current_versions_dict = {ver.key: ver for ver in current_versions}
+    versions_dict = {ver.key: ver for ver in versions}
+    new_or_updated: list[BuildVersion] = []
 
-    for key, ver in versions.items():
+    for key, ver in versions_dict.items():
         # does key exist and are version dicts equal?
-        updated = key in current_versions and ver != current_versions[key]
-        new = key not in current_versions
+        updated = key in current_versions_dict and ver != current_versions_dict[key]
+        new = key not in current_versions_dict
         if new or updated or force:
             new_or_updated.append(ver)
 
