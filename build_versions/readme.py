@@ -19,7 +19,7 @@ def _replace(name: str, replacement: str, document: str) -> str:
     start = f"<!-- {name}_START -->\n"
     end = f"\n<!-- {name}_END -->"
     repl = f"{start}\n{replacement}\n{end}"
-    return re.sub(f"{start}(.+?){end}", repl, document, flags=re.MULTILINE | re.DOTALL)
+    return re.sub(f"{start}(.*?){end}", repl, document, flags=re.MULTILINE | re.DOTALL)
 
 
 def update_dynamic_readme(
@@ -30,8 +30,7 @@ def update_dynamic_readme(
 ) -> None:
     """Read out current README, format fresh README, write back possible changes"""
     readme_path = Path("README.md")
-    with readme_path.open() as fp:
-        readme = fp.read()
+    readme = readme_path.read_text()
 
     readme_new = format_readme(versions, python_versions, node_versions, readme)
     if readme == readme_new:
@@ -39,8 +38,7 @@ def update_dynamic_readme(
         return
 
     if not dry_run:
-        with readme_path.open("w+") as fp:
-            fp.write(readme_new)
+        readme_path.write_text(readme_new)
     else:
         print(readme_new)
 
