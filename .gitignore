@@ -4,3 +4,5 @@ dockerfiles/
 .circleci/config_generated.yml
 version_config.json
 __pycache__
+.coverage
+coverage.xml
