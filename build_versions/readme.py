@@ -26,7 +26,7 @@ def update_dynamic_readme(
     versions: "list[BuildVersion]",
     python_versions: "list[SupportedVersion]",
     node_versions: "list[SupportedVersion]",
-    dry_run=False,
+    dry_run: bool = False,
 ) -> None:
     """Read out current README, format fresh README, write back possible changes"""
     readme_path = Path("README.md")

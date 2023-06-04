@@ -30,7 +30,7 @@ class CLIArgs(argparse.Namespace):
     verbose: bool
 
 
-def main(args: CLIArgs):
+def main(args: CLIArgs) -> None:
     if args.dry_run:
         logger.debug("Dry run, outputing only.")
 

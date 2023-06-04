@@ -7,8 +7,8 @@ ignore = [
   "FBT002", # Allow boolean traps
   "G004", # Allow using f-strings when logging
   "D", # FIXME: docs
-  "ANN", # FIXME: typing
   "TD", # Allow TODOs
+  "FBT001" # Allow boolean function args
 ]
 
 [tool.ruff.per-file-ignores]
