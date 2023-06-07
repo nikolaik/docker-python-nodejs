@@ -30,7 +30,7 @@ COPY --from=builder /node-v{{ nodejs_canonical }}-linux-x64-musl /usr/local
 RUN pip install -U pip && pip install pipenv
 
 # Poetry
-# Mimic what install-poetry.py does without the flexibility (platforms, install sources, etc).
+# Mimic what https://install.python-poetry.org does without the flexibility (platforms, install sources, etc).
 ENV VENV=/opt/poetryvenv
 RUN python -m venv $VENV && $VENV/bin/pip install -U pip wheel
 {% if python == "3.7" or python == "3.8" %}
