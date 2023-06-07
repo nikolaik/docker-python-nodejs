@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2023-05-17
+Last updated by bot: 2023-06-07
 
 The `latest` tag is currently:
 
@@ -27,10 +27,6 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.11-nodejs20-bullseye` | 3.11.3 | 20.2.0 | bullseye | linux/amd64, linux/arm64
 `python3.11-nodejs20-slim` | 3.11.3 | 20.2.0 | slim | linux/amd64, linux/arm64
 `python3.11-nodejs20-alpine` | 3.11.3 | 20.2.0 | alpine | linux/amd64
-`python3.11-nodejs19` | 3.11.3 | 19.9.0 | buster | linux/amd64, linux/arm64
-`python3.11-nodejs19-bullseye` | 3.11.3 | 19.9.0 | bullseye | linux/amd64, linux/arm64
-`python3.11-nodejs19-slim` | 3.11.3 | 19.9.0 | slim | linux/amd64, linux/arm64
-`python3.11-nodejs19-alpine` | 3.11.3 | 19.9.0 | alpine | linux/amd64
 `python3.11-nodejs18` | 3.11.3 | 18.16.0 | buster | linux/amd64, linux/arm64
 `python3.11-nodejs18-bullseye` | 3.11.3 | 18.16.0 | bullseye | linux/amd64, linux/arm64
 `python3.11-nodejs18-slim` | 3.11.3 | 18.16.0 | slim | linux/amd64, linux/arm64
@@ -43,10 +39,6 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.10-nodejs20-bullseye` | 3.10.11 | 20.2.0 | bullseye | linux/amd64, linux/arm64
 `python3.10-nodejs20-slim` | 3.10.11 | 20.2.0 | slim | linux/amd64, linux/arm64
 `python3.10-nodejs20-alpine` | 3.10.11 | 20.2.0 | alpine | linux/amd64
-`python3.10-nodejs19` | 3.10.11 | 19.9.0 | buster | linux/amd64, linux/arm64
-`python3.10-nodejs19-bullseye` | 3.10.11 | 19.9.0 | bullseye | linux/amd64, linux/arm64
-`python3.10-nodejs19-slim` | 3.10.11 | 19.9.0 | slim | linux/amd64, linux/arm64
-`python3.10-nodejs19-alpine` | 3.10.11 | 19.9.0 | alpine | linux/amd64
 `python3.10-nodejs18` | 3.10.11 | 18.16.0 | buster | linux/amd64, linux/arm64
 `python3.10-nodejs18-bullseye` | 3.10.11 | 18.16.0 | bullseye | linux/amd64, linux/arm64
 `python3.10-nodejs18-slim` | 3.10.11 | 18.16.0 | slim | linux/amd64, linux/arm64
@@ -55,46 +47,34 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.10-nodejs16-bullseye` | 3.10.11 | 16.20.0 | bullseye | linux/amd64, linux/arm64
 `python3.10-nodejs16-slim` | 3.10.11 | 16.20.0 | slim | linux/amd64, linux/arm64
 `python3.10-nodejs16-alpine` | 3.10.11 | 16.20.0 | alpine | linux/amd64
-`python3.9-nodejs20` | 3.9.16 | 20.2.0 | buster | linux/amd64, linux/arm64
-`python3.9-nodejs20-bullseye` | 3.9.16 | 20.2.0 | bullseye | linux/amd64, linux/arm64
-`python3.9-nodejs20-slim` | 3.9.16 | 20.2.0 | slim | linux/amd64, linux/arm64
-`python3.9-nodejs20-alpine` | 3.9.16 | 20.2.0 | alpine | linux/amd64
-`python3.9-nodejs19` | 3.9.16 | 19.9.0 | buster | linux/amd64, linux/arm64
-`python3.9-nodejs19-bullseye` | 3.9.16 | 19.9.0 | bullseye | linux/amd64, linux/arm64
-`python3.9-nodejs19-slim` | 3.9.16 | 19.9.0 | slim | linux/amd64, linux/arm64
-`python3.9-nodejs19-alpine` | 3.9.16 | 19.9.0 | alpine | linux/amd64
-`python3.9-nodejs18` | 3.9.16 | 18.16.0 | buster | linux/amd64, linux/arm64
-`python3.9-nodejs18-bullseye` | 3.9.16 | 18.16.0 | bullseye | linux/amd64, linux/arm64
-`python3.9-nodejs18-slim` | 3.9.16 | 18.16.0 | slim | linux/amd64, linux/arm64
-`python3.9-nodejs18-alpine` | 3.9.16 | 18.16.0 | alpine | linux/amd64
-`python3.9-nodejs16` | 3.9.16 | 16.20.0 | buster | linux/amd64, linux/arm64
-`python3.9-nodejs16-bullseye` | 3.9.16 | 16.20.0 | bullseye | linux/amd64, linux/arm64
-`python3.9-nodejs16-slim` | 3.9.16 | 16.20.0 | slim | linux/amd64, linux/arm64
-`python3.9-nodejs16-alpine` | 3.9.16 | 16.20.0 | alpine | linux/amd64
-`python3.8-nodejs20` | 3.8.16 | 20.2.0 | buster | linux/amd64, linux/arm64
-`python3.8-nodejs20-bullseye` | 3.8.16 | 20.2.0 | bullseye | linux/amd64, linux/arm64
-`python3.8-nodejs20-slim` | 3.8.16 | 20.2.0 | slim | linux/amd64, linux/arm64
-`python3.8-nodejs20-alpine` | 3.8.16 | 20.2.0 | alpine | linux/amd64
-`python3.8-nodejs19` | 3.8.16 | 19.9.0 | buster | linux/amd64, linux/arm64
-`python3.8-nodejs19-bullseye` | 3.8.16 | 19.9.0 | bullseye | linux/amd64, linux/arm64
-`python3.8-nodejs19-slim` | 3.8.16 | 19.9.0 | slim | linux/amd64, linux/arm64
-`python3.8-nodejs19-alpine` | 3.8.16 | 19.9.0 | alpine | linux/amd64
-`python3.8-nodejs18` | 3.8.16 | 18.16.0 | buster | linux/amd64, linux/arm64
-`python3.8-nodejs18-bullseye` | 3.8.16 | 18.16.0 | bullseye | linux/amd64, linux/arm64
-`python3.8-nodejs18-slim` | 3.8.16 | 18.16.0 | slim | linux/amd64, linux/arm64
-`python3.8-nodejs18-alpine` | 3.8.16 | 18.16.0 | alpine | linux/amd64
-`python3.8-nodejs16` | 3.8.16 | 16.20.0 | buster | linux/amd64, linux/arm64
-`python3.8-nodejs16-bullseye` | 3.8.16 | 16.20.0 | bullseye | linux/amd64, linux/arm64
-`python3.8-nodejs16-slim` | 3.8.16 | 16.20.0 | slim | linux/amd64, linux/arm64
-`python3.8-nodejs16-alpine` | 3.8.16 | 16.20.0 | alpine | linux/amd64
+`python3.9-nodejs20` | 3.9.17 | 20.2.0 | buster | linux/amd64, linux/arm64
+`python3.9-nodejs20-bullseye` | 3.9.17 | 20.2.0 | bullseye | linux/amd64, linux/arm64
+`python3.9-nodejs20-slim` | 3.9.17 | 20.2.0 | slim | linux/amd64, linux/arm64
+`python3.9-nodejs20-alpine` | 3.9.17 | 20.2.0 | alpine | linux/amd64
+`python3.9-nodejs18` | 3.9.17 | 18.16.0 | buster | linux/amd64, linux/arm64
+`python3.9-nodejs18-bullseye` | 3.9.17 | 18.16.0 | bullseye | linux/amd64, linux/arm64
+`python3.9-nodejs18-slim` | 3.9.17 | 18.16.0 | slim | linux/amd64, linux/arm64
+`python3.9-nodejs18-alpine` | 3.9.17 | 18.16.0 | alpine | linux/amd64
+`python3.9-nodejs16` | 3.9.17 | 16.20.0 | buster | linux/amd64, linux/arm64
+`python3.9-nodejs16-bullseye` | 3.9.17 | 16.20.0 | bullseye | linux/amd64, linux/arm64
+`python3.9-nodejs16-slim` | 3.9.17 | 16.20.0 | slim | linux/amd64, linux/arm64
+`python3.9-nodejs16-alpine` | 3.9.17 | 16.20.0 | alpine | linux/amd64
+`python3.8-nodejs20` | 3.8.17 | 20.2.0 | buster | linux/amd64, linux/arm64
+`python3.8-nodejs20-bullseye` | 3.8.17 | 20.2.0 | bullseye | linux/amd64, linux/arm64
+`python3.8-nodejs20-slim` | 3.8.17 | 20.2.0 | slim | linux/amd64, linux/arm64
+`python3.8-nodejs20-alpine` | 3.8.17 | 20.2.0 | alpine | linux/amd64
+`python3.8-nodejs18` | 3.8.17 | 18.16.0 | buster | linux/amd64, linux/arm64
+`python3.8-nodejs18-bullseye` | 3.8.17 | 18.16.0 | bullseye | linux/amd64, linux/arm64
+`python3.8-nodejs18-slim` | 3.8.17 | 18.16.0 | slim | linux/amd64, linux/arm64
+`python3.8-nodejs18-alpine` | 3.8.17 | 18.16.0 | alpine | linux/amd64
+`python3.8-nodejs16` | 3.8.17 | 16.20.0 | buster | linux/amd64, linux/arm64
+`python3.8-nodejs16-bullseye` | 3.8.17 | 16.20.0 | bullseye | linux/amd64, linux/arm64
+`python3.8-nodejs16-slim` | 3.8.17 | 16.20.0 | slim | linux/amd64, linux/arm64
+`python3.8-nodejs16-alpine` | 3.8.17 | 16.20.0 | alpine | linux/amd64
 `python3.7-nodejs20` | 3.7.16 | 20.2.0 | buster | linux/amd64, linux/arm64
 `python3.7-nodejs20-bullseye` | 3.7.16 | 20.2.0 | bullseye | linux/amd64, linux/arm64
 `python3.7-nodejs20-slim` | 3.7.16 | 20.2.0 | slim | linux/amd64, linux/arm64
 `python3.7-nodejs20-alpine` | 3.7.16 | 20.2.0 | alpine | linux/amd64
-`python3.7-nodejs19` | 3.7.16 | 19.9.0 | buster | linux/amd64, linux/arm64
-`python3.7-nodejs19-bullseye` | 3.7.16 | 19.9.0 | bullseye | linux/amd64, linux/arm64
-`python3.7-nodejs19-slim` | 3.7.16 | 19.9.0 | slim | linux/amd64, linux/arm64
-`python3.7-nodejs19-alpine` | 3.7.16 | 19.9.0 | alpine | linux/amd64
 `python3.7-nodejs18` | 3.7.16 | 18.16.0 | buster | linux/amd64, linux/arm64
 `python3.7-nodejs18-bullseye` | 3.7.16 | 18.16.0 | bullseye | linux/amd64, linux/arm64
 `python3.7-nodejs18-slim` | 3.7.16 | 18.16.0 | slim | linux/amd64, linux/arm64
@@ -103,6 +83,7 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.7-nodejs16-bullseye` | 3.7.16 | 16.20.0 | bullseye | linux/amd64, linux/arm64
 `python3.7-nodejs16-slim` | 3.7.16 | 16.20.0 | slim | linux/amd64, linux/arm64
 `python3.7-nodejs16-alpine` | 3.7.16 | 16.20.0 | alpine | linux/amd64
+
 
 <!-- TAGS_END -->
 
@@ -123,9 +104,9 @@ Python version | Start | End
 Node.js version | Start | End
 --- | --- | ---
 v20 | 2023-04-18 | 2026-04-30
-v19 | 2022-10-18 | 2023-06-01
 v18 | 2022-04-19 | 2025-04-30
 v16 | 2021-04-20 | 2023-09-11
+
 
 <!-- SUPPORTED_VERSIONS_END -->
 
