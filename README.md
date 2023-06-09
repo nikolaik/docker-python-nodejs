@@ -84,7 +84,6 @@ Tag | Python version | Node.js version | Distro | Platforms
 `python3.7-nodejs16-slim` | 3.7.17 | 16.20.0 | slim | linux/amd64, linux/arm64
 `python3.7-nodejs16-alpine` | 3.7.17 | 16.20.0 | alpine | linux/amd64
 
-
 <!-- TAGS_END -->
 
 Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions/main.py`](./build_versions/main.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
@@ -106,7 +105,6 @@ Node.js version | Start | End
 v20 | 2023-04-18 | 2026-04-30
 v18 | 2022-04-19 | 2025-04-30
 v16 | 2021-04-20 | 2023-09-11
-
 
 <!-- SUPPORTED_VERSIONS_END -->
 
