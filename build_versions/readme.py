@@ -17,7 +17,7 @@ def _format_md_table(columns: list[str], rows: list[list[str]]) -> str:
 
 def _replace(name: str, replacement: str, document: str) -> str:
     start = f"<!-- {name}_START -->\n"
-    end = f"\n<!-- {name}_END -->"
+    end = f"<!-- {name}_END -->"
     repl = f"{start}\n{replacement}\n{end}"
     return re.sub(f"{start}(.*?){end}", repl, document, flags=re.MULTILINE | re.DOTALL)
 
