@@ -24,10 +24,10 @@ def build_version_fixture() -> BuildVersion:
         key="python3.11-nodejs20",
         python="3.11",
         python_canonical="3.11.3",
-        python_image="3.11.3-buster",
+        python_image="3.11.3-bookworm",
         nodejs="20",
         nodejs_canonical="20.2.0",
-        distro="buster",
+        distro="bookworm",
         platforms=[
             "linux/amd64",
             "linux/arm64",
@@ -114,7 +114,7 @@ def python_tags_fixture() -> dict[str, Any]:
         "previous": None,
         "results": [
             {
-                "name": "3.11.4-bullseye",
+                "name": "3.11.4-bookworm",
                 "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
             },
             {
@@ -133,7 +133,7 @@ def node_tags_fixture() -> dict[str, Any]:
         "previous": None,
         "results": [
             {
-                "name": "20.3.0-buster",
+                "name": "20.3.0-bookworm",
                 "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
             },
             {
@@ -161,13 +161,13 @@ def test_decide_version_combinations(python_tags: dict[str, Any], node_tags: dic
     python_version = SupportedVersion(start="2022-10-24", end="2027-10", version="3.11")
     node_version = SupportedVersion(start="2023-04-18", end="2026-04-30", version="v20")
 
-    versions = decide_version_combinations(["bullseye", "alpine"], [python_version], [node_version])
+    versions = decide_version_combinations(["bookworm", "alpine"], [python_version], [node_version])
 
     assert versions
     assert len(versions) == python_tags["count"]
     assert versions[0].nodejs_canonical == "20.3.0"
     assert versions[0].python_canonical == "3.11.4"
-    assert versions[0].distro == "bullseye"
+    assert versions[0].distro == "bookworm"
     assert versions[1].nodejs_canonical == "20.3.0"
     assert versions[1].python_canonical == "3.11.4"
     assert versions[1].distro == "alpine"
