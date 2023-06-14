@@ -108,7 +108,7 @@ v16 | 2021-04-20 | 2023-09-11
 
 <!-- SUPPORTED_VERSIONS_END -->
 
-Versions are kept up to date using official sources. For python we scrape the _Supported Versions_ table at [devguide.python.org/versions](https://devguide.python.org/versions/#supported-versions) and for Node.js we fetch the release schedule JSON from [github.com/nodejs/Release](https://github.com/nodejs/Release/blob/main/schedule.json).
+Versions are kept up to date using official sources. For Python we scrape the _Supported Versions_ table at [devguide.python.org/versions](https://devguide.python.org/versions/#supported-versions) and for Node.js we fetch the release schedule JSON from [github.com/nodejs/Release](https://github.com/nodejs/Release/blob/main/schedule.json).
 
 ## Typical tasks
 
