@@ -25,7 +25,7 @@ def render_dockerfile(version: BuildVersion) -> str:
 
     context = dataclasses.asdict(version) | {
         "now": datetime.utcnow().isoformat()[:-7],
-        "distro": "bullseye" if version.distro == "slim" else version.distro,  # slim is an image variant
+        "distro": "bookworm" if version.distro == "slim" else version.distro,  # slim is an image variant
         "distro_variant": "slim" if version.distro == "slim" else "full",
     }
 
