@@ -1,7 +1,9 @@
 import dataclasses
 import json
 import logging
+from collections.abc import Mapping
 from datetime import datetime
+from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -13,7 +15,7 @@ logger = logging.getLogger("dpn")
 env = Environment(loader=FileSystemLoader("./templates"), autoescape=select_autoescape())
 
 
-def _render_template(template_name: str, context: dict) -> str:
+def _render_template(template_name: str, context: Mapping[str, Any]) -> str:
     template = env.get_template(template_name)
     return template.render(context)
 

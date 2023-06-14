@@ -4,17 +4,15 @@ import logging
 import re
 from dataclasses import dataclass
 from datetime import datetime
-from functools import cmp_to_key
 
 import requests
-import semver
 from bs4 import BeautifulSoup
+from semver.version import Version
 
 from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.utcnow().date().isoformat()
 
-by_semver_key = cmp_to_key(semver.compare)
 
 logger = logging.getLogger("dpn")
 
@@ -76,9 +74,9 @@ def _fetch_tags(package: str, page: int = 1) -> list[str]:
     return tags + _fetch_tags(package, page=page + 1)
 
 
-def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern, distro: str) -> str | None:
+def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern[str], distro: str) -> str | None:
     tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
-    return sorted(tags, key=by_semver_key, reverse=True)[0] if tags else None
+    return sorted(tags, key=Version.parse, reverse=True)[0] if tags else None
 
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
@@ -138,7 +136,7 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
                 ),
             )
 
-    return sorted(versions, key=lambda v: by_semver_key(v.canonical_version), reverse=True)
+    return sorted(versions, key=lambda v: Version.parse(v.canonical_version), reverse=True)
 
 
 def decide_nodejs_versions(supported_versions: list[SupportedVersion]) -> list[NodeJsVersion]:
@@ -158,7 +156,7 @@ def decide_nodejs_versions(supported_versions: list[SupportedVersion]) -> list[N
 
         versions.append(NodeJsVersion(canonical_version=canonical_image.replace(f"-{DEFAULT_DISTRO}", ""), key=ver))
 
-    return sorted(versions, key=lambda v: by_semver_key(v.canonical_version), reverse=True)
+    return sorted(versions, key=lambda v: Version.parse(v.canonical_version), reverse=True)
 
 
 def version_combinations(
@@ -190,8 +188,8 @@ def version_combinations(
             )
 
     versions = sorted(versions, key=lambda v: DISTROS.index(v.distro))
-    versions = sorted(versions, key=lambda v: by_semver_key(v.nodejs_canonical), reverse=True)
-    versions = sorted(versions, key=lambda v: by_semver_key(v.python_canonical), reverse=True)
+    versions = sorted(versions, key=lambda v: Version.parse(v.nodejs_canonical), reverse=True)
+    versions = sorted(versions, key=lambda v: Version.parse(v.python_canonical), reverse=True)
     return versions
 
 
