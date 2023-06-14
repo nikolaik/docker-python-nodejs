@@ -17,3 +17,8 @@ ignore = [
 [tool.black]
 line-length = 120
 target-version = ['py311']
+
+[tool.mypy]
+strict = true
+disallow_any_unimported = true
+no_implicit_optional = true
