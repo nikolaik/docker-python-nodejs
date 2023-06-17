@@ -122,6 +122,7 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
     for supported_version in supported_versions:
         ver = supported_version.version
         for distro in distros:
+            # FIXME: Check for wanted platforms/architectures
             canonical_image = _latest_patch(tags, ver, python_wanted_tag_pattern, distro)
             if not canonical_image:
                 logger.warning(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
