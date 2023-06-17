@@ -1,9 +1,11 @@
 import dataclasses
 import json
 from pathlib import Path
+from typing import Any
 from unittest import mock
 
 import pytest
+import responses
 
 from build_versions.dockerfiles import render_dockerfile_with_context
 from build_versions.readme import update_dynamic_readme
@@ -11,6 +13,7 @@ from build_versions.settings import BASE_PATH, DOCKERFILES_PATH
 from build_versions.versions import (
     BuildVersion,
     SupportedVersion,
+    decide_version_combinations,
     scrape_supported_python_versions,
 )
 
@@ -32,6 +35,7 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
+@pytest.mark.enable_socket()
 def test_scrape_supported_python_versions() -> None:
     versions = scrape_supported_python_versions()
     assert len(versions) > 0
@@ -100,3 +104,66 @@ def test_update_dynamic_readme(build_version: BuildVersion) -> None:
     )
     assert f"{python_version.version} | {python_version.start} | {python_version.end}" in readme
     assert f"{node_version.version} | {node_version.start} | {node_version.end}" in readme
+
+
+@pytest.fixture(name="python_tags")
+def python_tags_fixture() -> dict[str, Any]:
+    return {
+        "count": 2,
+        "next": None,
+        "previous": None,
+        "results": [
+            {
+                "name": "3.11.4-bullseye",
+            },
+            {
+                "name": "3.11.4-alpine",
+            },
+        ],
+    }
+
+
+@pytest.fixture(name="node_tags")
+def node_tags_fixture() -> dict[str, Any]:
+    return {
+        "count": 2,
+        "next": None,
+        "previous": None,
+        "results": [
+            {
+                "name": "20.3.0-buster",
+            },
+            {
+                "name": "20.3.0-alpine",
+            },
+        ],
+    }
+
+
+@responses.activate
+def test_decide_version_combinations(python_tags: dict[str, Any], node_tags: dict[str, Any]) -> None:
+    res_python = responses.Response(
+        method="GET",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
+        json=python_tags,
+    )
+    responses.add(res_python)
+    res_nodejs = responses.Response(
+        method="GET",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/node/tags?page=1&page_size=100",
+        json=node_tags,
+    )
+    responses.add(res_nodejs)
+    python_version = SupportedVersion(start="2022-10-24", end="2027-10", version="3.11")
+    node_version = SupportedVersion(start="2023-04-18", end="2026-04-30", version="v20")
+
+    versions = decide_version_combinations(["bullseye", "alpine"], [python_version], [node_version])
+
+    assert versions
+    assert len(versions) == python_tags["count"]
+    assert versions[0].nodejs_canonical == "20.3.0"
+    assert versions[0].python_canonical == "3.11.4"
+    assert versions[0].distro == "bullseye"
+    assert versions[1].nodejs_canonical == "20.3.0"
+    assert versions[1].python_canonical == "3.11.4"
+    assert versions[1].distro == "alpine"
