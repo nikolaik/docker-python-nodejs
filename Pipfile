@@ -7,7 +7,7 @@ verify_ssl = true
 black = "==23.3.0"
 pytest = "*"
 pre-commit = "*"
-ruff = "==0.0.277"
+ruff = "==0.0.278"
 pytest-cov = "*"
 mypy = "*"
 types-requests = "==2.31.0.1"
