@@ -48,7 +48,8 @@
       "nodejs_canonical": "20.5.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -99,7 +100,8 @@
       "nodejs_canonical": "18.17.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -150,7 +152,8 @@
       "nodejs_canonical": "16.20.1",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -201,7 +204,8 @@
       "nodejs_canonical": "20.5.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -252,7 +256,8 @@
       "nodejs_canonical": "18.17.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -303,7 +308,8 @@
       "nodejs_canonical": "16.20.1",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -354,7 +360,8 @@
       "nodejs_canonical": "20.5.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -405,7 +412,8 @@
       "nodejs_canonical": "18.17.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -456,7 +464,8 @@
       "nodejs_canonical": "16.20.1",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -507,7 +516,8 @@
       "nodejs_canonical": "20.5.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -558,7 +568,8 @@
       "nodejs_canonical": "18.17.0",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     },
     {
@@ -609,7 +620,8 @@
       "nodejs_canonical": "16.20.1",
       "distro": "alpine",
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ]
     }
   ]
