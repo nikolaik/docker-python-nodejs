@@ -9,6 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from semver.version import Version
 
+from build_versions.docker_hub import DockerImageDict, DockerTagDict, fetch_tags
 from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.utcnow().date().isoformat()
@@ -49,6 +50,8 @@ class PythonVersion(LanguageVersion):
 
 @dataclass
 class BuildVersion:
+    """A docker image build for a specific combination of python and nodejs versions"""
+
     key: str
     python: str
     python_canonical: str
@@ -59,24 +62,39 @@ class BuildVersion:
     platforms: list[str]
 
 
-def _fetch_tags(package: str, page: int = 1) -> list[str]:
-    """Fetch available docker tags."""
-    result = requests.get(
-        f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
-        params={"page": page, "page_size": 100},
-        timeout=10.0,
-    )
-    result.raise_for_status()
-    data = result.json()
-    tags = [tag["name"] for tag in data["results"]]
-    if not data["next"]:
-        return tags
-    return tags + _fetch_tags(package, page=page + 1)
+def _is_platform_image(platform: str, image: DockerImageDict) -> bool:
+    os, arch = platform.split("/")
+    return os == image["os"] and arch == image["architecture"]
 
 
-def _latest_patch(tags: list[str], ver: str, patch_pattern: re.Pattern[str], distro: str) -> str | None:
-    tags = [tag for tag in tags if tag.startswith(ver) and tag.endswith(f"-{distro}") and patch_pattern.match(tag)]
-    return sorted(tags, key=Version.parse, reverse=True)[0] if tags else None
+def _wanted_image_platforms(distro: str) -> list[str]:
+    """
+    Returns the supported image platforms for a distro
+    FIXME: Enable linux/arm64 for alpine when:
+      - https://github.com/nodejs/node/pull/45756 is fixed
+      - https://github.com/nodejs/unofficial-builds adds builds for musl + arm64
+    """
+    if distro == "alpine":
+        return ["linux/amd64"]
+    return DEFAULT_PLATFORMS
+
+
+def _image_tag_has_platforms(tag: DockerTagDict, distro: str) -> bool:
+    for platform in _wanted_image_platforms(distro):
+        has_platform = any(_is_platform_image(platform, image) for image in tag["images"])
+        if not has_platform:
+            return False
+
+    return True
+
+
+def _wanted_tag(tag: DockerTagDict, ver: str, distro: str) -> bool:
+    return tag["name"].startswith(ver) and tag["name"].endswith(f"-{distro}") and _image_tag_has_platforms(tag, distro)
+
+
+def _latest_patch(tags: list[DockerTagDict], ver: str, distro: str) -> str | None:
+    tags = [tag for tag in tags if _wanted_tag(tag, ver, distro)]
+    return sorted(tags, key=lambda x: Version.parse(x["name"]), reverse=True)[0]["name"] if tags else None
 
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
@@ -116,16 +134,19 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
 
     # FIXME: can we avoid enumerating all tags to speed up things?
     logger.debug("Fetching tags for python")
-    tags = [tag for tag in _fetch_tags("python") if python_wanted_tag_pattern.match(tag)]
+    tags = [tag for tag in fetch_tags("python") if python_wanted_tag_pattern.match(tag["name"])]
 
     versions: list[PythonVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version
         for distro in distros:
             # FIXME: Check for wanted platforms/architectures
-            canonical_image = _latest_patch(tags, ver, python_wanted_tag_pattern, distro)
+            canonical_image = _latest_patch(tags, ver, distro)
+            platforms = _wanted_image_platforms(distro)
             if not canonical_image:
-                logger.warning(f"Not good. ver={ver} distro={distro} not in tags, skipping...")
+                logger.warning(
+                    f"Not good. ver={ver} distro={distro} platforms={','.join(platforms)} not in tags, skipping...",
+                )
                 continue
 
             versions.append(
@@ -145,12 +166,12 @@ def decide_nodejs_versions(supported_versions: list[SupportedVersion]) -> list[N
     nodejs_wanted_tag_pattern = re.compile(nodejs_patch_re)
 
     logger.debug("Fetching tags for node")
-    tags = [tag for tag in _fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag)]
+    tags = [tag for tag in fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag["name"])]
 
     versions: list[NodeJsVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version[1:]  # Remove v prefix
-        canonical_image = _latest_patch(tags, ver, nodejs_wanted_tag_pattern, DEFAULT_DISTRO)
+        canonical_image = _latest_patch(tags, ver, DEFAULT_DISTRO)
         if not canonical_image:
             logger.warning(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
             continue
@@ -169,12 +190,6 @@ def version_combinations(
         for n in nodejs_versions:
             distro = f"-{p.distro}" if p.distro != DEFAULT_DISTRO else ""
             key = f"python{p.key}-nodejs{n.key}{distro}"
-            platforms = DEFAULT_PLATFORMS
-            # FIXME: Enable when:
-            #  - https://github.com/nodejs/node/pull/45756 is fixed
-            #  - https://github.com/nodejs/unofficial-builds adds builds for musl + arm64
-            if p.distro == "alpine":
-                platforms = ["linux/amd64"]
             versions.append(
                 BuildVersion(
                     key=key,
@@ -184,7 +199,7 @@ def version_combinations(
                     nodejs=n.key,
                     nodejs_canonical=n.canonical_version,
                     distro=p.distro,
-                    platforms=platforms,
+                    platforms=_wanted_image_platforms(p.distro),
                 ),
             )
 
