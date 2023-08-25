@@ -115,9 +115,11 @@ def python_tags_fixture() -> dict[str, Any]:
         "results": [
             {
                 "name": "3.11.4-bullseye",
+                "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
             },
             {
                 "name": "3.11.4-alpine",
+                "images": [{"os": "linux", "architecture": "amd64"}],
             },
         ],
     }
@@ -132,9 +134,11 @@ def node_tags_fixture() -> dict[str, Any]:
         "results": [
             {
                 "name": "20.3.0-buster",
+                "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
             },
             {
                 "name": "20.3.0-alpine",
+                "images": [{"os": "linux", "architecture": "amd64"}],
             },
         ],
     }
