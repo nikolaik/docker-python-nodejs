@@ -11,7 +11,7 @@ ruff = "==0.0.286"
 pytest-cov = "*"
 mypy = "*"
 types-requests = "==2.31.0.2"
-types-beautifulsoup4 = "==4.12.0.5"
+types-beautifulsoup4 = "==4.12.0.6"
 pytest-socket = "*"
 responses = "*"
 
