@@ -76,6 +76,8 @@ Tag | Python version | Node.js version | Distro | Platforms
 
 Lovely! These tags are kept updated automatically when new minor or patch version are released by [`build_versions/main.py`](./build_versions/main.py), which is run twice a day on [CircleCI](https://circleci.com/gh/nikolaik/docker-python-nodejs).
 
+Image tags are built for linux/amd64 and linux/arm64 platforms, except for alpine which is only linux/amd64. See [issue #70](https://github.com/nikolaik/docker-python-nodejs/issues/70) for details.
+
 ## Supported versions
 
 <!-- SUPPORTED_VERSIONS_START -->

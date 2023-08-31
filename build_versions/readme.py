@@ -58,8 +58,8 @@ def format_readme(
 
 
 def format_tags(versions: "list[BuildVersion]") -> str:
-    headings = ["Tag", "Python version", "Node.js version", "Distro", "Platforms"]
-    rows = [[f"`{v.key}`", v.python_canonical, v.nodejs_canonical, v.distro, ", ".join(v.platforms)] for v in versions]
+    headings = ["Tag", "Python version", "Node.js version", "Distro"]
+    rows = [[f"`{v.key}`", v.python_canonical, v.nodejs_canonical, v.distro] for v in versions]
     return _format_md_table(headings, rows)
 
 
