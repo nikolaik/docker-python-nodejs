@@ -19,7 +19,7 @@ class DockerImageDict(TypedDict):
 
 class DockerTagDict(TypedDict):
     creator: int
-    id: int  # noqa: A003
+    id: int
     images: list[DockerImageDict]
     last_updated: str
     last_updater: int
@@ -38,7 +38,7 @@ class DockerTagDict(TypedDict):
 
 class DockerTagResponse(TypedDict):
     count: int
-    next: str | None  # noqa: A003
+    next: str | None
     previous: str | None
     results: list[DockerTagDict]
 

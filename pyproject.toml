@@ -8,8 +8,10 @@ ignore = [
   "G004", # Allow using f-strings when logging
   "D", # FIXME: docs
   "TD", # Allow TODOs
-  "FBT001" # Allow boolean function args
+  "FBT001", # Allow boolean function args
+  "FIX001" # Allow fixme's
 ]
+target-version = "py311"
 
 [tool.ruff.per-file-ignores]
 "**/test*.py" = ["S101"]

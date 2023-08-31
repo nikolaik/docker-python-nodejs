@@ -205,8 +205,7 @@ def version_combinations(
 
     versions = sorted(versions, key=lambda v: DISTROS.index(v.distro))
     versions = sorted(versions, key=lambda v: Version.parse(v.nodejs_canonical), reverse=True)
-    versions = sorted(versions, key=lambda v: Version.parse(v.python_canonical), reverse=True)
-    return versions
+    return sorted(versions, key=lambda v: Version.parse(v.python_canonical), reverse=True)
 
 
 def decide_version_combinations(
