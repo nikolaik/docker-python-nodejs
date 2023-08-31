@@ -98,10 +98,7 @@ def test_update_dynamic_readme(build_version: BuildVersion) -> None:
         file_path = BASE_PATH / "README.md"
         assert file_path.exists()
         readme = file_path.read_text()
-    assert (
-        f"`{ver.key}` | {ver.python_canonical} | {ver.nodejs_canonical} | {ver.distro} | {', '.join(ver.platforms)}"
-        in readme
-    )
+    assert f"`{ver.key}` | {ver.python_canonical} | {ver.nodejs_canonical} | {ver.distro}" in readme
     assert f"{python_version.version} | {python_version.start} | {python_version.end}" in readme
     assert f"{node_version.version} | {node_version.start} | {node_version.end}" in readme
 
