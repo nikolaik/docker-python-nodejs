@@ -12,7 +12,7 @@ RUN NODE_VERSION="$(curl -fsSL https://nodejs.org/dist/latest/SHASUMS256.txt | h
     arm64) ARCH='arm64';; \
     *) echo "unsupported architecture"; exit 1 ;; \
   esac \
-  # FIXME: How to avoid maintanance on these keys?
+  # FIXME: Use build_versions to render this file too to avoid maintanance of keys
   && for key in \
     4ED778F539E3634C779C87C6D7062848A1AB005C \
     141F07595B7B3FFE74309A937405533BE57C7D57 \

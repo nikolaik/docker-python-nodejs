@@ -115,19 +115,6 @@ def scrape_supported_python_versions() -> list[SupportedVersion]:
     return versions
 
 
-def fetch_supported_nodejs_versions() -> list[SupportedVersion]:
-    """Download list of official releases, skipping unreleased and unsupported versions"""
-    result = requests.get("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json", timeout=10.0)
-    release_schedule = result.json()
-
-    versions = []
-    for ver, detail in release_schedule.items():
-        if detail["start"] <= todays_date <= detail["end"]:
-            versions.append(SupportedVersion(version=ver, start=detail["start"], end=detail["end"]))
-
-    return versions
-
-
 def decide_python_versions(distros: list[str], supported_versions: list[SupportedVersion]) -> list[PythonVersion]:
     python_patch_re = "|".join([rf"^(\d+\.\d+\.\d+-{distro})$" for distro in distros])
     python_wanted_tag_pattern = re.compile(python_patch_re)

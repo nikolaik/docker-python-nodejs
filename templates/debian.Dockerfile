@@ -6,19 +6,32 @@ LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.co
 
 RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --create-home pn
 ENV POETRY_HOME=/usr/local
-# Install node prereqs, nodejs and yarn
-# Ref: https://deb.nodesource.com/setup_{{ nodejs }}.x
-# Ref: https://yarnpkg.com/en/docs/install
+
 RUN \
-{% if distro_variant == "slim" %}  apt-get update && apt-get install wget gnupg2 -y && \
-{% endif %}  mkdir -p /etc/apt/keyrings && \
-  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ nodejs }}.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
-  wget -qO- https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-  echo "deb [signed-by=/etc/apt/keyrings/yarnpkg.gpg] https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
-  wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/keyrings/yarnpkg.gpg && \
-  apt-get update && \
-  apt-get install -yqq nodejs=$(apt-cache --no-all-versions show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
-  apt-mark hold nodejs && \
-  pip install -U pip && pip install pipenv && \
-  wget -qO- https://install.python-poetry.org | python - && \
+{% if distro_variant == "slim" %}  apt-get update && apt-get install curl gnupg2 xz-utils -yqq && \
+{% endif %}  apt-get upgrade -yqq && \
   rm -rf /var/lib/apt/lists/*
+RUN NODE_VERSION="$(curl -fsSL https://nodejs.org/dist/latest/SHASUMS256.txt | head -n1 | awk '{ print $2}' | awk -F - '{ print $2}')" \
+  ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+  && case "${dpkgArch##*-}" in \
+    amd64) ARCH='x64';; \
+    arm64) ARCH='arm64';; \
+    *) echo "unsupported architecture"; exit 1 ;; \
+  esac \
+  && for key in \
+    {% for gpg_key in node_gpg_keys %}{{ gpg_key }} \
+    {% endfor %}; do \
+      gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
+      gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" ; \
+  done \
+  && curl -fsSLO --compressed "https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-$ARCH.tar.xz" \
+  && curl -fsSLO --compressed "https://nodejs.org/dist/$NODE_VERSION/SHASUMS256.txt.asc" \
+  && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+  && grep " node-$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+  && tar -xJf "node-$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+  && rm "node-$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+RUN corepack enable yarn
+
+RUN pip install -U pip && pip install pipenv && \
+  curl -fsSL --compressed https://install.python-poetry.org | python -
