@@ -50,7 +50,7 @@ jobs:
       - name: Generate Dockerfile from config
         run: pipenv run python -m build_versions.main --dockerfile-with-context '${{ toJSON(matrix) }}'
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to Docker Hub
