@@ -10,6 +10,11 @@ from bs4 import BeautifulSoup
 from semver.version import Version
 
 from build_versions.docker_hub import DockerImageDict, DockerTagDict, fetch_tags
+from build_versions.nodejs_versions import (
+    fetch_node_releases,
+    fetch_node_unofficial_releases,
+    fetch_nodejs_release_schedule,
+)
 from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.utcnow().date().isoformat()
@@ -31,8 +36,8 @@ class SupportedVersion:
 class LanguageVersion:
     canonical_version: str
     key: str
+    distro: str
     image: str | None = None
-    distro: str | None = None
 
 
 @dataclass
@@ -127,7 +132,6 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
     for supported_version in supported_versions:
         ver = supported_version.version
         for distro in distros:
-            # FIXME: Check for wanted platforms/architectures
             canonical_image = _latest_patch(tags, ver, distro)
             platforms = _wanted_image_platforms(distro)
             if not canonical_image:
@@ -148,22 +152,47 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
     return sorted(versions, key=lambda v: Version.parse(v.canonical_version), reverse=True)
 
 
-def decide_nodejs_versions(supported_versions: list[SupportedVersion]) -> list[NodeJsVersion]:
-    nodejs_patch_re = rf"^(\d+\.\d+\.\d+-{DEFAULT_DISTRO})$"
-    nodejs_wanted_tag_pattern = re.compile(nodejs_patch_re)
+def fetch_supported_nodejs_versions() -> list[SupportedVersion]:
+    release_schedule = fetch_nodejs_release_schedule()
+    versions = []
+    for ver, detail in release_schedule.items():
+        if detail["start"] <= todays_date <= detail["end"]:
+            versions.append(SupportedVersion(version=ver, start=detail["start"], end=detail["end"]))
 
-    logger.debug("Fetching tags for node")
-    tags = [tag for tag in fetch_tags("node") if nodejs_wanted_tag_pattern.match(tag["name"])]
+    return versions
+
+
+def _has_arch_files(files: list[str], distro: str) -> bool:
+    if distro == "alpine":
+        return {"linux-x64-musl"}.issubset(files)
+    return {"linux-arm64", "linux-x64"}.issubset(files)
+
+
+def decide_nodejs_versions(distros: list[str], supported_versions: list[SupportedVersion]) -> list[NodeJsVersion]:
+    logger.debug("Fetching releases for node")
+    node_releases = fetch_node_releases()
+    node_unofficial_releases = fetch_node_unofficial_releases()
 
     versions: list[NodeJsVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version[1:]  # Remove v prefix
-        canonical_image = _latest_patch(tags, ver, DEFAULT_DISTRO)
-        if not canonical_image:
-            logger.warning(f"Not good, ver={ver} distro={DEFAULT_DISTRO} not in tags, skipping...")
-            continue
+        for distro in distros:
+            distro_releases = node_unofficial_releases if distro == "alpine" else node_releases
+            matching_releases = [
+                rel
+                for rel in distro_releases
+                if rel["version"][1:].startswith(ver) and _has_arch_files(rel["files"], distro)
+            ]
+            latest_patch_version = (
+                sorted(matching_releases, key=lambda x: Version.parse(x["version"][1:]), reverse=True)[0]["version"][1:]
+                if matching_releases
+                else None
+            )
+            if not latest_patch_version:
+                logger.warning(f"Not good, ver={ver} distro={distro} not in node releases, skipping...")
+                continue
 
-        versions.append(NodeJsVersion(canonical_version=canonical_image.replace(f"-{DEFAULT_DISTRO}", ""), key=ver))
+            versions.append(NodeJsVersion(canonical_version=latest_patch_version, key=ver, distro=distro))
 
     return sorted(versions, key=lambda v: Version.parse(v.canonical_version), reverse=True)
 
@@ -175,8 +204,12 @@ def version_combinations(
     versions: list[BuildVersion] = []
     for p in python_versions:
         for n in nodejs_versions:
-            distro = f"-{p.distro}" if p.distro != DEFAULT_DISTRO else ""
-            key = f"python{p.key}-nodejs{n.key}{distro}"
+            if p.distro != n.distro:
+                continue
+
+            # Skip distro in key if it's the default
+            distro_key = f"-{p.distro}" if p.distro != DEFAULT_DISTRO else ""
+            key = f"python{p.key}-nodejs{n.key}{distro_key}"
             versions.append(
                 BuildVersion(
                     key=key,
@@ -204,7 +237,7 @@ def decide_version_combinations(
     # Use the latest patch version from each minor
     python_versions = decide_python_versions(distros, supported_python_versions)
     # Use the latest minor version from each major
-    nodejs_versions = decide_nodejs_versions(supported_node_versions)
+    nodejs_versions = decide_nodejs_versions(distros, supported_node_versions)
     return version_combinations(nodejs_versions, python_versions)
 
 

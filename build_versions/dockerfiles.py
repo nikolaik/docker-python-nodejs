@@ -24,6 +24,7 @@ def _render_template(template_name: str, context: Mapping[str, Any]) -> str:
 def render_dockerfile(version: BuildVersion) -> str:
     distro = "debian" if version.distro != "alpine" else version.distro
 
+    # FIXME: pass gpg keys as extra context to this function
     node_gpg_keys = fetch_node_gpg_keys()
     context = dataclasses.asdict(version) | {
         "node_gpg_keys": node_gpg_keys,

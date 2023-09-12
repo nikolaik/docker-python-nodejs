@@ -13,7 +13,9 @@ from build_versions.settings import BASE_PATH, DOCKERFILES_PATH
 from build_versions.versions import (
     BuildVersion,
     SupportedVersion,
+    decide_nodejs_versions,
     decide_version_combinations,
+    fetch_supported_nodejs_versions,
     scrape_supported_python_versions,
 )
 
@@ -45,8 +47,16 @@ def test_scrape_supported_python_versions() -> None:
     assert first_version.end
 
 
+@responses.activate
 def test_render_dockerfile_with_context(build_version: BuildVersion) -> None:
     file_path = DOCKERFILES_PATH / f"{build_version.key}.Dockerfile"
+    res_keys = responses.Response(
+        method="GET",
+        url="https://raw.githubusercontent.com/nodejs/docker-node/master/keys/node.keys",
+        body="a\nb\nc",
+    )
+    responses.add(res_keys)
+
     render_dockerfile_with_context(json.dumps(dataclasses.asdict(build_version)))
     assert file_path.exists()
     with file_path.open() as fp:
@@ -122,27 +132,39 @@ def python_tags_fixture() -> dict[str, Any]:
     }
 
 
-@pytest.fixture(name="node_tags")
-def node_tags_fixture() -> dict[str, Any]:
-    return {
-        "count": 2,
-        "next": None,
-        "previous": None,
-        "results": [
-            {
-                "name": "20.3.0-bookworm",
-                "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
-            },
-            {
-                "name": "20.3.0-alpine",
-                "images": [{"os": "linux", "architecture": "amd64"}],
-            },
-        ],
-    }
+@pytest.fixture(name="node_releases")
+def node_releases_fixture() -> list[dict[str, Any]]:
+    return [
+        {
+            "version": "v20.3.0",
+            "date": "2023-09-07",
+            "files": [
+                "linux-arm64",
+                "linux-x64",
+            ],
+        },
+    ]
+
+
+@pytest.fixture(name="node_unofficial_releases")
+def node_unofficial_releases_fixture() -> list[dict[str, Any]]:
+    return [
+        {
+            "version": "v20.3.0",
+            "date": "2023-09-07",
+            "files": [
+                "linux-x64-musl",
+            ],
+        },
+    ]
 
 
 @responses.activate
-def test_decide_version_combinations(python_tags: dict[str, Any], node_tags: dict[str, Any]) -> None:
+def test_decide_version_combinations(
+    python_tags: dict[str, Any],
+    node_releases: list[dict[str, Any]],
+    node_unofficial_releases: list[dict[str, Any]],
+) -> None:
     res_python = responses.Response(
         method="GET",
         url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
@@ -151,10 +173,16 @@ def test_decide_version_combinations(python_tags: dict[str, Any], node_tags: dic
     responses.add(res_python)
     res_nodejs = responses.Response(
         method="GET",
-        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/node/tags?page=1&page_size=100",
-        json=node_tags,
+        url="https://nodejs.org/dist/index.json",
+        json=node_releases,
     )
     responses.add(res_nodejs)
+    res_nodejs_unoffical = responses.Response(
+        method="GET",
+        url="https://unofficial-builds.nodejs.org/download/release/index.json",
+        json=node_unofficial_releases,
+    )
+    responses.add(res_nodejs_unoffical)
     python_version = SupportedVersion(start="2022-10-24", end="2027-10", version="3.11")
     node_version = SupportedVersion(start="2023-04-18", end="2026-04-30", version="v20")
 
@@ -168,3 +196,13 @@ def test_decide_version_combinations(python_tags: dict[str, Any], node_tags: dic
     assert versions[1].nodejs_canonical == "20.3.0"
     assert versions[1].python_canonical == "3.11.4"
     assert versions[1].distro == "alpine"
+
+
+# FIXME: Use mock response
+@pytest.mark.enable_socket()
+def test_decide_nodejs_versions() -> None:
+    supported_node_versions = fetch_supported_nodejs_versions()
+    distros = ["bookworm", "alpine"]
+    versions = decide_nodejs_versions(distros, supported_node_versions)
+
+    assert len(supported_node_versions) * len(distros) == len(versions)
