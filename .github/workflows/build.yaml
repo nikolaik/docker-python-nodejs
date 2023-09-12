@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
@@ -69,7 +69,7 @@ jobs:
         run: |
           docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version"
       - name: Push image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
