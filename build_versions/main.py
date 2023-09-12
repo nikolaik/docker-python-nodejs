@@ -5,11 +5,11 @@ from typing import cast
 from build_versions.ci_matrix import generate_matrix
 from build_versions.dockerfiles import render_dockerfile_with_context
 from build_versions.logger import init_logging
+from build_versions.nodejs_versions import fetch_supported_nodejs_versions
 from build_versions.readme import format_supported_versions, update_dynamic_readme
 from build_versions.settings import DISTROS
 from build_versions.versions import (
     decide_version_combinations,
-    fetch_supported_nodejs_versions,
     find_new_or_updated,
     load_versions,
     persist_versions,
