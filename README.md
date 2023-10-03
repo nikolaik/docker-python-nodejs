@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2023-09-30
+Last updated by bot: 2023-10-03
 
 The `latest` tag is currently:
 
@@ -23,14 +23,22 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.11-nodejs20` | 3.11.5 | 20.8.0 | bookworm
-`python3.11-nodejs20-bullseye` | 3.11.5 | 20.8.0 | bullseye
-`python3.11-nodejs20-slim` | 3.11.5 | 20.8.0 | slim
-`python3.11-nodejs20-alpine` | 3.11.5 | 20.8.0 | alpine
-`python3.11-nodejs18` | 3.11.5 | 18.18.0 | bookworm
-`python3.11-nodejs18-bullseye` | 3.11.5 | 18.18.0 | bullseye
-`python3.11-nodejs18-slim` | 3.11.5 | 18.18.0 | slim
-`python3.11-nodejs18-alpine` | 3.11.5 | 18.18.0 | alpine
+`python3.12-nodejs20` | 3.12.0 | 20.8.0 | bookworm
+`python3.12-nodejs20-bullseye` | 3.12.0 | 20.8.0 | bullseye
+`python3.12-nodejs20-slim` | 3.12.0 | 20.8.0 | slim
+`python3.12-nodejs20-alpine` | 3.12.0 | 20.8.0 | alpine
+`python3.12-nodejs18` | 3.12.0 | 18.18.0 | bookworm
+`python3.12-nodejs18-bullseye` | 3.12.0 | 18.18.0 | bullseye
+`python3.12-nodejs18-slim` | 3.12.0 | 18.18.0 | slim
+`python3.12-nodejs18-alpine` | 3.12.0 | 18.18.0 | alpine
+`python3.11-nodejs20` | 3.11.6 | 20.8.0 | bookworm
+`python3.11-nodejs20-bullseye` | 3.11.6 | 20.8.0 | bullseye
+`python3.11-nodejs20-slim` | 3.11.6 | 20.8.0 | slim
+`python3.11-nodejs20-alpine` | 3.11.6 | 20.8.0 | alpine
+`python3.11-nodejs18` | 3.11.6 | 18.18.0 | bookworm
+`python3.11-nodejs18-bullseye` | 3.11.6 | 18.18.0 | bullseye
+`python3.11-nodejs18-slim` | 3.11.6 | 18.18.0 | slim
+`python3.11-nodejs18-alpine` | 3.11.6 | 18.18.0 | alpine
 `python3.10-nodejs20` | 3.10.13 | 20.8.0 | bookworm
 `python3.10-nodejs20-bullseye` | 3.10.13 | 20.8.0 | bullseye
 `python3.10-nodejs20-slim` | 3.10.13 | 20.8.0 | slim
@@ -68,6 +76,7 @@ Image tags are built for linux/amd64 and linux/arm64 platforms, except for alpin
 
 Python version | Start | End
 --- | --- | ---
+3.12 | 2023-10-02 | 2028-10
 3.11 | 2022-10-24 | 2027-10
 3.10 | 2021-10-04 | 2026-10
 3.9 | 2020-10-05 | 2025-10
