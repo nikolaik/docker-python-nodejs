@@ -1,20 +1,16 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
-        language_version: python3.11
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.286
+    rev: v0.1.0
     hooks:
       - id: ruff
+      - id: ruff-format
   - repo: local
     hooks:
       - id: mypy
         name: mypy
-        entry: pipenv run mypy
+        entry: mypy
         language: python
         require_serial: true
         types: [python]
