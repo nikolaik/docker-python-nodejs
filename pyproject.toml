@@ -16,10 +16,6 @@ target-version = "py311"
 [tool.ruff.per-file-ignores]
 "**/test*.py" = ["S101"]
 
-[tool.black]
-line-length = 120
-target-version = ['py311']
-
 [tool.mypy]
 strict = true
 disallow_any_unimported = true
