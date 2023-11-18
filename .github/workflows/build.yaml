@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 2
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version-file: '.python-version'
           cache: pipenv
       - name: Install dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version-file: '.python-version'
           cache: pipenv
       - run: |
           pip install pipenv
@@ -85,7 +85,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version-file: '.python-version'
           cache: pipenv
       - run: |
           pip install pipenv
