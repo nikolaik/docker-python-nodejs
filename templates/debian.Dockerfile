@@ -11,12 +11,12 @@ ENV POETRY_HOME=/usr/local
 # Ref: https://yarnpkg.com/en/docs/install
 RUN \
 {% if distro_variant == "slim" %}  apt-get update && apt-get install wget gnupg2 -y && \
-{% endif %}  echo "deb https://deb.nodesource.com/node_{{ nodejs }}.x bookworm main" > /etc/apt/sources.list.d/nodesource.list && \
-  wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
-  wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+{% endif %}  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ nodejs }}.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
+  wget -qO- https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+  echo "deb [signed-by=/etc/apt/keyrings/yarnpkg.gpg] https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
+  wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/keyrings/yarnpkg.gpg && \
   apt-get update && \
-  apt-get install -yqq nodejs=$(apt-cache show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
+  apt-get install -yqq nodejs=$(apt-cache --no-all-versions show nodejs|grep Version|grep nodesource|cut -c 10-) yarn && \
   apt-mark hold nodejs && \
   pip install -U pip && pip install pipenv && \
   wget -qO- https://install.python-poetry.org | python - && \
