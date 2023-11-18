@@ -11,7 +11,8 @@ ENV POETRY_HOME=/usr/local
 # Ref: https://yarnpkg.com/en/docs/install
 RUN \
 {% if distro_variant == "slim" %}  apt-get update && apt-get install wget gnupg2 -y && \
-{% endif %}  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ nodejs }}.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
+{% endif %}  mkdir -p /etc/apt/keyrings && \
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ nodejs }}.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
   wget -qO- https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
   echo "deb [signed-by=/etc/apt/keyrings/yarnpkg.gpg] https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
   wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/keyrings/yarnpkg.gpg && \
