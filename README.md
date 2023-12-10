@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2023-12-06
+Last updated by bot: 2023-12-10
 
 The `latest` tag is currently:
 
@@ -23,18 +23,18 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.12-nodejs21` | 3.12.0 | 21.4.0 | bookworm
-`python3.12-nodejs21-bullseye` | 3.12.0 | 21.4.0 | bullseye
-`python3.12-nodejs21-slim` | 3.12.0 | 21.4.0 | slim
-`python3.12-nodejs21-alpine` | 3.12.0 | 21.4.0 | alpine
-`python3.12-nodejs20` | 3.12.0 | 20.10.0 | bookworm
-`python3.12-nodejs20-bullseye` | 3.12.0 | 20.10.0 | bullseye
-`python3.12-nodejs20-slim` | 3.12.0 | 20.10.0 | slim
-`python3.12-nodejs20-alpine` | 3.12.0 | 20.10.0 | alpine
-`python3.12-nodejs18` | 3.12.0 | 18.19.0 | bookworm
-`python3.12-nodejs18-bullseye` | 3.12.0 | 18.19.0 | bullseye
-`python3.12-nodejs18-slim` | 3.12.0 | 18.19.0 | slim
-`python3.12-nodejs18-alpine` | 3.12.0 | 18.19.0 | alpine
+`python3.12-nodejs21` | 3.12.1 | 21.4.0 | bookworm
+`python3.12-nodejs21-bullseye` | 3.12.1 | 21.4.0 | bullseye
+`python3.12-nodejs21-slim` | 3.12.1 | 21.4.0 | slim
+`python3.12-nodejs21-alpine` | 3.12.1 | 21.4.0 | alpine
+`python3.12-nodejs20` | 3.12.1 | 20.10.0 | bookworm
+`python3.12-nodejs20-bullseye` | 3.12.1 | 20.10.0 | bullseye
+`python3.12-nodejs20-slim` | 3.12.1 | 20.10.0 | slim
+`python3.12-nodejs20-alpine` | 3.12.1 | 20.10.0 | alpine
+`python3.12-nodejs18` | 3.12.1 | 18.19.0 | bookworm
+`python3.12-nodejs18-bullseye` | 3.12.1 | 18.19.0 | bullseye
+`python3.12-nodejs18-slim` | 3.12.1 | 18.19.0 | slim
+`python3.12-nodejs18-alpine` | 3.12.1 | 18.19.0 | alpine
 `python3.11-nodejs21` | 3.11.7 | 21.4.0 | bookworm
 `python3.11-nodejs21-bullseye` | 3.11.7 | 21.4.0 | bullseye
 `python3.11-nodejs21-slim` | 3.11.7 | 21.4.0 | slim
