@@ -7,14 +7,6 @@ import requests
 todays_date = datetime.utcnow().date().isoformat()
 
 
-def fetch_node_gpg_keys() -> list[str]:
-    """Fetch node signing keys used for release archives."""
-    url = "https://raw.githubusercontent.com/nodejs/docker-node/master/keys/node.keys"
-    res = requests.get(url, timeout=10.0)
-    res.raise_for_status()
-    return res.text.strip().split("\n")
-
-
 class NodeRelease(TypedDict):
     version: str
     date: str

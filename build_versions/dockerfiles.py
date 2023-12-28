@@ -7,7 +7,6 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from build_versions.nodejs_versions import fetch_node_gpg_keys
 from build_versions.settings import DOCKERFILES_PATH
 from build_versions.versions import BuildVersion
 
@@ -24,10 +23,7 @@ def _render_template(template_name: str, context: Mapping[str, Any]) -> str:
 def render_dockerfile(version: BuildVersion) -> str:
     distro = "debian" if version.distro != "alpine" else version.distro
 
-    # FIXME: pass gpg keys as extra context to this function
-    node_gpg_keys = fetch_node_gpg_keys()
     context = dataclasses.asdict(version) | {
-        "node_gpg_keys": node_gpg_keys,
         "now": datetime.utcnow().isoformat()[:-7],
         "distro": "bookworm" if version.distro == "slim" else version.distro,  # slim is an image variant
         "distro_variant": "slim" if version.distro == "slim" else "full",
