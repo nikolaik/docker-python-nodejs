@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pre-commit = "*"
-ruff = "==0.1.9"
+ruff = "==0.1.10"
 pytest-cov = "*"
 mypy = "*"
 types-requests = "==2.31.0.20231231"
