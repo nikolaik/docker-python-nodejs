@@ -10,7 +10,7 @@ ruff = "==0.1.11"
 pytest-cov = "*"
 mypy = "*"
 types-requests = "==2.31.0.20240106"
-types-beautifulsoup4 = "==4.12.0.7"
+types-beautifulsoup4 = "==4.12.0.20240106"
 pytest-socket = "*"
 responses = "*"
 
