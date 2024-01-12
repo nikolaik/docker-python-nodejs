@@ -11,7 +11,7 @@ RUN \
 {% if distro_variant == "slim" %}  apt-get update && apt-get install curl gnupg2 xz-utils -yqq && \
 {% endif %}  apt-get upgrade -yqq && \
   rm -rf /var/lib/apt/lists/*
-RUN NODE_VERSION="$(curl -fsSL https://nodejs.org/dist/latest/SHASUMS256.txt | head -n1 | awk '{ print $2}' | awk -F - '{ print $2}')" \
+RUN NODE_VERSION="v{{ nodejs_canonical }}" \
   ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
