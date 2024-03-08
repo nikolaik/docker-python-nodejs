@@ -31,5 +31,5 @@ RUN NODE_VERSION="v{{ nodejs_canonical }}" \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 RUN corepack enable yarn
 
-RUN pip install -U pip && pip install pipenv && \
+RUN pip install -U pip pipenv uv && \
   curl -fsSL --compressed https://install.python-poetry.org | python -

@@ -67,7 +67,7 @@ jobs:
           tags: nikolaik/python-nodejs:${{ matrix.key }}
       - name: Run smoke tests
         run: |
-          docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version"
+          docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
       - name: Push image
         uses: docker/build-push-action@v5
         with:
