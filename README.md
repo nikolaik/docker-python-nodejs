@@ -14,6 +14,7 @@ The `latest` tag is currently:
 - pip: latest
 - pipenv: latest
 - poetry: latest
+- uv: latest
 
 ## 🏷 Tags
 

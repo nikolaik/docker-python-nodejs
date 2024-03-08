@@ -27,6 +27,6 @@ RUN corepack enable yarn
 RUN \
   apt-get update && \
   apt-get upgrade -yqq && \
-  pip install -U pip && pip install pipenv && \
+  pip install -U pip pipenv uv && \
   curl -sSL https://install.python-poetry.org | python - && \
   rm -rf /var/lib/apt/lists/*
