@@ -1,8 +1,8 @@
 import dataclasses
+import datetime
 import json
 import logging
 from collections.abc import Mapping
-from datetime import datetime
 from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -24,7 +24,7 @@ def render_dockerfile(version: BuildVersion) -> str:
     distro = "debian" if version.distro != "alpine" else version.distro
 
     context = dataclasses.asdict(version) | {
-        "now": datetime.utcnow().isoformat()[:-7],
+        "now": datetime.datetime.now(datetime.UTC).isoformat()[:-7],
         "distro": "bookworm" if version.distro == "slim" else version.distro,  # slim is an image variant
         "distro_variant": "slim" if version.distro == "slim" else "full",
     }
