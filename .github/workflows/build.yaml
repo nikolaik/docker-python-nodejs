@@ -20,15 +20,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version-file: '.python-version'
-          cache: pipenv
       - name: Install dependencies
         run: |
-          pip install pipenv
-          pipenv install --deploy --dev
+          pip install uv
+          uv pip install -r pyproject.toml --system
       - name: Generate build matrix
         run: |
           FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
-          pipenv run python -m build_versions.main --ci-matrix $FORCE --ci-event ${{ github.event_name }}
+          python -m build_versions.main --ci-matrix $FORCE --ci-event ${{ github.event_name }}
         id: set-matrix
 
   deploy:
@@ -43,12 +42,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version-file: '.python-version'
-          cache: pipenv
       - run: |
-          pip install pipenv
-          pipenv install --deploy --dev
+          pip install uv
+          uv pip install -r pyproject.toml --system
       - name: Generate Dockerfile from config
-        run: pipenv run python -m build_versions.main --dockerfile-with-context '${{ toJSON(matrix) }}'
+        run: python -m build_versions.main --dockerfile-with-context '${{ toJSON(matrix) }}'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -86,13 +84,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version-file: '.python-version'
-          cache: pipenv
       - run: |
-          pip install pipenv
-          pipenv install --deploy --dev
+          pip install uv
+          uv pip install -r pyproject.toml --system
       - name: Update versions.json and README.md, then commit and push changes (if any)
         run: |
-          pipenv run python -m build_versions.main --verbose --release
+          python -m build_versions.main --verbose --release
           clean_checkout=$(git status --porcelain)
           if [[ -n "${clean_checkout}" ]]; then
               git config --global user.name "Nikolai Kristiansen" > /dev/null 2>&1
