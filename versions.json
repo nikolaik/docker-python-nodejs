@@ -45,7 +45,7 @@
       "python_canonical": "3.12.2",
       "python_image": "3.12.2-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.0",
+      "nodejs_canonical": "21.7.1",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -198,7 +198,7 @@
       "python_canonical": "3.11.8",
       "python_image": "3.11.8-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.0",
+      "nodejs_canonical": "21.7.1",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -351,7 +351,7 @@
       "python_canonical": "3.10.13",
       "python_image": "3.10.13-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.0",
+      "nodejs_canonical": "21.7.1",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -504,7 +504,7 @@
       "python_canonical": "3.9.18",
       "python_image": "3.9.18-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.0",
+      "nodejs_canonical": "21.7.1",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -657,7 +657,7 @@
       "python_canonical": "3.8.18",
       "python_image": "3.8.18-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.0",
+      "nodejs_canonical": "21.7.1",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
