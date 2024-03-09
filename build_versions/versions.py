@@ -1,9 +1,9 @@
 import dataclasses
+import datetime
 import json
 import logging
 import re
 from dataclasses import dataclass
-from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -17,7 +17,7 @@ from build_versions.nodejs_versions import (
 )
 from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
-todays_date = datetime.utcnow().date().isoformat()
+todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
 
 
 logger = logging.getLogger("dpn")
