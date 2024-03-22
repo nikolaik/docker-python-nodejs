@@ -7,7 +7,7 @@
     {
       "groupName": "ruff",
       "matchDepNames": [
-        "ruff"
+        "dev/ruff"
       ],
       "automerge": true
     }
