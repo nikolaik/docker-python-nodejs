@@ -45,7 +45,7 @@
       "python_canonical": "3.12.2",
       "python_image": "3.12.2-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.1",
+      "nodejs_canonical": "21.7.2",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -156,8 +156,8 @@
     {
       "key": "python3.11-nodejs21",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bookworm",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bookworm",
       "nodejs": "21",
       "nodejs_canonical": "21.7.2",
       "distro": "bookworm",
@@ -169,8 +169,8 @@
     {
       "key": "python3.11-nodejs21-bullseye",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bullseye",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bullseye",
       "nodejs": "21",
       "nodejs_canonical": "21.7.2",
       "distro": "bullseye",
@@ -182,8 +182,8 @@
     {
       "key": "python3.11-nodejs21-slim",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-slim",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-slim",
       "nodejs": "21",
       "nodejs_canonical": "21.7.2",
       "distro": "slim",
@@ -195,10 +195,10 @@
     {
       "key": "python3.11-nodejs21-alpine",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-alpine",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.1",
+      "nodejs_canonical": "21.7.2",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -207,8 +207,8 @@
     {
       "key": "python3.11-nodejs20",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bookworm",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bookworm",
       "nodejs": "20",
       "nodejs_canonical": "20.12.1",
       "distro": "bookworm",
@@ -220,8 +220,8 @@
     {
       "key": "python3.11-nodejs20-bullseye",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bullseye",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bullseye",
       "nodejs": "20",
       "nodejs_canonical": "20.12.1",
       "distro": "bullseye",
@@ -233,8 +233,8 @@
     {
       "key": "python3.11-nodejs20-slim",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-slim",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-slim",
       "nodejs": "20",
       "nodejs_canonical": "20.12.1",
       "distro": "slim",
@@ -246,8 +246,8 @@
     {
       "key": "python3.11-nodejs20-alpine",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-alpine",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-alpine",
       "nodejs": "20",
       "nodejs_canonical": "20.12.1",
       "distro": "alpine",
@@ -258,8 +258,8 @@
     {
       "key": "python3.11-nodejs18",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bookworm",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bookworm",
       "nodejs": "18",
       "nodejs_canonical": "18.20.1",
       "distro": "bookworm",
@@ -271,8 +271,8 @@
     {
       "key": "python3.11-nodejs18-bullseye",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-bullseye",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-bullseye",
       "nodejs": "18",
       "nodejs_canonical": "18.20.1",
       "distro": "bullseye",
@@ -284,8 +284,8 @@
     {
       "key": "python3.11-nodejs18-slim",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-slim",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-slim",
       "nodejs": "18",
       "nodejs_canonical": "18.20.1",
       "distro": "slim",
@@ -297,8 +297,8 @@
     {
       "key": "python3.11-nodejs18-alpine",
       "python": "3.11",
-      "python_canonical": "3.11.8",
-      "python_image": "3.11.8-alpine",
+      "python_canonical": "3.11.9",
+      "python_image": "3.11.9-alpine",
       "nodejs": "18",
       "nodejs_canonical": "18.20.1",
       "distro": "alpine",
@@ -351,7 +351,7 @@
       "python_canonical": "3.10.14",
       "python_image": "3.10.14-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.1",
+      "nodejs_canonical": "21.7.2",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -504,7 +504,7 @@
       "python_canonical": "3.9.19",
       "python_image": "3.9.19-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.1",
+      "nodejs_canonical": "21.7.2",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
@@ -657,7 +657,7 @@
       "python_canonical": "3.8.19",
       "python_image": "3.8.19-alpine",
       "nodejs": "21",
-      "nodejs_canonical": "21.7.1",
+      "nodejs_canonical": "21.7.2",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
