@@ -143,6 +143,14 @@ def node_releases_fixture() -> list[dict[str, Any]]:
                 "linux-x64",
             ],
         },
+        {
+            "version": "v22.0.0",
+            "date": "2024-04-23",
+            "files": [
+                "linux-arm64",
+                "linux-x64",
+            ],
+        },
     ]
 
 
@@ -156,6 +164,13 @@ def node_unofficial_releases_fixture() -> list[dict[str, Any]]:
                 "linux-x64-musl",
             ],
         },
+        {
+            "version": "v22.0.0",
+            "date": "2024-04-23",
+            "files": [
+                "linux-x64-musl",
+            ],
+        },
     ]
 
 
@@ -165,24 +180,17 @@ def test_decide_version_combinations(
     node_releases: list[dict[str, Any]],
     node_unofficial_releases: list[dict[str, Any]],
 ) -> None:
-    res_python = responses.Response(
+    responses.add(
         method="GET",
         url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
         json=python_tags,
     )
-    responses.add(res_python)
-    res_nodejs = responses.Response(
-        method="GET",
-        url="https://nodejs.org/dist/index.json",
-        json=node_releases,
-    )
-    responses.add(res_nodejs)
-    res_nodejs_unoffical = responses.Response(
+    responses.add(method="GET", url="https://nodejs.org/dist/index.json", json=node_releases)
+    responses.add(
         method="GET",
         url="https://unofficial-builds.nodejs.org/download/release/index.json",
         json=node_unofficial_releases,
     )
-    responses.add(res_nodejs_unoffical)
     python_version = SupportedVersion(start="2022-10-24", end="2027-10", version="3.11")
     node_version = SupportedVersion(start="2023-04-18", end="2026-04-30", version="v20")
 
@@ -198,9 +206,47 @@ def test_decide_version_combinations(
     assert versions[1].distro == "alpine"
 
 
-# FIXME: Use mock response
-@pytest.mark.enable_socket()
-def test_decide_nodejs_versions() -> None:
+@pytest.fixture(name="node_release_schedule")
+def node_release_schedule_fixture() -> dict[str, dict[str, Any]]:
+    return {
+        "v20": {
+            "start": "2023-04-18",
+            "lts": "2023-10-24",
+            "maintenance": "2024-10-22",
+            "end": "2026-04-30",
+            "codename": "Iron",
+        },
+        "v22": {
+            "start": "2024-04-23",
+            "lts": "2024-10-29",
+            "maintenance": "2025-10-21",
+            "end": "2027-04-30",
+            "codename": "",
+        },
+    }
+
+
+@responses.activate
+def test_decide_nodejs_versions(
+    node_release_schedule: dict[str, dict[str, Any]],
+    node_releases: list[dict[str, Any]],
+    node_unofficial_releases: list[dict[str, Any]],
+) -> None:
+    responses.add(
+        method="GET",
+        url="https://raw.githubusercontent.com/nodejs/Release/master/schedule.json",
+        json=node_release_schedule,
+    )
+    responses.add(
+        method="GET",
+        url="https://nodejs.org/dist/index.json",
+        json=node_releases,
+    )
+    responses.add(
+        method="GET",
+        url="https://unofficial-builds.nodejs.org/download/release/index.json",
+        json=node_unofficial_releases,
+    )
     supported_node_versions = fetch_supported_nodejs_versions()
     distros = ["bookworm", "alpine"]
     versions = decide_nodejs_versions(distros, supported_node_versions)
