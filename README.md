@@ -7,7 +7,7 @@ Last updated by bot: 2024-04-25
 
 The `latest` tag is currently:
 
-- Node.js: 20.x
+- Node.js: 22.x
 - npm: 9.x
 - yarn: stable
 - Python: latest
