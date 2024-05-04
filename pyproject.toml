@@ -13,7 +13,7 @@ requires-python = "== 3.12"
 dev = [
   "pytest",
   "pre-commit",
-  "ruff==0.4.2",
+  "ruff==0.4.3",
   "pytest-cov",
   "mypy",
   "types-requests==2.31.0.20240406",
