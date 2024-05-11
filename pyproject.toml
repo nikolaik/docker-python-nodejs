@@ -17,7 +17,7 @@ dev = [
   "pytest-cov",
   "mypy",
   "types-requests==2.31.0.20240406",
-  "types-beautifulsoup4==4.12.0.20240504",
+  "types-beautifulsoup4==4.12.0.20240511",
   "pytest-socket",
   "responses",
 ]
