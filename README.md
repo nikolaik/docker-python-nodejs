@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2024-05-29
+Last updated by bot: 2024-06-08
 
 The `latest` tag is currently:
 
@@ -24,30 +24,22 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.12-nodejs22` | 3.12.3 | 22.2.0 | bookworm
-`python3.12-nodejs22-bullseye` | 3.12.3 | 22.2.0 | bullseye
-`python3.12-nodejs22-slim` | 3.12.3 | 22.2.0 | slim
-`python3.12-nodejs22-alpine` | 3.12.3 | 22.2.0 | alpine
-`python3.12-nodejs21` | 3.12.3 | 21.7.3 | bookworm
-`python3.12-nodejs21-bullseye` | 3.12.3 | 21.7.3 | bullseye
-`python3.12-nodejs21-slim` | 3.12.3 | 21.7.3 | slim
-`python3.12-nodejs21-alpine` | 3.12.3 | 21.7.3 | alpine
-`python3.12-nodejs20` | 3.12.3 | 20.14.0 | bookworm
-`python3.12-nodejs20-bullseye` | 3.12.3 | 20.14.0 | bullseye
-`python3.12-nodejs20-slim` | 3.12.3 | 20.14.0 | slim
-`python3.12-nodejs20-alpine` | 3.12.3 | 20.14.0 | alpine
-`python3.12-nodejs18` | 3.12.3 | 18.20.3 | bookworm
-`python3.12-nodejs18-bullseye` | 3.12.3 | 18.20.3 | bullseye
-`python3.12-nodejs18-slim` | 3.12.3 | 18.20.3 | slim
-`python3.12-nodejs18-alpine` | 3.12.3 | 18.20.3 | alpine
+`python3.12-nodejs22` | 3.12.4 | 22.2.0 | bookworm
+`python3.12-nodejs22-bullseye` | 3.12.4 | 22.2.0 | bullseye
+`python3.12-nodejs22-slim` | 3.12.4 | 22.2.0 | slim
+`python3.12-nodejs22-alpine` | 3.12.4 | 22.2.0 | alpine
+`python3.12-nodejs20` | 3.12.4 | 20.14.0 | bookworm
+`python3.12-nodejs20-bullseye` | 3.12.4 | 20.14.0 | bullseye
+`python3.12-nodejs20-slim` | 3.12.4 | 20.14.0 | slim
+`python3.12-nodejs20-alpine` | 3.12.4 | 20.14.0 | alpine
+`python3.12-nodejs18` | 3.12.4 | 18.20.3 | bookworm
+`python3.12-nodejs18-bullseye` | 3.12.4 | 18.20.3 | bullseye
+`python3.12-nodejs18-slim` | 3.12.4 | 18.20.3 | slim
+`python3.12-nodejs18-alpine` | 3.12.4 | 18.20.3 | alpine
 `python3.11-nodejs22` | 3.11.9 | 22.2.0 | bookworm
 `python3.11-nodejs22-bullseye` | 3.11.9 | 22.2.0 | bullseye
 `python3.11-nodejs22-slim` | 3.11.9 | 22.2.0 | slim
 `python3.11-nodejs22-alpine` | 3.11.9 | 22.2.0 | alpine
-`python3.11-nodejs21` | 3.11.9 | 21.7.3 | bookworm
-`python3.11-nodejs21-bullseye` | 3.11.9 | 21.7.3 | bullseye
-`python3.11-nodejs21-slim` | 3.11.9 | 21.7.3 | slim
-`python3.11-nodejs21-alpine` | 3.11.9 | 21.7.3 | alpine
 `python3.11-nodejs20` | 3.11.9 | 20.14.0 | bookworm
 `python3.11-nodejs20-bullseye` | 3.11.9 | 20.14.0 | bullseye
 `python3.11-nodejs20-slim` | 3.11.9 | 20.14.0 | slim
@@ -60,10 +52,6 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs22-bullseye` | 3.10.14 | 22.2.0 | bullseye
 `python3.10-nodejs22-slim` | 3.10.14 | 22.2.0 | slim
 `python3.10-nodejs22-alpine` | 3.10.14 | 22.2.0 | alpine
-`python3.10-nodejs21` | 3.10.14 | 21.7.3 | bookworm
-`python3.10-nodejs21-bullseye` | 3.10.14 | 21.7.3 | bullseye
-`python3.10-nodejs21-slim` | 3.10.14 | 21.7.3 | slim
-`python3.10-nodejs21-alpine` | 3.10.14 | 21.7.3 | alpine
 `python3.10-nodejs20` | 3.10.14 | 20.14.0 | bookworm
 `python3.10-nodejs20-bullseye` | 3.10.14 | 20.14.0 | bullseye
 `python3.10-nodejs20-slim` | 3.10.14 | 20.14.0 | slim
@@ -76,10 +64,6 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs22-bullseye` | 3.9.19 | 22.2.0 | bullseye
 `python3.9-nodejs22-slim` | 3.9.19 | 22.2.0 | slim
 `python3.9-nodejs22-alpine` | 3.9.19 | 22.2.0 | alpine
-`python3.9-nodejs21` | 3.9.19 | 21.7.3 | bookworm
-`python3.9-nodejs21-bullseye` | 3.9.19 | 21.7.3 | bullseye
-`python3.9-nodejs21-slim` | 3.9.19 | 21.7.3 | slim
-`python3.9-nodejs21-alpine` | 3.9.19 | 21.7.3 | alpine
 `python3.9-nodejs20` | 3.9.19 | 20.14.0 | bookworm
 `python3.9-nodejs20-bullseye` | 3.9.19 | 20.14.0 | bullseye
 `python3.9-nodejs20-slim` | 3.9.19 | 20.14.0 | slim
@@ -92,10 +76,6 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs22-bullseye` | 3.8.19 | 22.2.0 | bullseye
 `python3.8-nodejs22-slim` | 3.8.19 | 22.2.0 | slim
 `python3.8-nodejs22-alpine` | 3.8.19 | 22.2.0 | alpine
-`python3.8-nodejs21` | 3.8.19 | 21.7.3 | bookworm
-`python3.8-nodejs21-bullseye` | 3.8.19 | 21.7.3 | bullseye
-`python3.8-nodejs21-slim` | 3.8.19 | 21.7.3 | slim
-`python3.8-nodejs21-alpine` | 3.8.19 | 21.7.3 | alpine
 `python3.8-nodejs20` | 3.8.19 | 20.14.0 | bookworm
 `python3.8-nodejs20-bullseye` | 3.8.19 | 20.14.0 | bullseye
 `python3.8-nodejs20-slim` | 3.8.19 | 20.14.0 | slim
@@ -126,7 +106,6 @@ Python version | Start | End
 Node.js version | Start | End
 --- | --- | ---
 v22 | 2024-04-24 | 2027-04-30
-v21 | 2023-10-17 | 2024-06-01
 v20 | 2023-04-18 | 2026-04-30
 v18 | 2022-04-19 | 2025-04-30
 
