@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2024-06-12
+Last updated by bot: 2024-06-20
 
 The `latest` tag is currently:
 
@@ -28,9 +28,9 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs22-bullseye` | 3.12.4 | 22.3.0 | bullseye
 `python3.12-nodejs22-slim` | 3.12.4 | 22.3.0 | slim
 `python3.12-nodejs22-alpine` | 3.12.4 | 22.3.0 | alpine
-`python3.12-nodejs20` | 3.12.4 | 20.14.0 | bookworm
-`python3.12-nodejs20-bullseye` | 3.12.4 | 20.14.0 | bullseye
-`python3.12-nodejs20-slim` | 3.12.4 | 20.14.0 | slim
+`python3.12-nodejs20` | 3.12.4 | 20.15.0 | bookworm
+`python3.12-nodejs20-bullseye` | 3.12.4 | 20.15.0 | bullseye
+`python3.12-nodejs20-slim` | 3.12.4 | 20.15.0 | slim
 `python3.12-nodejs20-alpine` | 3.12.4 | 20.14.0 | alpine
 `python3.12-nodejs18` | 3.12.4 | 18.20.3 | bookworm
 `python3.12-nodejs18-bullseye` | 3.12.4 | 18.20.3 | bullseye
@@ -40,9 +40,9 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs22-bullseye` | 3.11.9 | 22.3.0 | bullseye
 `python3.11-nodejs22-slim` | 3.11.9 | 22.3.0 | slim
 `python3.11-nodejs22-alpine` | 3.11.9 | 22.3.0 | alpine
-`python3.11-nodejs20` | 3.11.9 | 20.14.0 | bookworm
-`python3.11-nodejs20-bullseye` | 3.11.9 | 20.14.0 | bullseye
-`python3.11-nodejs20-slim` | 3.11.9 | 20.14.0 | slim
+`python3.11-nodejs20` | 3.11.9 | 20.15.0 | bookworm
+`python3.11-nodejs20-bullseye` | 3.11.9 | 20.15.0 | bullseye
+`python3.11-nodejs20-slim` | 3.11.9 | 20.15.0 | slim
 `python3.11-nodejs20-alpine` | 3.11.9 | 20.14.0 | alpine
 `python3.11-nodejs18` | 3.11.9 | 18.20.3 | bookworm
 `python3.11-nodejs18-bullseye` | 3.11.9 | 18.20.3 | bullseye
@@ -52,9 +52,9 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs22-bullseye` | 3.10.14 | 22.3.0 | bullseye
 `python3.10-nodejs22-slim` | 3.10.14 | 22.3.0 | slim
 `python3.10-nodejs22-alpine` | 3.10.14 | 22.3.0 | alpine
-`python3.10-nodejs20` | 3.10.14 | 20.14.0 | bookworm
-`python3.10-nodejs20-bullseye` | 3.10.14 | 20.14.0 | bullseye
-`python3.10-nodejs20-slim` | 3.10.14 | 20.14.0 | slim
+`python3.10-nodejs20` | 3.10.14 | 20.15.0 | bookworm
+`python3.10-nodejs20-bullseye` | 3.10.14 | 20.15.0 | bullseye
+`python3.10-nodejs20-slim` | 3.10.14 | 20.15.0 | slim
 `python3.10-nodejs20-alpine` | 3.10.14 | 20.14.0 | alpine
 `python3.10-nodejs18` | 3.10.14 | 18.20.3 | bookworm
 `python3.10-nodejs18-bullseye` | 3.10.14 | 18.20.3 | bullseye
@@ -64,9 +64,9 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs22-bullseye` | 3.9.19 | 22.3.0 | bullseye
 `python3.9-nodejs22-slim` | 3.9.19 | 22.3.0 | slim
 `python3.9-nodejs22-alpine` | 3.9.19 | 22.3.0 | alpine
-`python3.9-nodejs20` | 3.9.19 | 20.14.0 | bookworm
-`python3.9-nodejs20-bullseye` | 3.9.19 | 20.14.0 | bullseye
-`python3.9-nodejs20-slim` | 3.9.19 | 20.14.0 | slim
+`python3.9-nodejs20` | 3.9.19 | 20.15.0 | bookworm
+`python3.9-nodejs20-bullseye` | 3.9.19 | 20.15.0 | bullseye
+`python3.9-nodejs20-slim` | 3.9.19 | 20.15.0 | slim
 `python3.9-nodejs20-alpine` | 3.9.19 | 20.14.0 | alpine
 `python3.9-nodejs18` | 3.9.19 | 18.20.3 | bookworm
 `python3.9-nodejs18-bullseye` | 3.9.19 | 18.20.3 | bullseye
@@ -76,9 +76,9 @@ Tag | Python version | Node.js version | Distro
 `python3.8-nodejs22-bullseye` | 3.8.19 | 22.3.0 | bullseye
 `python3.8-nodejs22-slim` | 3.8.19 | 22.3.0 | slim
 `python3.8-nodejs22-alpine` | 3.8.19 | 22.3.0 | alpine
-`python3.8-nodejs20` | 3.8.19 | 20.14.0 | bookworm
-`python3.8-nodejs20-bullseye` | 3.8.19 | 20.14.0 | bullseye
-`python3.8-nodejs20-slim` | 3.8.19 | 20.14.0 | slim
+`python3.8-nodejs20` | 3.8.19 | 20.15.0 | bookworm
+`python3.8-nodejs20-bullseye` | 3.8.19 | 20.15.0 | bullseye
+`python3.8-nodejs20-slim` | 3.8.19 | 20.15.0 | slim
 `python3.8-nodejs20-alpine` | 3.8.19 | 20.14.0 | alpine
 `python3.8-nodejs18` | 3.8.19 | 18.20.3 | bookworm
 `python3.8-nodejs18-bullseye` | 3.8.19 | 18.20.3 | bullseye
