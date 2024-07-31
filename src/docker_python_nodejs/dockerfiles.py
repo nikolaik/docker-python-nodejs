@@ -7,8 +7,8 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from build_versions.settings import DOCKERFILES_PATH
-from build_versions.versions import BuildVersion
+from .settings import DOCKERFILES_PATH
+from .versions import BuildVersion
 
 logger = logging.getLogger("dpn")
 
