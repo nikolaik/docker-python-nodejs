@@ -2,12 +2,11 @@ import argparse
 import logging
 from typing import cast
 
-from build_versions.ci_matrix import generate_matrix
-from build_versions.dockerfiles import render_dockerfile_with_context
-from build_versions.logger import init_logging
-from build_versions.readme import format_supported_versions, update_dynamic_readme
-from build_versions.settings import DISTROS
-from build_versions.versions import (
+from .ci_matrix import generate_matrix
+from .dockerfiles import render_dockerfile_with_context
+from .readme import format_supported_versions, update_dynamic_readme
+from .settings import DISTROS
+from .versions import (
     decide_version_combinations,
     fetch_supported_nodejs_versions,
     find_new_or_updated,
@@ -89,9 +88,3 @@ def parse_args() -> CLIArgs:
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
 
     return cast(CLIArgs, parser.parse_args())
-
-
-if __name__ == "__main__":
-    args = parse_args()
-    init_logging(args.verbose)
-    main(args)

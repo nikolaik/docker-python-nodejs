@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from build_versions.versions import BuildVersion
+    from .versions import BuildVersion
 
 CI_EVENT_SCHEDULED = "scheduled"
 
