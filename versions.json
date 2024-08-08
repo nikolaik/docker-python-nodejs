@@ -1,6 +1,42 @@
 {
   "versions": [
     {
+      "key": "python3.12-nodejs22-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.5",
+      "python_image": "3.12.5-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.6.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
+    },
+    {
+      "key": "python3.12-nodejs20-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.5",
+      "python_image": "3.12.5-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.16.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
+    },
+    {
+      "key": "python3.12-nodejs18-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.5",
+      "python_image": "3.12.5-alpine",
+      "nodejs": "18",
+      "nodejs_canonical": "18.20.4",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ]
+    },
+    {
       "key": "python3.12-nodejs22",
       "python": "3.12",
       "python_canonical": "3.12.4",
@@ -37,18 +73,6 @@
       "platforms": [
         "linux/amd64",
         "linux/arm64"
-      ]
-    },
-    {
-      "key": "python3.12-nodejs22-alpine",
-      "python": "3.12",
-      "python_canonical": "3.12.4",
-      "python_image": "3.12.4-alpine",
-      "nodejs": "22",
-      "nodejs_canonical": "22.6.0",
-      "distro": "alpine",
-      "platforms": [
-        "linux/amd64"
       ]
     },
     {
@@ -91,18 +115,6 @@
       ]
     },
     {
-      "key": "python3.12-nodejs20-alpine",
-      "python": "3.12",
-      "python_canonical": "3.12.4",
-      "python_image": "3.12.4-alpine",
-      "nodejs": "20",
-      "nodejs_canonical": "20.16.0",
-      "distro": "alpine",
-      "platforms": [
-        "linux/amd64"
-      ]
-    },
-    {
       "key": "python3.12-nodejs18",
       "python": "3.12",
       "python_canonical": "3.12.4",
@@ -139,18 +151,6 @@
       "platforms": [
         "linux/amd64",
         "linux/arm64"
-      ]
-    },
-    {
-      "key": "python3.12-nodejs18-alpine",
-      "python": "3.12",
-      "python_canonical": "3.12.4",
-      "python_image": "3.12.4-alpine",
-      "nodejs": "18",
-      "nodejs_canonical": "18.20.4",
-      "distro": "alpine",
-      "platforms": [
-        "linux/amd64"
       ]
     },
     {
