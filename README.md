@@ -24,18 +24,18 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
+`python3.12-nodejs22` | 3.12.5 | 22.6.0 | bookworm
+`python3.12-nodejs22-bullseye` | 3.12.5 | 22.6.0 | bullseye
+`python3.12-nodejs22-slim` | 3.12.5 | 22.6.0 | slim
 `python3.12-nodejs22-alpine` | 3.12.5 | 22.6.0 | alpine
+`python3.12-nodejs20` | 3.12.5 | 20.16.0 | bookworm
+`python3.12-nodejs20-bullseye` | 3.12.5 | 20.16.0 | bullseye
+`python3.12-nodejs20-slim` | 3.12.5 | 20.16.0 | slim
 `python3.12-nodejs20-alpine` | 3.12.5 | 20.16.0 | alpine
+`python3.12-nodejs18` | 3.12.5 | 18.20.4 | bookworm
+`python3.12-nodejs18-bullseye` | 3.12.5 | 18.20.4 | bullseye
+`python3.12-nodejs18-slim` | 3.12.5 | 18.20.4 | slim
 `python3.12-nodejs18-alpine` | 3.12.5 | 18.20.4 | alpine
-`python3.12-nodejs22` | 3.12.4 | 22.6.0 | bookworm
-`python3.12-nodejs22-bullseye` | 3.12.4 | 22.6.0 | bullseye
-`python3.12-nodejs22-slim` | 3.12.4 | 22.6.0 | slim
-`python3.12-nodejs20` | 3.12.4 | 20.16.0 | bookworm
-`python3.12-nodejs20-bullseye` | 3.12.4 | 20.16.0 | bullseye
-`python3.12-nodejs20-slim` | 3.12.4 | 20.16.0 | slim
-`python3.12-nodejs18` | 3.12.4 | 18.20.4 | bookworm
-`python3.12-nodejs18-bullseye` | 3.12.4 | 18.20.4 | bullseye
-`python3.12-nodejs18-slim` | 3.12.4 | 18.20.4 | slim
 `python3.11-nodejs22` | 3.11.9 | 22.6.0 | bookworm
 `python3.11-nodejs22-bullseye` | 3.11.9 | 22.6.0 | bullseye
 `python3.11-nodejs22-slim` | 3.11.9 | 22.6.0 | slim
