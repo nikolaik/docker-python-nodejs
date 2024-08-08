@@ -9,13 +9,13 @@ import requests
 from bs4 import BeautifulSoup
 from semver.version import Version
 
-from build_versions.docker_hub import DockerImageDict, DockerTagDict, fetch_tags
-from build_versions.nodejs_versions import (
+from .docker_hub import DockerImageDict, DockerTagDict, fetch_tags
+from .nodejs_versions import (
     fetch_node_releases,
     fetch_node_unofficial_releases,
     fetch_nodejs_release_schedule,
 )
-from build_versions.settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
+from .settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
 todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
 

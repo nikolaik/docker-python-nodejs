@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from build_versions.versions import BuildVersion, SupportedVersion
+    from .versions import BuildVersion, SupportedVersion
 
 logger = logging.getLogger("dpn")
 

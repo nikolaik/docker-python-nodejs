@@ -1,17 +1,15 @@
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.0
     hooks:
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
+        args: [--fix]
       - id: ruff-format
   - repo: local
     hooks:
       - id: mypy
         name: mypy
-        entry: mypy
+        entry: uv run mypy
         language: python
         require_serial: true
         types: [python]

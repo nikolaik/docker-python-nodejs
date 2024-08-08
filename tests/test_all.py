@@ -6,11 +6,10 @@ from unittest import mock
 
 import pytest
 import responses
-
-from build_versions.dockerfiles import render_dockerfile_with_context
-from build_versions.readme import update_dynamic_readme
-from build_versions.settings import BASE_PATH, DOCKERFILES_PATH
-from build_versions.versions import (
+from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
+from docker_python_nodejs.readme import update_dynamic_readme
+from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
+from docker_python_nodejs.versions import (
     BuildVersion,
     SupportedVersion,
     decide_nodejs_versions,
