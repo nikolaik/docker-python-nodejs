@@ -133,7 +133,7 @@ dev = [
     { name = "responses" },
     { name = "ruff", specifier = "==0.6.2" },
     { name = "types-beautifulsoup4", specifier = "==4.12.0.20240511" },
-    { name = "types-requests", specifier = "==2.32.0.20240712" },
+    { name = "types-requests", specifier = "==2.32.0.20240905" },
 ]
 
 [[package]]
@@ -431,14 +431,14 @@ wheels = [
 
 [[package]]
 name = "types-requests"
-version = "2.32.0.20240712"
+version = "2.32.0.20240905"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5e/9e/7663eb27c33568b8fc20ccdaf2a1ce53a9530c42a7cceb9f552a6ff4a1d8/types-requests-2.32.0.20240712.tar.gz", hash = "sha256:90c079ff05e549f6bf50e02e910210b98b8ff1ebdd18e19c873cd237737c1358", size = 17896 }
+sdist = { url = "https://files.pythonhosted.org/packages/4f/b7/8dfe784a621cc2fabab17bef42f87f6eed85e21c3ecbb139d14190f7b1b3/types-requests-2.32.0.20240905.tar.gz", hash = "sha256:e97fd015a5ed982c9ddcd14cc4afba9d111e0e06b797c8f776d14602735e9bd6", size = 17934 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/30/4d/cbed87a6912fbd9259ce23a5d4aa1de9816edf75eec6ed9a757c00906c8e/types_requests-2.32.0.20240712-py3-none-any.whl", hash = "sha256:f754283e152c752e46e70942fa2a146b5bc70393522257bb85bd1ef7e019dcc3", size = 15816 },
+    { url = "https://files.pythonhosted.org/packages/f1/53/9d399872413354e8c3e27ac8da98459cb215b2dfdab29323fffd5ebf2ca4/types_requests-2.32.0.20240905-py3-none-any.whl", hash = "sha256:f46ecb55f5e1a37a58be684cf3f013f166da27552732ef2469a0cc8e62a72881", size = 15827 },
 ]
 
 [[package]]
