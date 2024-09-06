@@ -132,8 +132,8 @@ dev = [
     { name = "pytest-socket" },
     { name = "responses" },
     { name = "ruff", specifier = "==0.6.2" },
-    { name = "types-beautifulsoup4", specifier = "==4.12.0.20240511" },
-    { name = "types-requests", specifier = "==2.32.0.20240712" },
+    { name = "types-beautifulsoup4" },
+    { name = "types-requests" },
 ]
 
 [[package]]
