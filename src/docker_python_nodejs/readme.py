@@ -67,14 +67,10 @@ def format_supported_versions(
     python_versions: "list[SupportedVersion]",
     node_versions: "list[SupportedVersion]",
 ) -> str:
-    headings = ["Python version", "Start", "End"]
-    rows = [[ver.version, ver.start, ver.end] for ver in sorted(python_versions, key=lambda x: x.start, reverse=True)]
-    python_table = _format_md_table(headings, rows)
+    def _as_rows(versions: "list[SupportedVersion]") -> list[list[str]]:
+        return [[ver.version, ver.start, ver.end] for ver in sorted(versions, key=lambda x: x.start, reverse=True)]
 
-    headings_node = ["Node.js version", "Start", "End"]
-    rows_node = [
-        [ver.version, ver.start, ver.end] for ver in sorted(node_versions, key=lambda x: x.start, reverse=True)
-    ]
-    node_table = _format_md_table(headings_node, rows_node)
+    python_table = _format_md_table(["Python version", "Start", "End"], _as_rows(python_versions))
+    node_table = _format_md_table(["Node.js version", "Start", "End"], _as_rows(node_versions))
 
     return f"{python_table}\n{node_table}"

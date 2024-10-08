@@ -23,7 +23,7 @@ jobs:
       - name: Generate build matrix
         run: |
           FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
-          uv run dpn --ci-matrix $FORCE --ci-event ${{ github.event_name }}
+          uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
         id: set-matrix
 
   deploy:
@@ -39,7 +39,7 @@ jobs:
         with:
           enable-cache: true
       - name: Generate Dockerfile from config
-        run: uv run dpn --dockerfile-with-context '${{ toJSON(matrix) }}'
+        run: uv run dpn dockerfile --context '${{ toJSON(matrix) }}'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -79,7 +79,7 @@ jobs:
           enable-cache: true
       - name: Update versions.json and README.md, then commit and push changes (if any)
         run: |
-          uv run dpn --verbose --release
+          uv run dpn --verbose release
           clean_checkout=$(git status --porcelain)
           if [[ -n "${clean_checkout}" ]]; then
               git config --global user.name "Nikolai Kristiansen" > /dev/null 2>&1
