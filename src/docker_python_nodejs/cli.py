@@ -86,7 +86,7 @@ def parse_args() -> CLIArgs:
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
     # Dockerfile command
     parser_dockerfile = subparsers.add_parser("dockerfile", help="Render a dockerfile based on version config")
-    parser_dockerfile.add_argument("context", default="", help="Dockerfile version config")
+    parser_dockerfile.add_argument("--context", default="", help="Dockerfile version config")
     # Build matrix command
     parser_build_matrix = subparsers.add_parser("build-matrix", help="Generate CI build matrix")
     parser_build_matrix.add_argument(
