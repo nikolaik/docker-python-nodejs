@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2024-10-30
+Last updated by bot: 2024-11-12
 
 The `latest` tag is currently:
 
@@ -24,9 +24,9 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.13-nodejs23` | 3.13.0 | 23.1.0 | bookworm
-`python3.13-nodejs23-bullseye` | 3.13.0 | 23.1.0 | bullseye
-`python3.13-nodejs23-slim` | 3.13.0 | 23.1.0 | slim
+`python3.13-nodejs23` | 3.13.0 | 23.2.0 | bookworm
+`python3.13-nodejs23-bullseye` | 3.13.0 | 23.2.0 | bullseye
+`python3.13-nodejs23-slim` | 3.13.0 | 23.2.0 | slim
 `python3.13-nodejs23-alpine` | 3.13.0 | 23.1.0 | alpine
 `python3.13-nodejs22` | 3.13.0 | 22.11.0 | bookworm
 `python3.13-nodejs22-bullseye` | 3.13.0 | 22.11.0 | bullseye
@@ -40,9 +40,9 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs18-bullseye` | 3.13.0 | 18.20.4 | bullseye
 `python3.13-nodejs18-slim` | 3.13.0 | 18.20.4 | slim
 `python3.13-nodejs18-alpine` | 3.13.0 | 18.20.4 | alpine
-`python3.12-nodejs23` | 3.12.7 | 23.1.0 | bookworm
-`python3.12-nodejs23-bullseye` | 3.12.7 | 23.1.0 | bullseye
-`python3.12-nodejs23-slim` | 3.12.7 | 23.1.0 | slim
+`python3.12-nodejs23` | 3.12.7 | 23.2.0 | bookworm
+`python3.12-nodejs23-bullseye` | 3.12.7 | 23.2.0 | bullseye
+`python3.12-nodejs23-slim` | 3.12.7 | 23.2.0 | slim
 `python3.12-nodejs23-alpine` | 3.12.7 | 23.1.0 | alpine
 `python3.12-nodejs22` | 3.12.7 | 22.11.0 | bookworm
 `python3.12-nodejs22-bullseye` | 3.12.7 | 22.11.0 | bullseye
@@ -56,9 +56,9 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs18-bullseye` | 3.12.7 | 18.20.4 | bullseye
 `python3.12-nodejs18-slim` | 3.12.7 | 18.20.4 | slim
 `python3.12-nodejs18-alpine` | 3.12.7 | 18.20.4 | alpine
-`python3.11-nodejs23` | 3.11.10 | 23.1.0 | bookworm
-`python3.11-nodejs23-bullseye` | 3.11.10 | 23.1.0 | bullseye
-`python3.11-nodejs23-slim` | 3.11.10 | 23.1.0 | slim
+`python3.11-nodejs23` | 3.11.10 | 23.2.0 | bookworm
+`python3.11-nodejs23-bullseye` | 3.11.10 | 23.2.0 | bullseye
+`python3.11-nodejs23-slim` | 3.11.10 | 23.2.0 | slim
 `python3.11-nodejs23-alpine` | 3.11.10 | 23.1.0 | alpine
 `python3.11-nodejs22` | 3.11.10 | 22.11.0 | bookworm
 `python3.11-nodejs22-bullseye` | 3.11.10 | 22.11.0 | bullseye
@@ -72,9 +72,9 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs18-bullseye` | 3.11.10 | 18.20.4 | bullseye
 `python3.11-nodejs18-slim` | 3.11.10 | 18.20.4 | slim
 `python3.11-nodejs18-alpine` | 3.11.10 | 18.20.4 | alpine
-`python3.10-nodejs23` | 3.10.15 | 23.1.0 | bookworm
-`python3.10-nodejs23-bullseye` | 3.10.15 | 23.1.0 | bullseye
-`python3.10-nodejs23-slim` | 3.10.15 | 23.1.0 | slim
+`python3.10-nodejs23` | 3.10.15 | 23.2.0 | bookworm
+`python3.10-nodejs23-bullseye` | 3.10.15 | 23.2.0 | bullseye
+`python3.10-nodejs23-slim` | 3.10.15 | 23.2.0 | slim
 `python3.10-nodejs23-alpine` | 3.10.15 | 23.1.0 | alpine
 `python3.10-nodejs22` | 3.10.15 | 22.11.0 | bookworm
 `python3.10-nodejs22-bullseye` | 3.10.15 | 22.11.0 | bullseye
@@ -88,9 +88,9 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs18-bullseye` | 3.10.15 | 18.20.4 | bullseye
 `python3.10-nodejs18-slim` | 3.10.15 | 18.20.4 | slim
 `python3.10-nodejs18-alpine` | 3.10.15 | 18.20.4 | alpine
-`python3.9-nodejs23` | 3.9.20 | 23.1.0 | bookworm
-`python3.9-nodejs23-bullseye` | 3.9.20 | 23.1.0 | bullseye
-`python3.9-nodejs23-slim` | 3.9.20 | 23.1.0 | slim
+`python3.9-nodejs23` | 3.9.20 | 23.2.0 | bookworm
+`python3.9-nodejs23-bullseye` | 3.9.20 | 23.2.0 | bullseye
+`python3.9-nodejs23-slim` | 3.9.20 | 23.2.0 | slim
 `python3.9-nodejs23-alpine` | 3.9.20 | 23.1.0 | alpine
 `python3.9-nodejs22` | 3.9.20 | 22.11.0 | bookworm
 `python3.9-nodejs22-bullseye` | 3.9.20 | 22.11.0 | bullseye
