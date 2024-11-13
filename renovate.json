@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "configMigration": true,
   "packageRules": [
     {
       "groupName": "ruff",
@@ -11,5 +12,6 @@
       ],
       "automerge": true
     }
-  ]
+  ],
+  "platformAutomerge": true
 }
