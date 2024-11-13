@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2024-11-12
+Last updated by bot: 2024-11-13
 
 The `latest` tag is currently:
 
@@ -36,9 +36,9 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs20-bullseye` | 3.13.0 | 20.18.0 | bullseye
 `python3.13-nodejs20-slim` | 3.13.0 | 20.18.0 | slim
 `python3.13-nodejs20-alpine` | 3.13.0 | 20.18.0 | alpine
-`python3.13-nodejs18` | 3.13.0 | 18.20.4 | bookworm
-`python3.13-nodejs18-bullseye` | 3.13.0 | 18.20.4 | bullseye
-`python3.13-nodejs18-slim` | 3.13.0 | 18.20.4 | slim
+`python3.13-nodejs18` | 3.13.0 | 18.20.5 | bookworm
+`python3.13-nodejs18-bullseye` | 3.13.0 | 18.20.5 | bullseye
+`python3.13-nodejs18-slim` | 3.13.0 | 18.20.5 | slim
 `python3.13-nodejs18-alpine` | 3.13.0 | 18.20.4 | alpine
 `python3.12-nodejs23` | 3.12.7 | 23.2.0 | bookworm
 `python3.12-nodejs23-bullseye` | 3.12.7 | 23.2.0 | bullseye
@@ -52,9 +52,9 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs20-bullseye` | 3.12.7 | 20.18.0 | bullseye
 `python3.12-nodejs20-slim` | 3.12.7 | 20.18.0 | slim
 `python3.12-nodejs20-alpine` | 3.12.7 | 20.18.0 | alpine
-`python3.12-nodejs18` | 3.12.7 | 18.20.4 | bookworm
-`python3.12-nodejs18-bullseye` | 3.12.7 | 18.20.4 | bullseye
-`python3.12-nodejs18-slim` | 3.12.7 | 18.20.4 | slim
+`python3.12-nodejs18` | 3.12.7 | 18.20.5 | bookworm
+`python3.12-nodejs18-bullseye` | 3.12.7 | 18.20.5 | bullseye
+`python3.12-nodejs18-slim` | 3.12.7 | 18.20.5 | slim
 `python3.12-nodejs18-alpine` | 3.12.7 | 18.20.4 | alpine
 `python3.11-nodejs23` | 3.11.10 | 23.2.0 | bookworm
 `python3.11-nodejs23-bullseye` | 3.11.10 | 23.2.0 | bullseye
@@ -68,9 +68,9 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs20-bullseye` | 3.11.10 | 20.18.0 | bullseye
 `python3.11-nodejs20-slim` | 3.11.10 | 20.18.0 | slim
 `python3.11-nodejs20-alpine` | 3.11.10 | 20.18.0 | alpine
-`python3.11-nodejs18` | 3.11.10 | 18.20.4 | bookworm
-`python3.11-nodejs18-bullseye` | 3.11.10 | 18.20.4 | bullseye
-`python3.11-nodejs18-slim` | 3.11.10 | 18.20.4 | slim
+`python3.11-nodejs18` | 3.11.10 | 18.20.5 | bookworm
+`python3.11-nodejs18-bullseye` | 3.11.10 | 18.20.5 | bullseye
+`python3.11-nodejs18-slim` | 3.11.10 | 18.20.5 | slim
 `python3.11-nodejs18-alpine` | 3.11.10 | 18.20.4 | alpine
 `python3.10-nodejs23` | 3.10.15 | 23.2.0 | bookworm
 `python3.10-nodejs23-bullseye` | 3.10.15 | 23.2.0 | bullseye
@@ -84,9 +84,9 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs20-bullseye` | 3.10.15 | 20.18.0 | bullseye
 `python3.10-nodejs20-slim` | 3.10.15 | 20.18.0 | slim
 `python3.10-nodejs20-alpine` | 3.10.15 | 20.18.0 | alpine
-`python3.10-nodejs18` | 3.10.15 | 18.20.4 | bookworm
-`python3.10-nodejs18-bullseye` | 3.10.15 | 18.20.4 | bullseye
-`python3.10-nodejs18-slim` | 3.10.15 | 18.20.4 | slim
+`python3.10-nodejs18` | 3.10.15 | 18.20.5 | bookworm
+`python3.10-nodejs18-bullseye` | 3.10.15 | 18.20.5 | bullseye
+`python3.10-nodejs18-slim` | 3.10.15 | 18.20.5 | slim
 `python3.10-nodejs18-alpine` | 3.10.15 | 18.20.4 | alpine
 `python3.9-nodejs23` | 3.9.20 | 23.2.0 | bookworm
 `python3.9-nodejs23-bullseye` | 3.9.20 | 23.2.0 | bullseye
@@ -100,9 +100,9 @@ Tag | Python version | Node.js version | Distro
 `python3.9-nodejs20-bullseye` | 3.9.20 | 20.18.0 | bullseye
 `python3.9-nodejs20-slim` | 3.9.20 | 20.18.0 | slim
 `python3.9-nodejs20-alpine` | 3.9.20 | 20.18.0 | alpine
-`python3.9-nodejs18` | 3.9.20 | 18.20.4 | bookworm
-`python3.9-nodejs18-bullseye` | 3.9.20 | 18.20.4 | bullseye
-`python3.9-nodejs18-slim` | 3.9.20 | 18.20.4 | slim
+`python3.9-nodejs18` | 3.9.20 | 18.20.5 | bookworm
+`python3.9-nodejs18-bullseye` | 3.9.20 | 18.20.5 | bullseye
+`python3.9-nodejs18-slim` | 3.9.20 | 18.20.5 | slim
 `python3.9-nodejs18-alpine` | 3.9.20 | 18.20.4 | alpine
 
 <!-- TAGS_END -->
