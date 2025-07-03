@@ -22,7 +22,7 @@ dpn = "docker_python_nodejs:dpn"
 dev-dependencies = [
   "pytest",
   "pre-commit",
-  "ruff==0.12.1",
+  "ruff==0.12.2",
   "pytest-cov",
   "mypy",
   "types-requests",
