@@ -7,7 +7,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from .settings import DOCKERFILES_PATH
+from .settings import DEFAULT_DISTRO, DOCKERFILES_PATH
 from .versions import BuildVersion
 
 logger = logging.getLogger("dpn")
@@ -25,7 +25,7 @@ def render_dockerfile(version: BuildVersion) -> str:
 
     context = dataclasses.asdict(version) | {
         "now": datetime.datetime.now(datetime.UTC).isoformat()[:-7],
-        "distro": "bookworm" if version.distro == "slim" else version.distro,  # slim is an image variant
+        "distro": DEFAULT_DISTRO if version.distro == "slim" else version.distro,  # slim is an image variant
         "distro_variant": "slim" if version.distro == "slim" else "full",
     }
 
