@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "customManagers:githubActionsVersions",
+    "helpers:pinGitHubActionDigests"
   ],
   "configMigration": true,
   "packageRules": [
@@ -9,6 +11,33 @@
       "groupName": "ruff",
       "matchDepNames": [
         "ruff"
+      ],
+      "addLabels": [
+        "renovate:automerge"
+      ],
+      "automerge": true
+    },
+
+    {
+      "groupName": "Linter dependencies",
+      "description": "Group linter updates",
+      "matchFileNames": [
+        ".pre-commit-config.yaml"
+      ],
+      "addLabels": [
+        "renovate:automerge"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "GitHub Actions dependencies",
+      "description": "Group GitHub Actions updates",
+      "matchFileNames": [
+        ".github/**/*.yaml",
+        ".github/**/*.yml"
+      ],
+      "addLabels": [
+        "renovate:automerge"
       ],
       "automerge": true
     }
