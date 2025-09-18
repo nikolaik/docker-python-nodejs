@@ -1,0 +1,49 @@
+on:
+  push:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        package: ${{ fromJSON('["a", "b", "c"]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate digest output
+        id: build
+        run: |
+          RAND=$(openssl rand -hex 16)
+          echo "digest=${RAND}" > $GITHUB_OUTPUT
+
+      - name: Export digest
+        run: |
+          mkdir digests/
+          digest="${{ steps.build.outputs.digest }}"
+          echo "${digest#sha256:}" >> "digests/${{ matrix.package }}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-${{ matrix.package }}
+          path: digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Download digests
+        uses: actions/download-artifact@v5
+        with:
+          path: digests
+          pattern: digest-*
+          merge-multiple: true
+
+      - name: List digests
+        run: |
+          echo "Digests by package:"
+          for path in digests/*; do
+            name=$(basename "$path")
+            echo "$name: $(cat "$path")"
+          done
+          echo "🎉🎉🎉"
