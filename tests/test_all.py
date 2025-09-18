@@ -25,10 +25,10 @@ def build_version_fixture() -> BuildVersion:
         key="python3.11-nodejs20",
         python="3.11",
         python_canonical="3.11.3",
-        python_image="3.11.3-bookworm",
+        python_image="3.11.3-trixie",
         nodejs="20",
         nodejs_canonical="20.2.0",
-        distro="bookworm",
+        distro="trixie",
         platforms=[
             "linux/amd64",
             "linux/arm64",
@@ -120,7 +120,7 @@ def python_tags_fixture() -> dict[str, Any]:
         "previous": None,
         "results": [
             {
-                "name": "3.11.4-bookworm",
+                "name": "3.11.4-trixie",
                 "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
             },
             {
@@ -193,13 +193,13 @@ def test_decide_version_combinations(
     python_version = SupportedVersion(start="2022-10-24", end="2027-10", version="3.11")
     node_version = SupportedVersion(start="2023-04-18", end="2026-04-30", version="v20")
 
-    versions = decide_version_combinations(["bookworm", "alpine"], [python_version], [node_version])
+    versions = decide_version_combinations(["trixie", "alpine"], [python_version], [node_version])
 
     assert versions
     assert len(versions) == python_tags["count"]
     assert versions[0].nodejs_canonical == "20.3.0"
     assert versions[0].python_canonical == "3.11.4"
-    assert versions[0].distro == "bookworm"
+    assert versions[0].distro == "trixie"
     assert versions[1].nodejs_canonical == "20.3.0"
     assert versions[1].python_canonical == "3.11.4"
     assert versions[1].distro == "alpine"
@@ -247,7 +247,7 @@ def test_decide_nodejs_versions(
         json=node_unofficial_releases,
     )
     supported_node_versions = fetch_supported_nodejs_versions()
-    distros = ["bookworm", "alpine"]
+    distros = ["trixie", "alpine"]
     versions = decide_nodejs_versions(distros, supported_node_versions)
 
     assert len(supported_node_versions) * len(distros) == len(versions)
