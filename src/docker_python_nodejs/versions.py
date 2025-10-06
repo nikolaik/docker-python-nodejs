@@ -231,6 +231,10 @@ def version_combinations(
                 ),
             )
 
+    return sorted_versions(versions)
+
+
+def sorted_versions(versions: list[BuildVersion]) -> list[BuildVersion]:
     versions = sorted(versions, key=lambda v: DISTROS.index(v.distro))
     versions = sorted(versions, key=lambda v: Version.parse(v.nodejs_canonical), reverse=True)
     return sorted(versions, key=lambda v: Version.parse(v.python_canonical), reverse=True)
@@ -297,4 +301,4 @@ def load_build_contexts(builds_dir: Path) -> list[BuildVersion]:
         version = BuildVersion(**build_data)
         versions.append(version)
 
-    return versions
+    return sorted_versions(versions)
