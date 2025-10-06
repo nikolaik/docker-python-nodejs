@@ -21,10 +21,11 @@ jobs:
         with:
           enable-cache: true
       - name: Generate build matrix
+        id: set-matrix
         run: |
           FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
-        id: set-matrix
+
 
   deploy:
     name: ${{ matrix.key }}
@@ -34,6 +35,7 @@ jobs:
     strategy:
       matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
     steps:
+      # Setup
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
         with:
@@ -49,6 +51,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Build
       - name: Build image
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
@@ -56,17 +60,37 @@ jobs:
           file: dockerfiles/${{ matrix.key }}.Dockerfile
           load: true
           tags: nikolaik/python-nodejs:${{ matrix.key }}
+
+      # Test
       - name: Run smoke tests
         run: |
           docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+
+      # Push image
       - name: Push image
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
+        id: build-and-push
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
           platforms: ${{ join(matrix.platforms) }}
           push: true
           tags: nikolaik/python-nodejs:${{ matrix.key }}
+
+      # Store build context
+      - name: Add digest to build context
+        run: |
+          mkdir builds/
+          digest="${{ steps.build-and-push.outputs.digest }}"
+          echo '${{ toJSON(matrix) }}' | jq --arg digest "$digest" '. +={"digest": $digest}' >> "builds/${{ matrix.key }}.json"
+
+      - name: Upload build context
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: build-${{ matrix.key }}
+          path: builds/*
+          if-no-files-found: error
+          retention-days: 1
 
   release:
     name: Update versions.json and README.md
@@ -77,9 +101,17 @@ jobs:
       - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
         with:
           enable-cache: true
+
+      - name: Download metadata for builds
+        uses: actions/download-artifact@v5
+        with:
+          path: builds
+          pattern: build-*
+          merge-multiple: true
+
       - name: Update versions.json and README.md, then commit and push changes (if any)
         run: |
-          uv run dpn --verbose release
+          uv run dpn --verbose release --builds-dir builds/
           clean_checkout=$(git status --porcelain)
           if [[ -n "${clean_checkout}" ]]; then
               git config --global user.name "Nikolai Kristiansen" > /dev/null 2>&1

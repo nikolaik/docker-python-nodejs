@@ -4,6 +4,7 @@ import json
 import logging
 import re
 from dataclasses import dataclass
+from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
@@ -39,20 +40,16 @@ class LanguageVersion:
     canonical_version: str
     key: str
     distro: str
-    image: str | None = None
 
 
 @dataclass
 class NodeJsVersion(LanguageVersion):
-    pass
+    image: str | None = None
 
 
 @dataclass
 class PythonVersion(LanguageVersion):
-    canonical_version: str
-    key: str
     image: str
-    distro: str
 
 
 @dataclass
@@ -67,6 +64,7 @@ class BuildVersion:
     nodejs_canonical: str
     distro: str
     platforms: list[str]
+    digest: str = ""
 
 
 def _is_platform_image(platform: str, image: DockerImageDict) -> bool:
@@ -286,3 +284,17 @@ def find_new_or_updated(
             new_or_updated.append(ver)
 
     return new_or_updated
+
+
+def load_build_contexts(builds_dir: Path) -> list[BuildVersion]:
+    """Find JSON files with build contexts and return the corresponding BuildVersion list"""
+    logger.info(f"Loading builds metadata from {builds_dir.as_posix()}")
+    versions: list[BuildVersion] = []
+
+    for build_file in builds_dir.glob("*.json"):
+        with build_file.open() as fp:
+            build_data = json.load(fp)
+        version = BuildVersion(**build_data)
+        versions.append(version)
+
+    return versions
