@@ -15,6 +15,7 @@ from docker_python_nodejs.versions import (
     decide_nodejs_versions,
     decide_version_combinations,
     fetch_supported_nodejs_versions,
+    load_build_contexts,
     scrape_supported_python_versions,
 )
 
@@ -251,3 +252,15 @@ def test_decide_nodejs_versions(
     versions = decide_nodejs_versions(distros, supported_node_versions)
 
     assert len(supported_node_versions) * len(distros) == len(versions)
+
+
+def test_load_build_contexts(build_version: BuildVersion, tmp_path: Path) -> None:
+    ver = build_version
+
+    file_path = tmp_path / f"{ver.key}.json"
+    content = json.dumps(dataclasses.asdict(ver))
+    file_path.write_text(content)
+
+    versions = load_build_contexts(tmp_path)
+    assert len(versions) == 1
+    assert versions[0].key == ver.key
