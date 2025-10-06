@@ -6,12 +6,6 @@ FROM python:{{ python_image }} AS builder
 # Install node prereqs, nodejs and yarn
 # Ref: https://raw.githubusercontent.com/nodejs/docker-node/master/Dockerfile-alpine.template
 # Ref: https://yarnpkg.com/en/docs/install
-{% if python == "3.7" or python == "3.8" %}
-# poetry: Workaround for missing cffi musllinux wheels on olds pythons. Ref: https://foss.heptapod.net/pypy/cffi/-/issues/509
-RUN apk add gcc musl-dev libffi-dev
-RUN pip install cffi
-RUN find /root/.cache/pip/wheels -name '*.whl' -exec cp {} / +
-{% endif %}
 RUN apk add curl
 # FIXME: no arm + musl build yet
 # Ref: https://github.com/nodejs/unofficial-builds/pull/59
@@ -34,9 +28,4 @@ RUN pip install -U pip pipenv uv
 # Mimic what https://install.python-poetry.org does without the flexibility (platforms, install sources, etc).
 ENV VENV=/opt/poetryvenv
 RUN python -m venv $VENV && $VENV/bin/pip install -U pip wheel
-{% if python == "3.7" or python == "3.8" %}
-# Workaround for missing cffi musllinux wheels on older pythons
-COPY --from=builder /*.whl /
-RUN $VENV/bin/pip install /*.whl && rm /*.whl
-{% endif %}
 RUN $VENV/bin/pip install poetry && ln -s $VENV/bin/poetry /usr/local/bin/poetry
