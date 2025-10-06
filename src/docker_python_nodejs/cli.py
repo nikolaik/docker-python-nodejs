@@ -55,7 +55,7 @@ def run_release(args: CLIArgs) -> None:
 
 def main(args: CLIArgs) -> None:
     if args.dry_run:
-        logger.debug("Dry run, outputing only.")
+        logger.debug("Dry run, outputting only.")
 
     if args.command == "dockerfile":
         run_dockerfile(args)
