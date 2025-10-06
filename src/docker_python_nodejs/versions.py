@@ -163,11 +163,11 @@ def fetch_supported_nodejs_versions() -> list[SupportedVersion]:
 
 
 def supported_versions() -> tuple[list[SupportedVersion], list[SupportedVersion]]:
-    suported_python_versions = scrape_supported_python_versions()
-    suported_nodejs_versions = fetch_supported_nodejs_versions()
-    supported_versions = format_supported_versions(suported_python_versions, suported_nodejs_versions)
+    supported_python_versions = scrape_supported_python_versions()
+    supported_nodejs_versions = fetch_supported_nodejs_versions()
+    supported_versions = format_supported_versions(supported_python_versions, supported_nodejs_versions)
     logger.debug(f"Found the following supported versions:\n{supported_versions}")
-    return suported_python_versions, suported_nodejs_versions
+    return supported_python_versions, supported_nodejs_versions
 
 
 def _has_arch_files(files: list[str], distro: str) -> bool:

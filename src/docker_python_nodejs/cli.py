@@ -35,8 +35,8 @@ def run_dockerfile(args: CLIArgs) -> None:
 
 
 def run_build_matrix(args: CLIArgs) -> None:
-    suported_python_versions, suported_nodejs_versions = supported_versions()
-    versions = decide_version_combinations(args.distros, suported_python_versions, suported_nodejs_versions)
+    supported_python_versions, supported_nodejs_versions = supported_versions()
+    versions = decide_version_combinations(args.distros, supported_python_versions, supported_nodejs_versions)
     new_or_updated = find_new_or_updated(versions, args.force)
     build_matrix(new_or_updated, args.event)
 
@@ -44,13 +44,13 @@ def run_build_matrix(args: CLIArgs) -> None:
 def run_release(args: CLIArgs) -> None:
     versions = load_build_contexts(args.builds_dir)
     new_or_updated = find_new_or_updated(versions, args.force)
-    suported_python_versions, suported_nodejs_versions = supported_versions()
+    supported_python_versions, supported_nodejs_versions = supported_versions()
     if not new_or_updated:
         logger.info("No new or updated versions")
         return
 
     persist_versions(versions, args.dry_run)
-    update_dynamic_readme(versions, suported_python_versions, suported_nodejs_versions, args.dry_run)
+    update_dynamic_readme(versions, supported_python_versions, supported_nodejs_versions, args.dry_run)
 
 
 def main(args: CLIArgs) -> None:
