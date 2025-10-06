@@ -14,7 +14,7 @@ class NodeRelease(TypedDict):
 
 
 def fetch_node_releases() -> list[NodeRelease]:
-    """Fetch offical node releases"""
+    """Fetch official node releases"""
     url = "https://nodejs.org/dist/index.json"
     res = requests.get(url, timeout=10.0)
     res.raise_for_status()
