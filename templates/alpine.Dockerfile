@@ -1,7 +1,7 @@
 # Generated {{ now }}
 # python: {{ python_canonical }}
 # nodejs: {{ nodejs_canonical }}
-FROM python:{{ python_image }} as builder
+FROM python:{{ python_image }} AS builder
 
 # Install node prereqs, nodejs and yarn
 # Ref: https://raw.githubusercontent.com/nodejs/docker-node/master/Dockerfile-alpine.template

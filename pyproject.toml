@@ -18,8 +18,8 @@ build-backend = "uv_build"
 [project.scripts]
 dpn = "docker_python_nodejs:dpn"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   "pytest",
   "pre-commit",
   "ruff",
