@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2025-10-06
+Last updated by bot: 2025-10-07
 
 The `latest` tag is currently:
 
@@ -85,6 +85,7 @@ Image tags are built for linux/amd64 and linux/arm64 platforms, except for alpin
 
 Python version | Start | End
 --- | --- | ---
+3.14 | 2025-10-07 | 2030-10
 3.13 | 2024-10-07 | 2029-10
 3.12 | 2023-10-02 | 2028-10
 3.11 | 2022-10-24 | 2027-10
