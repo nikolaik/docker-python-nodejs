@@ -9,7 +9,7 @@ RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --cr
 ENV POETRY_HOME=/usr/local
 
 RUN \
-{% if distro_variant == "slim" %}  apt-get update && apt-get install curl gnupg2 xz-utils -yqq && \
+{% if distro_variant == "slim" %}  apt-get update && apt-get install --no-install-recommends curl gnupg2 xz-utils -yqq && \
 {% endif %}  apt-get upgrade -yqq && \
   rm -rf /var/lib/apt/lists/*
 RUN NODE_VERSION="v{{ nodejs_canonical }}" \
@@ -32,5 +32,5 @@ RUN NODE_VERSION="v{{ nodejs_canonical }}" \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 RUN npm install -g corepack && corepack enable yarn
 
-RUN pip install -U pip pipenv uv && \
+RUN pip install --no-cache-dir -U pip pipenv uv && \
   curl -fsSL --compressed https://install.python-poetry.org | python -
