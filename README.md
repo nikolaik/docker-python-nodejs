@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2025-10-08
+Last updated by bot: 2025-10-09
 
 The `latest` tag is currently:
 
@@ -24,9 +24,9 @@ To use a specific combination of Python and Node.js see the following table of a
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.14-nodejs24` | 3.14.0 | 24.9.0 | trixie
-`python3.14-nodejs24-bookworm` | 3.14.0 | 24.9.0 | bookworm
-`python3.14-nodejs24-slim` | 3.14.0 | 24.9.0 | slim
+`python3.14-nodejs24` | 3.14.0 | 24.10.0 | trixie
+`python3.14-nodejs24-bookworm` | 3.14.0 | 24.10.0 | bookworm
+`python3.14-nodejs24-slim` | 3.14.0 | 24.10.0 | slim
 `python3.14-nodejs24-alpine` | 3.14.0 | 24.9.0 | alpine
 `python3.14-nodejs22` | 3.14.0 | 22.20.0 | trixie
 `python3.14-nodejs22-bookworm` | 3.14.0 | 22.20.0 | bookworm
@@ -36,9 +36,9 @@ Tag | Python version | Node.js version | Distro
 `python3.14-nodejs20-bookworm` | 3.14.0 | 20.19.5 | bookworm
 `python3.14-nodejs20-slim` | 3.14.0 | 20.19.5 | slim
 `python3.14-nodejs20-alpine` | 3.14.0 | 20.19.5 | alpine
-`python3.13-nodejs24` | 3.13.8 | 24.9.0 | trixie
-`python3.13-nodejs24-bookworm` | 3.13.8 | 24.9.0 | bookworm
-`python3.13-nodejs24-slim` | 3.13.8 | 24.9.0 | slim
+`python3.13-nodejs24` | 3.13.8 | 24.10.0 | trixie
+`python3.13-nodejs24-bookworm` | 3.13.8 | 24.10.0 | bookworm
+`python3.13-nodejs24-slim` | 3.13.8 | 24.10.0 | slim
 `python3.13-nodejs24-alpine` | 3.13.8 | 24.9.0 | alpine
 `python3.13-nodejs22` | 3.13.8 | 22.20.0 | trixie
 `python3.13-nodejs22-bookworm` | 3.13.8 | 22.20.0 | bookworm
@@ -48,9 +48,9 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs20-bookworm` | 3.13.8 | 20.19.5 | bookworm
 `python3.13-nodejs20-slim` | 3.13.8 | 20.19.5 | slim
 `python3.13-nodejs20-alpine` | 3.13.8 | 20.19.5 | alpine
-`python3.12-nodejs24` | 3.12.11 | 24.9.0 | trixie
-`python3.12-nodejs24-bookworm` | 3.12.11 | 24.9.0 | bookworm
-`python3.12-nodejs24-slim` | 3.12.11 | 24.9.0 | slim
+`python3.12-nodejs24` | 3.12.11 | 24.10.0 | trixie
+`python3.12-nodejs24-bookworm` | 3.12.11 | 24.10.0 | bookworm
+`python3.12-nodejs24-slim` | 3.12.11 | 24.10.0 | slim
 `python3.12-nodejs24-alpine` | 3.12.11 | 24.9.0 | alpine
 `python3.12-nodejs22` | 3.12.11 | 22.20.0 | trixie
 `python3.12-nodejs22-bookworm` | 3.12.11 | 22.20.0 | bookworm
@@ -60,9 +60,9 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs20-bookworm` | 3.12.11 | 20.19.5 | bookworm
 `python3.12-nodejs20-slim` | 3.12.11 | 20.19.5 | slim
 `python3.12-nodejs20-alpine` | 3.12.11 | 20.19.5 | alpine
-`python3.11-nodejs24` | 3.11.13 | 24.9.0 | trixie
-`python3.11-nodejs24-bookworm` | 3.11.13 | 24.9.0 | bookworm
-`python3.11-nodejs24-slim` | 3.11.13 | 24.9.0 | slim
+`python3.11-nodejs24` | 3.11.13 | 24.10.0 | trixie
+`python3.11-nodejs24-bookworm` | 3.11.13 | 24.10.0 | bookworm
+`python3.11-nodejs24-slim` | 3.11.13 | 24.10.0 | slim
 `python3.11-nodejs24-alpine` | 3.11.13 | 24.9.0 | alpine
 `python3.11-nodejs22` | 3.11.13 | 22.20.0 | trixie
 `python3.11-nodejs22-bookworm` | 3.11.13 | 22.20.0 | bookworm
@@ -72,9 +72,9 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs20-bookworm` | 3.11.13 | 20.19.5 | bookworm
 `python3.11-nodejs20-slim` | 3.11.13 | 20.19.5 | slim
 `python3.11-nodejs20-alpine` | 3.11.13 | 20.19.5 | alpine
-`python3.10-nodejs24` | 3.10.18 | 24.9.0 | trixie
-`python3.10-nodejs24-bookworm` | 3.10.18 | 24.9.0 | bookworm
-`python3.10-nodejs24-slim` | 3.10.18 | 24.9.0 | slim
+`python3.10-nodejs24` | 3.10.18 | 24.10.0 | trixie
+`python3.10-nodejs24-bookworm` | 3.10.18 | 24.10.0 | bookworm
+`python3.10-nodejs24-slim` | 3.10.18 | 24.10.0 | slim
 `python3.10-nodejs24-alpine` | 3.10.18 | 24.9.0 | alpine
 `python3.10-nodejs22` | 3.10.18 | 22.20.0 | trixie
 `python3.10-nodejs22-bookworm` | 3.10.18 | 22.20.0 | bookworm
