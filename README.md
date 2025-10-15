@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2025-10-14
+Last updated by bot: 2025-10-15
 
 The `latest` tag is currently:
 
@@ -105,6 +105,7 @@ Python version | Start | End
 
 Node.js version | Start | End
 --- | --- | ---
+v25 | 2025-10-15 | 2026-06-01
 v24 | 2025-05-06 | 2028-04-30
 v22 | 2024-04-24 | 2027-04-30
 v20 | 2023-04-18 | 2026-04-30
