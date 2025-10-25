@@ -1,10 +1,10 @@
 FROM python:trixie
 LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.com>"
 
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --create-home pn
 ENV POETRY_HOME=/usr/local
 
-# Install nodejs and yarn
 RUN NODE_VERSION="$(curl -fsSL https://nodejs.org/dist/latest/SHASUMS256.txt | head -n1 | awk '{ print $2}' | awk -F - '{ print $2}')" \
   ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -23,7 +23,7 @@ RUN NODE_VERSION="$(curl -fsSL https://nodejs.org/dist/latest/SHASUMS256.txt | h
   && tar -xJf "node-$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
-RUN corepack enable yarn
+RUN npm install -g corepack && corepack enable yarn
 RUN \
   apt-get update && \
   apt-get upgrade -yqq && \

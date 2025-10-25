@@ -4,6 +4,7 @@
 FROM python:{{ python_image }}
 LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.com>"
 
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --create-home pn
 ENV POETRY_HOME=/usr/local
 
@@ -29,7 +30,7 @@ RUN NODE_VERSION="v{{ nodejs_canonical }}" \
   && tar -xJf "node-$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
-RUN corepack enable yarn
+RUN npm install -g corepack && corepack enable yarn
 
 RUN pip install -U pip pipenv uv && \
   curl -fsSL --compressed https://install.python-poetry.org | python -
