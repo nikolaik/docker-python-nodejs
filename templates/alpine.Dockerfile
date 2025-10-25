@@ -3,6 +3,8 @@
 # nodejs: {{ nodejs_canonical }}
 FROM python:{{ python_image }} AS builder
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+
 # Install node prereqs, nodejs and yarn
 # Ref: https://raw.githubusercontent.com/nodejs/docker-node/master/Dockerfile-alpine.template
 # Ref: https://yarnpkg.com/en/docs/install
@@ -21,7 +23,7 @@ LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.co
 RUN addgroup -g 1000 pn && adduser -u 1000 -G pn -s /bin/sh -D pn
 RUN apk add libstdc++
 COPY --from=builder /node-v{{ nodejs_canonical }}-linux-x64-musl /usr/local
-RUN corepack enable yarn
+RUN npm install -g corepack && corepack enable yarn
 RUN pip install -U pip pipenv uv
 
 # Poetry
