@@ -8,7 +8,7 @@ SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 # Install node prereqs, nodejs and yarn
 # Ref: https://raw.githubusercontent.com/nodejs/docker-node/master/Dockerfile-alpine.template
 # Ref: https://yarnpkg.com/en/docs/install
-RUN apk add --no-cache curl && rm /var/cache/apk/*
+RUN apk add --no-cache curl
 # FIXME: no arm + musl build yet
 # Ref: https://github.com/nodejs/unofficial-builds/pull/59
 # Ref: https://github.com/nodejs/node/pull/45756
@@ -21,7 +21,7 @@ FROM python:{{ python_image }}
 LABEL org.opencontainers.image.authors="Nikolai R Kristiansen <nikolaik@gmail.com>"
 
 RUN addgroup -g 1000 pn && adduser -u 1000 -G pn -s /bin/sh -D pn
-RUN apk add --no-cache libstdc++ && rm /var/cache/apk/*
+RUN apk add --no-cache libstdc++
 COPY --from=builder /node-v{{ nodejs_canonical }}-linux-x64-musl /usr/local
 
 RUN npm install -g corepack && corepack enable yarn
