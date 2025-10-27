@@ -9,8 +9,8 @@ RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --cr
 ENV POETRY_HOME=/usr/local
 
 RUN \
-{% if distro_variant == "slim" %}  apt-get update && apt-get install --no-install-recommends curl gnupg2 xz-utils -yqq && \
-{% endif %}  apt-get upgrade -yqq && \
+  apt-get update && apt-get install --no-install-recommends -yqq libatomic1{% if distro_variant == "slim" %} curl gnupg2 xz-utils{% endif %} && \
+  apt-get upgrade -yqq && \
   rm -rf /var/lib/apt/lists/*
 RUN NODE_VERSION="v{{ nodejs_canonical }}" \
   ARCH= && dpkgArch="$(dpkg --print-architecture)" \
