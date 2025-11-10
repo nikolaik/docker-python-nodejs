@@ -1,3 +1,4 @@
+import copy
 import dataclasses
 import json
 from pathlib import Path
@@ -15,6 +16,7 @@ from docker_python_nodejs.versions import (
     decide_nodejs_versions,
     decide_version_combinations,
     fetch_supported_nodejs_versions,
+    find_new_or_updated,
     load_build_contexts,
     scrape_supported_python_versions,
 )
@@ -264,3 +266,25 @@ def test_load_build_contexts(build_version: BuildVersion, tmp_path: Path) -> Non
     versions = load_build_contexts(tmp_path)
     assert len(versions) == 1
     assert versions[0].key == ver.key
+
+
+def test_find_new_or_updated_with_digest() -> None:
+    new = BuildVersion(
+        key="python3.11-nodejs20",
+        python="3.11",
+        python_canonical="3.11.3",
+        python_image="3.11.3-trixie",
+        nodejs="20",
+        nodejs_canonical="20.2.0",
+        distro="trixie",
+        platforms=[
+            "linux/amd64",
+            "linux/arm64",
+        ],
+    )
+    existing = copy.deepcopy(new)
+    existing.digest = "sha256:abcdef1234567890"
+
+    res = find_new_or_updated([new], [existing])
+
+    assert len(res) == 0
