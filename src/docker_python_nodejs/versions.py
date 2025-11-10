@@ -270,19 +270,23 @@ def load_versions() -> list[BuildVersion]:
 
 def find_new_or_updated(
     versions: list[BuildVersion],
+    current_versions: list[BuildVersion],
     force: bool = False,
 ) -> list[BuildVersion]:
     if force:
         logger.warning("Generating full build matrix because --force is set")
 
-    current_versions = load_versions()
     current_versions_dict = {ver.key: ver for ver in current_versions}
     versions_dict = {ver.key: ver for ver in versions}
     new_or_updated: list[BuildVersion] = []
 
     for key, ver in versions_dict.items():
+        current_ver = current_versions_dict.get(key)
+        if current_ver is not None:
+            current_ver.digest = ""  # Ignore digest when comparing
+
         # does key exist and are version dicts equal?
-        updated = key in current_versions_dict and ver != current_versions_dict[key]
+        updated = current_ver and ver != current_ver
         new = key not in current_versions_dict
         if new or updated or force:
             new_or_updated.append(ver)
