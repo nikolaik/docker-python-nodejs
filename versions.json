@@ -1,424 +1,684 @@
 {
   "versions": [
     {
-      "key": "python3.14-nodejs25",
+      "key": "python3.14-nodejs25-alpine",
+      "python": "3.14",
+      "python_canonical": "3.14.0",
+      "python_image": "3.14.0-alpine",
+      "nodejs": "25",
+      "nodejs_canonical": "25.2.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:2f3f2444d37c9e282c9e06c5b0a7a938c1b0c21645d8bb58f70698f3d8580f67"
+    },
+    {
+      "key": "python3.14-nodejs24-alpine",
+      "python": "3.14",
+      "python_canonical": "3.14.0",
+      "python_image": "3.14.0-alpine",
+      "nodejs": "24",
+      "nodejs_canonical": "24.11.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:90ccafa558ff791913b868b49d85cbfdc14dddb3e6cfd032e4299886e86c4afc"
+    },
+    {
+      "key": "python3.14-nodejs22",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-trixie",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:67974577be51bcd695472e224104b8eb6e681307e667c88b9bab62f7caef4ad5"
+      "digest": "sha256:5aeb67ae8c1b2b8d1493b474c7d3e5b4d5d334434b884fc7128400f2c284dbe8"
     },
     {
-      "key": "python3.14-nodejs25-bookworm",
+      "key": "python3.14-nodejs22-bookworm",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-bookworm",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:758edc769f59317d632151d236d882157c027781d629af71422c3ed4bb333c6b"
+      "digest": "sha256:6756ebebbd42def65aa20fe357875513ceccbe0798bd9b322af14b7cd4255770"
     },
     {
-      "key": "python3.14-nodejs25-slim",
+      "key": "python3.14-nodejs22-slim",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-slim",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:2cbd2eb26a1f013ff2b94fb7a41c8298248a7f49ab3eeabfabb54fff4b31a7b1"
+      "digest": "sha256:445d7935534ab6b61311b3fe27e4ecb70dbff9d40abe7c2ada3144d741d674d4"
     },
     {
-      "key": "python3.14-nodejs24",
+      "key": "python3.14-nodejs22-alpine",
+      "python": "3.14",
+      "python_canonical": "3.14.0",
+      "python_image": "3.14.0-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:38f38492626e3c7bb544cab9ce0c10177535024d7fb7d3d8c0a3ccae5ccfb607"
+    },
+    {
+      "key": "python3.14-nodejs20",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-trixie",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:36873e5567e99c62902fdc91f7d0170b93dd41eca9fb9de38e4bf575b1862ad8"
+      "digest": "sha256:fa1f85884804756095ba4e1c2b8b3b03e915058cb8b3435e0eefc1af91254a95"
     },
     {
-      "key": "python3.14-nodejs24-bookworm",
+      "key": "python3.14-nodejs20-bookworm",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-bookworm",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:1a39d826b0cde58a628e42e22ac1c51d15940a048cb40bbbf7e20016695b27e6"
+      "digest": "sha256:7cd0ca14672330ec66b0aa77db6ac06451ab9f725bba61f2f5a0436ab3bbbebb"
     },
     {
-      "key": "python3.14-nodejs24-slim",
+      "key": "python3.14-nodejs20-slim",
       "python": "3.14",
       "python_canonical": "3.14.0",
       "python_image": "3.14.0-slim",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:d459ba6b34cc5b9a7b82e19a42ecf84d1ec7fe10fd4aeecaa419dff901707751"
+      "digest": "sha256:61f8cfcb1afba5326c62c0a4fba05c388b024e8e8c042983bba1454f08060117"
     },
     {
-      "key": "python3.13-nodejs25",
+      "key": "python3.14-nodejs20-alpine",
+      "python": "3.14",
+      "python_canonical": "3.14.0",
+      "python_image": "3.14.0-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:33edcddc14f2e99b685c7848d6aacd21070721a6f05c9766f59a19844f5950cc"
+    },
+    {
+      "key": "python3.13-nodejs25-alpine",
+      "python": "3.13",
+      "python_canonical": "3.13.9",
+      "python_image": "3.13.9-alpine",
+      "nodejs": "25",
+      "nodejs_canonical": "25.2.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:c5284b63a84e3c2c4e95acda33b4ef68afcdb5028addba68889d9471492160a2"
+    },
+    {
+      "key": "python3.13-nodejs24-alpine",
+      "python": "3.13",
+      "python_canonical": "3.13.9",
+      "python_image": "3.13.9-alpine",
+      "nodejs": "24",
+      "nodejs_canonical": "24.11.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:e506a921cd13c300e03185a5803e370f8b4260b721c0ec11bcb18a9f723cdbad"
+    },
+    {
+      "key": "python3.13-nodejs22",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-trixie",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:f46d6f23d847a1be2389e20f1124dd0e05813ad2312cdf9b1baa134d0e3be58b"
+      "digest": "sha256:75c9e00d5599defa8b459358dc4bd83d64b135f8ade6db53038bf340ef19bb41"
     },
     {
-      "key": "python3.13-nodejs25-bookworm",
+      "key": "python3.13-nodejs22-bookworm",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-bookworm",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:c59a0e71d8d8e2fb37324ee38c8435439a6a6e08ab84605c6bb524ff8231b6bd"
+      "digest": "sha256:bd205ef30edba312f2b7d3cc73c772a2ecaa87a5952c71e30ab987a41d0aa969"
     },
     {
-      "key": "python3.13-nodejs25-slim",
+      "key": "python3.13-nodejs22-slim",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-slim",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:23127c6bc6ad232b9c4a484532ca906a49f217dc1e6929db037792b72d9c3510"
+      "digest": "sha256:d20a13ec616920d708f3c65ad528c945f5841445630678892c395dea79836090"
     },
     {
-      "key": "python3.13-nodejs24",
+      "key": "python3.13-nodejs22-alpine",
+      "python": "3.13",
+      "python_canonical": "3.13.9",
+      "python_image": "3.13.9-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:adcc18fbf10770875586567c5abca6e6dd145e39b0c8980e0053b7d0b91eb74d"
+    },
+    {
+      "key": "python3.13-nodejs20",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-trixie",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:396020a7dd02e7d01d3d4c341ef27a2f8fcf7543a03a6e4a8dde24ba49ac1031"
+      "digest": "sha256:5f28c86125c9092462ddf5753f124a21a5d602a72acf4ded840a4ebe899110f3"
     },
     {
-      "key": "python3.13-nodejs24-bookworm",
+      "key": "python3.13-nodejs20-bookworm",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-bookworm",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:9077dfd926777e336f1f2a8b16f1a548717d068da3f4b9e2dca5812680b52dd7"
+      "digest": "sha256:442c42faa6b09bd0b19483b34eab89f5b30db53b3e1993a81a0fe1ff8f4c68d7"
     },
     {
-      "key": "python3.13-nodejs24-slim",
+      "key": "python3.13-nodejs20-slim",
       "python": "3.13",
       "python_canonical": "3.13.9",
       "python_image": "3.13.9-slim",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:9403f37a3133f2077d0905bb83763f4fb1c7a1748dd1e34141bff94270c58856"
+      "digest": "sha256:009a2894416bae93711c6c1d66a85a87cc9cb0f449d34b1cd8ebf86b4849c228"
     },
     {
-      "key": "python3.12-nodejs25",
+      "key": "python3.13-nodejs20-alpine",
+      "python": "3.13",
+      "python_canonical": "3.13.9",
+      "python_image": "3.13.9-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:0d5ae3bca4c05660a8a5be00fc28836e0c142d5dc1f8bdd43b5444c9bc98ca2f"
+    },
+    {
+      "key": "python3.12-nodejs25-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.12",
+      "python_image": "3.12.12-alpine",
+      "nodejs": "25",
+      "nodejs_canonical": "25.2.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:dc0a647afc2e81ea58ccad0455f1d663fa73a6ead028edaf96feff43b4fd4a6b"
+    },
+    {
+      "key": "python3.12-nodejs24-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.12",
+      "python_image": "3.12.12-alpine",
+      "nodejs": "24",
+      "nodejs_canonical": "24.11.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:d8276dfdb33514c2a6dd219e1c70d7e79ab4959576ba6c052d62d2552e304c88"
+    },
+    {
+      "key": "python3.12-nodejs22",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-trixie",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:2d998be2e0286834e5cf9d43b494d4b0c4cf6735cabb08ef56b43b4109a34450"
+      "digest": "sha256:dddb8cb523fe92381851a84fdfc797c7e8bca0e8f9760a48886f68aa66e49ee4"
     },
     {
-      "key": "python3.12-nodejs25-bookworm",
+      "key": "python3.12-nodejs22-bookworm",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-bookworm",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:053b25b912c8714e8559f7b50c4184fbd3c1ebc520be38e73fe3ad1b2e942863"
+      "digest": "sha256:61cf943ce934b5e36577c198721ac9e334d5b3279361d4c165b691e0c21b2630"
     },
     {
-      "key": "python3.12-nodejs25-slim",
+      "key": "python3.12-nodejs22-slim",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-slim",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:cc1c5bf9b089d2fb2464855d100c978b48201b02eed13e3b5fa10babb2dfe16c"
+      "digest": "sha256:8e3f43bba89b7381ffefe984b108a51763511354ffb43ca77adbce826f6cfd30"
     },
     {
-      "key": "python3.12-nodejs24",
+      "key": "python3.12-nodejs22-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.12",
+      "python_image": "3.12.12-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:a6da88797c36940b69355adf35d4ef0505a0961361ddc20282618491a9e4cad8"
+    },
+    {
+      "key": "python3.12-nodejs20",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-trixie",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:8f0d03e9cd41a177f730244a52a6abf7fcf855d09ad2d0e7dca968197a1aec0d"
+      "digest": "sha256:a96c53477a3c1604c399edbf3eef4c8ce438f8d467d0f9ef5e9ab8da3b089d37"
     },
     {
-      "key": "python3.12-nodejs24-bookworm",
+      "key": "python3.12-nodejs20-bookworm",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-bookworm",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:ab376676219a84011c185aa78fd53a1a20298a1590c186f1b6507f282d0531fd"
+      "digest": "sha256:36459887d1d67b2cc0ad2c2c2d975c26d6c4517a258d6ba81ba2c28698d6d33c"
     },
     {
-      "key": "python3.12-nodejs24-slim",
+      "key": "python3.12-nodejs20-slim",
       "python": "3.12",
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-slim",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:d57f40de54184af673c8894eed29dc133f9569432e857bce40553eacc737586f"
+      "digest": "sha256:e1c05b3b64870a7ba82c555fc5ae2be69e1123d5e1236ea51e387908d478620f"
     },
     {
-      "key": "python3.11-nodejs25",
+      "key": "python3.12-nodejs20-alpine",
+      "python": "3.12",
+      "python_canonical": "3.12.12",
+      "python_image": "3.12.12-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:16220e326673d0eea8da034a9bdd7195154070c1b10471ca8220e351803096d1"
+    },
+    {
+      "key": "python3.11-nodejs25-alpine",
+      "python": "3.11",
+      "python_canonical": "3.11.14",
+      "python_image": "3.11.14-alpine",
+      "nodejs": "25",
+      "nodejs_canonical": "25.2.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:a496365c990440becd5b2c9018aa7f21b5036249226f34247c4f21a5015e1889"
+    },
+    {
+      "key": "python3.11-nodejs24-alpine",
+      "python": "3.11",
+      "python_canonical": "3.11.14",
+      "python_image": "3.11.14-alpine",
+      "nodejs": "24",
+      "nodejs_canonical": "24.11.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:91e1579e9bc6442926dfabd93b6ce579cdf92df6d82c0cc8e82cf609184330ba"
+    },
+    {
+      "key": "python3.11-nodejs22",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-trixie",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:b8323dd27f89932e61eac1af32461a089d7bfeeba8e7f3f2868482d37d67a179"
+      "digest": "sha256:2e3a5a357f3aa8983ed795b615c92967dbc20edf8a0949ecd31ac543c2f85d75"
     },
     {
-      "key": "python3.11-nodejs25-bookworm",
+      "key": "python3.11-nodejs22-bookworm",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-bookworm",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:6c4d28c0762d1678593100526aaee9f65da69d25f9e376b0aa7226287afcef6d"
+      "digest": "sha256:a2e3bf9fdf4883f0f3beee1e104d729c7a6220b375f7f4272ca35627d96a2a61"
     },
     {
-      "key": "python3.11-nodejs25-slim",
+      "key": "python3.11-nodejs22-slim",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-slim",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:b8e1fe79b4549a578b4857ca55d832a2183243fd0f6721d854b0c7865b43115e"
+      "digest": "sha256:b6cfa12cc3f0c02660ed0765e2272338675737a43edbbdd804546e818f865e70"
     },
     {
-      "key": "python3.11-nodejs24",
+      "key": "python3.11-nodejs22-alpine",
+      "python": "3.11",
+      "python_canonical": "3.11.14",
+      "python_image": "3.11.14-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:82ee12d1ade118e9f060ed7902f7d85ada1f1b97774e9d6d751d4c95048d9b61"
+    },
+    {
+      "key": "python3.11-nodejs20",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-trixie",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:cbf6f12b2e792317561fd6239b98c608c8e4c68cd83db646c57da8791302251b"
+      "digest": "sha256:c89c253a78673683fb54c09143c3af4eeba134473ed214873aad59ea4f5729a4"
     },
     {
-      "key": "python3.11-nodejs24-bookworm",
+      "key": "python3.11-nodejs20-bookworm",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-bookworm",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:2cac82bba2d681c2a35c41adc8bd39e7ab0fb05bc0b96e7ce613e61ce3880c07"
+      "digest": "sha256:d9a0f24394a868509cdfa4787f30e48a854a7305bf5b704daffb2e82e8b2210c"
     },
     {
-      "key": "python3.11-nodejs24-slim",
+      "key": "python3.11-nodejs20-slim",
       "python": "3.11",
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-slim",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:5b0d29f192334e54e8bc277299a121dd907cb16f56a6cd8618cd67810a58e146"
+      "digest": "sha256:1ebfd6183fb76c921c5ff7a4d53fdf71b9a760ed5395f91b55eeeef44e2e7f7c"
     },
     {
-      "key": "python3.10-nodejs25",
+      "key": "python3.11-nodejs20-alpine",
+      "python": "3.11",
+      "python_canonical": "3.11.14",
+      "python_image": "3.11.14-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:3ed3c19ba6ec59bde288e0e5e42e7d0af16656a719095df84522bcb3a61ff265"
+    },
+    {
+      "key": "python3.10-nodejs25-alpine",
+      "python": "3.10",
+      "python_canonical": "3.10.19",
+      "python_image": "3.10.19-alpine",
+      "nodejs": "25",
+      "nodejs_canonical": "25.2.0",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:084de2020d61d540b114b4fc8800596f169bf12deee7f32ae082465089b7dd7b"
+    },
+    {
+      "key": "python3.10-nodejs24-alpine",
+      "python": "3.10",
+      "python_canonical": "3.10.19",
+      "python_image": "3.10.19-alpine",
+      "nodejs": "24",
+      "nodejs_canonical": "24.11.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:0d5b870632077b768144d24678850647049daee96a4ad9bb0d2f6a6745455b28"
+    },
+    {
+      "key": "python3.10-nodejs22",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-trixie",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:06e2084e2abcd734caeb9788b6e7f226ea131486f40d6845632e8a8000e67977"
+      "digest": "sha256:5448c941fdc015969451b49939ebd1c175d8867dc06334e8f3eabd7533661c6a"
     },
     {
-      "key": "python3.10-nodejs25-bookworm",
+      "key": "python3.10-nodejs22-bookworm",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-bookworm",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:4276a15f2017a1e97c5b915b957f4d2e91344bb54f2ff68d3d194127e5ef2671"
+      "digest": "sha256:aa3e71b63521666a4b3382334540d149e6a764028e90abc8e35d2d0fb92ebcbd"
     },
     {
-      "key": "python3.10-nodejs25-slim",
+      "key": "python3.10-nodejs22-slim",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-slim",
-      "nodejs": "25",
-      "nodejs_canonical": "25.2.0",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:c8c6a6b7125cdc8a53f9e9689128a46b72eff210fa176dd535e3b153284c086c"
+      "digest": "sha256:28ddde3bd40e0ac15bc4fa2cba31af87b32ed7c067b455329d11706d57f0051b"
     },
     {
-      "key": "python3.10-nodejs24",
+      "key": "python3.10-nodejs22-alpine",
+      "python": "3.10",
+      "python_canonical": "3.10.19",
+      "python_image": "3.10.19-alpine",
+      "nodejs": "22",
+      "nodejs_canonical": "22.21.1",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:d7a983f6f1644ff416850fde525a6ffaaa37fb947b57dce0ab4142618cbd6e15"
+    },
+    {
+      "key": "python3.10-nodejs20",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-trixie",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "trixie",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:1a855b6be6011153e0ea993870571a19561423c0310fe8e05b813abe409797fd"
+      "digest": "sha256:a19616fa728c6c3de49f3908efa18cd13023d5422a47da405beea0f50fa49e11"
     },
     {
-      "key": "python3.10-nodejs24-bookworm",
+      "key": "python3.10-nodejs20-bookworm",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-bookworm",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:50ee5af70926ae60debffd45ad7578f5a75759fa206bbf5255d4d37e48592a96"
+      "digest": "sha256:8f7a0efa94e291adf2dceba1fc7fe19a314a53db9b17e0d4a56cf2ad53f543c0"
     },
     {
-      "key": "python3.10-nodejs24-slim",
+      "key": "python3.10-nodejs20-slim",
       "python": "3.10",
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-slim",
-      "nodejs": "24",
-      "nodejs_canonical": "24.11.1",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
-      "digest": "sha256:97a850278f9d6e4f4935f0fb73ddfc7172e1fad039e5010806490daf2558755b"
+      "digest": "sha256:0b42b7af8a416c9c9e53978e06fc0c43fa5ec417bdd0449d5481ec8329e2a5ce"
+    },
+    {
+      "key": "python3.10-nodejs20-alpine",
+      "python": "3.10",
+      "python_canonical": "3.10.19",
+      "python_image": "3.10.19-alpine",
+      "nodejs": "20",
+      "nodejs_canonical": "20.19.5",
+      "distro": "alpine",
+      "platforms": [
+        "linux/amd64"
+      ],
+      "digest": "sha256:447de3dfc2174f3daf991fb9d2660d6c27d0ae20611465abf5b6291198e64074"
     }
   ]
 }
