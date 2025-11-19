@@ -262,47 +262,46 @@ def persist_versions(versions: list[BuildVersion], dry_run: bool = False) -> Non
         json.dump({"versions": version_dicts}, fp, indent=2)
 
 
-def load_versions() -> list[BuildVersion]:
+def load_versions() -> dict[str, BuildVersion]:
     with VERSIONS_PATH.open() as fp:
-        version_dicts = json.load(fp)["versions"]
-        return [BuildVersion(**version) for version in version_dicts]
+        versions = json.load(fp)["versions"]
+        return {version["key"]: BuildVersion(**version) for version in versions}
 
 
 def find_new_or_updated(
     versions: list[BuildVersion],
-    current_versions: list[BuildVersion],
+    current_versions: dict[str, BuildVersion],
     force: bool = False,
 ) -> list[BuildVersion]:
     if force:
         logger.warning("Generating full build matrix because --force is set")
 
-    current_versions_dict = {ver.key: ver for ver in current_versions}
     versions_dict = {ver.key: ver for ver in versions}
     new_or_updated: list[BuildVersion] = []
 
     for key, ver in versions_dict.items():
-        current_ver = current_versions_dict.get(key)
+        current_ver = current_versions.get(key)
         if current_ver is not None:
             current_ver.digest = ""  # Ignore digest when comparing
 
         # does key exist and are version dicts equal?
         updated = current_ver and ver != current_ver
-        new = key not in current_versions_dict
+        new = key not in current_versions
         if new or updated or force:
             new_or_updated.append(ver)
 
     return new_or_updated
 
 
-def load_build_contexts(builds_dir: Path) -> list[BuildVersion]:
+def load_build_contexts(builds_dir: Path) -> dict[str, BuildVersion]:
     """Find JSON files with build contexts and return the corresponding BuildVersion list"""
     logger.info(f"Loading builds metadata from {builds_dir.as_posix()}")
-    versions: list[BuildVersion] = []
+    versions: dict[str, BuildVersion] = {}
 
     for build_file in builds_dir.glob("*.json"):
         with build_file.open() as fp:
             build_data = json.load(fp)
         version = BuildVersion(**build_data)
-        versions.append(version)
+        versions[build_data["key"]] = version
 
-    return sorted_versions(versions)
+    return versions

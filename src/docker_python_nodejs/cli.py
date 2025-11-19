@@ -44,8 +44,21 @@ def run_build_matrix(args: CLIArgs) -> None:
 
 
 def run_release(args: CLIArgs) -> None:
-    versions = load_build_contexts(args.builds_dir)
+    """Release new/updated version by updating versions.json and README.md.
+
+    Note: We fetch supported and available versions again here and update with the actual built digests"""
+
+    supported_python_versions, supported_nodejs_versions = supported_versions()
+    versions = decide_version_combinations(args.distros, supported_python_versions, supported_nodejs_versions)
+    # Update versions with build digests to allow pinning
+    built_versions = load_build_contexts(args.builds_dir)
     current_versions = load_versions()
+    for version in versions:
+        if version.key in built_versions:
+            version.digest = built_versions[version.key].digest
+        elif version.key in current_versions:
+            version.digest = current_versions[version.key].digest
+
     new_or_updated = find_new_or_updated(versions, current_versions, args.force)
     supported_python_versions, supported_nodejs_versions = supported_versions()
     if not new_or_updated:
