@@ -265,7 +265,7 @@ def test_load_build_contexts(build_version: BuildVersion, tmp_path: Path) -> Non
 
     versions = load_build_contexts(tmp_path)
     assert len(versions) == 1
-    assert versions[0].key == ver.key
+    assert next(iter(versions.values())).key == ver.key
 
 
 def test_find_new_or_updated_with_digest() -> None:
@@ -285,6 +285,6 @@ def test_find_new_or_updated_with_digest() -> None:
     existing = copy.deepcopy(new)
     existing.digest = "sha256:abcdef1234567890"
 
-    res = find_new_or_updated([new], [existing])
+    res = find_new_or_updated([new], {existing.key: existing})
 
     assert len(res) == 0
