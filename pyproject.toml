@@ -33,6 +33,9 @@ dev = [
 
 [tool.ruff]
 line-length = 120
+target-version = "py314"
+
+[tool.ruff.lint]
 select = ["ALL"]
 ignore = [
   "T201",  # This is a cli
@@ -44,9 +47,8 @@ ignore = [
   "FBT001", # Allow boolean function args
   "FIX001" # Allow fixme's
 ]
-target-version = "py312"
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "**/test*.py" = ["S101"]
 
 [tool.mypy]

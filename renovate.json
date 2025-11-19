@@ -42,5 +42,8 @@
       "automerge": true
     }
   ],
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "pre-commit": {
+    "enabled": true
+  }
 }
