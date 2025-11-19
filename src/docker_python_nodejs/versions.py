@@ -4,7 +4,7 @@ import json
 import logging
 import re
 from dataclasses import dataclass
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import requests
 from bs4 import BeautifulSoup
@@ -19,6 +19,9 @@ from .nodejs_versions import (
     fetch_nodejs_release_schedule,
 )
 from .settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
 

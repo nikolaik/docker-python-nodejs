@@ -23,9 +23,9 @@ def _replace(name: str, replacement: str, document: str) -> str:
 
 
 def update_dynamic_readme(
-    versions: "list[BuildVersion]",
-    python_versions: "list[SupportedVersion]",
-    node_versions: "list[SupportedVersion]",
+    versions: list[BuildVersion],
+    python_versions: list[SupportedVersion],
+    node_versions: list[SupportedVersion],
     dry_run: bool = False,
 ) -> None:
     """Read out current README, format fresh README, write back possible changes"""
@@ -44,9 +44,9 @@ def update_dynamic_readme(
 
 
 def format_readme(
-    versions: "list[BuildVersion]",
-    python_versions: "list[SupportedVersion]",
-    node_versions: "list[SupportedVersion]",
+    versions: list[BuildVersion],
+    python_versions: list[SupportedVersion],
+    node_versions: list[SupportedVersion],
     readme: str,
 ) -> str:
     """Format fresh README based on passed in version. Replaces the whole table with new versions."""
@@ -57,17 +57,17 @@ def format_readme(
     return _replace("SUPPORTED_VERSIONS", supported_versions_table, readme_fresh)
 
 
-def format_tags(versions: "list[BuildVersion]") -> str:
+def format_tags(versions: list[BuildVersion]) -> str:
     headings = ["Tag", "Python version", "Node.js version", "Distro"]
     rows = [[f"`{v.key}`", v.python_canonical, v.nodejs_canonical, v.distro] for v in versions]
     return _format_md_table(headings, rows)
 
 
 def format_supported_versions(
-    python_versions: "list[SupportedVersion]",
-    node_versions: "list[SupportedVersion]",
+    python_versions: list[SupportedVersion],
+    node_versions: list[SupportedVersion],
 ) -> str:
-    def _as_rows(versions: "list[SupportedVersion]") -> list[list[str]]:
+    def _as_rows(versions: list[SupportedVersion]) -> list[list[str]]:
         return [[ver.version, ver.start, ver.end] for ver in sorted(versions, key=lambda x: x.start, reverse=True)]
 
     python_table = _format_md_table(["Python version", "Start", "End"], _as_rows(python_versions))

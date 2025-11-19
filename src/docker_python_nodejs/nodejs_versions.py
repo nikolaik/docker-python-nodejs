@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import TypedDict
 
 import requests
@@ -38,9 +37,9 @@ class ReleaseScheduleItem(TypedDict):
     codename: str
 
 
-def fetch_nodejs_release_schedule() -> Mapping[str, ReleaseScheduleItem]:
+def fetch_nodejs_release_schedule() -> dict[str, ReleaseScheduleItem]:
     """Download list of official releases, skipping unreleased and unsupported versions"""
     res = requests.get("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json", timeout=10.0)
     res.raise_for_status()
-    release_schedule: Mapping[str, ReleaseScheduleItem] = res.json()
+    release_schedule: dict[str, ReleaseScheduleItem] = res.json()
     return release_schedule

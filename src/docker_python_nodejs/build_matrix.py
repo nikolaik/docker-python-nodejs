@@ -28,7 +28,7 @@ def _github_action_set_output(key: str, value: str) -> None:
         fp.write(f"{key}={value}")
 
 
-def build_matrix(new_or_updated: "list[BuildVersion]", ci_event: str) -> None:
+def build_matrix(new_or_updated: list[BuildVersion], ci_event: str) -> None:
     if not new_or_updated and ci_event == CI_EVENT_SCHEDULED:
         logger.info("\n# Scheduled run with no new or updated versions. Doing nothing.")
         return

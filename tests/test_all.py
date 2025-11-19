@@ -7,6 +7,7 @@ from unittest import mock
 
 import pytest
 import responses
+
 from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
 from docker_python_nodejs.readme import update_dynamic_readme
 from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
@@ -39,7 +40,7 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
-@pytest.mark.enable_socket()
+@pytest.mark.enable_socket
 def test_scrape_supported_python_versions() -> None:
     versions = scrape_supported_python_versions()
     assert len(versions) > 0
@@ -71,13 +72,13 @@ def test_render_dockerfile_with_context(build_version: BuildVersion) -> None:
 class MockPath:
     content: str = ""
 
-    def __init__(self: "MockPath", content: str) -> None:
+    def __init__(self: MockPath, content: str) -> None:
         self.content = content
 
-    def write_text(self: "MockPath", text: str) -> None:
+    def write_text(self: MockPath, text: str) -> None:
         self.content = text
 
-    def read_text(self: "MockPath") -> str:
+    def read_text(self: MockPath) -> str:
         return self.content
 
 
