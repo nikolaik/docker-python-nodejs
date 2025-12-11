@@ -3,7 +3,7 @@
 [![Pulls](https://img.shields.io/docker/pulls/nikolaik/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/nikolaik/python-nodejs/)
 [![CircleCI](https://img.shields.io/circleci/project/github/nikolaik/docker-python-nodejs.svg?style=flat-square)](https://circleci.com/gh/nikolaik/docker-python-nodejs)
 
-Last updated by bot: 2025-12-09
+Last updated by bot: 2025-12-11
 
 The `latest` tag is currently:
 
@@ -28,9 +28,9 @@ Tag | Python version | Node.js version | Distro
 `python3.14-nodejs25-bookworm` | 3.14.2 | 25.2.1 | bookworm
 `python3.14-nodejs25-slim` | 3.14.2 | 25.2.1 | slim
 `python3.14-nodejs25-alpine` | 3.14.2 | 25.2.1 | alpine
-`python3.14-nodejs24` | 3.14.2 | 24.11.1 | trixie
-`python3.14-nodejs24-bookworm` | 3.14.2 | 24.11.1 | bookworm
-`python3.14-nodejs24-slim` | 3.14.2 | 24.11.1 | slim
+`python3.14-nodejs24` | 3.14.2 | 24.12.0 | trixie
+`python3.14-nodejs24-bookworm` | 3.14.2 | 24.12.0 | bookworm
+`python3.14-nodejs24-slim` | 3.14.2 | 24.12.0 | slim
 `python3.14-nodejs24-alpine` | 3.14.2 | 24.11.1 | alpine
 `python3.14-nodejs22` | 3.14.2 | 22.21.1 | trixie
 `python3.14-nodejs22-bookworm` | 3.14.2 | 22.21.1 | bookworm
@@ -44,9 +44,9 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs25-bookworm` | 3.13.11 | 25.2.1 | bookworm
 `python3.13-nodejs25-slim` | 3.13.11 | 25.2.1 | slim
 `python3.13-nodejs25-alpine` | 3.13.11 | 25.2.1 | alpine
-`python3.13-nodejs24` | 3.13.11 | 24.11.1 | trixie
-`python3.13-nodejs24-bookworm` | 3.13.11 | 24.11.1 | bookworm
-`python3.13-nodejs24-slim` | 3.13.11 | 24.11.1 | slim
+`python3.13-nodejs24` | 3.13.11 | 24.12.0 | trixie
+`python3.13-nodejs24-bookworm` | 3.13.11 | 24.12.0 | bookworm
+`python3.13-nodejs24-slim` | 3.13.11 | 24.12.0 | slim
 `python3.13-nodejs24-alpine` | 3.13.11 | 24.11.1 | alpine
 `python3.13-nodejs22` | 3.13.11 | 22.21.1 | trixie
 `python3.13-nodejs22-bookworm` | 3.13.11 | 22.21.1 | bookworm
@@ -60,9 +60,9 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs25-bookworm` | 3.12.12 | 25.2.1 | bookworm
 `python3.12-nodejs25-slim` | 3.12.12 | 25.2.1 | slim
 `python3.12-nodejs25-alpine` | 3.12.12 | 25.2.1 | alpine
-`python3.12-nodejs24` | 3.12.12 | 24.11.1 | trixie
-`python3.12-nodejs24-bookworm` | 3.12.12 | 24.11.1 | bookworm
-`python3.12-nodejs24-slim` | 3.12.12 | 24.11.1 | slim
+`python3.12-nodejs24` | 3.12.12 | 24.12.0 | trixie
+`python3.12-nodejs24-bookworm` | 3.12.12 | 24.12.0 | bookworm
+`python3.12-nodejs24-slim` | 3.12.12 | 24.12.0 | slim
 `python3.12-nodejs24-alpine` | 3.12.12 | 24.11.1 | alpine
 `python3.12-nodejs22` | 3.12.12 | 22.21.1 | trixie
 `python3.12-nodejs22-bookworm` | 3.12.12 | 22.21.1 | bookworm
@@ -76,9 +76,9 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs25-bookworm` | 3.11.14 | 25.2.1 | bookworm
 `python3.11-nodejs25-slim` | 3.11.14 | 25.2.1 | slim
 `python3.11-nodejs25-alpine` | 3.11.14 | 25.2.1 | alpine
-`python3.11-nodejs24` | 3.11.14 | 24.11.1 | trixie
-`python3.11-nodejs24-bookworm` | 3.11.14 | 24.11.1 | bookworm
-`python3.11-nodejs24-slim` | 3.11.14 | 24.11.1 | slim
+`python3.11-nodejs24` | 3.11.14 | 24.12.0 | trixie
+`python3.11-nodejs24-bookworm` | 3.11.14 | 24.12.0 | bookworm
+`python3.11-nodejs24-slim` | 3.11.14 | 24.12.0 | slim
 `python3.11-nodejs24-alpine` | 3.11.14 | 24.11.1 | alpine
 `python3.11-nodejs22` | 3.11.14 | 22.21.1 | trixie
 `python3.11-nodejs22-bookworm` | 3.11.14 | 22.21.1 | bookworm
@@ -92,9 +92,9 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs25-bookworm` | 3.10.19 | 25.2.1 | bookworm
 `python3.10-nodejs25-slim` | 3.10.19 | 25.2.1 | slim
 `python3.10-nodejs25-alpine` | 3.10.19 | 25.2.1 | alpine
-`python3.10-nodejs24` | 3.10.19 | 24.11.1 | trixie
-`python3.10-nodejs24-bookworm` | 3.10.19 | 24.11.1 | bookworm
-`python3.10-nodejs24-slim` | 3.10.19 | 24.11.1 | slim
+`python3.10-nodejs24` | 3.10.19 | 24.12.0 | trixie
+`python3.10-nodejs24-bookworm` | 3.10.19 | 24.12.0 | bookworm
+`python3.10-nodejs24-slim` | 3.10.19 | 24.12.0 | slim
 `python3.10-nodejs24-alpine` | 3.10.19 | 24.11.1 | alpine
 `python3.10-nodejs22` | 3.10.19 | 22.21.1 | trixie
 `python3.10-nodejs22-bookworm` | 3.10.19 | 22.21.1 | bookworm
