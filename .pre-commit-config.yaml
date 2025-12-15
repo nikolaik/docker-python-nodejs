@@ -6,7 +6,7 @@ repos:
         args: [--fix]
       - id: ruff-format
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.35.0
+    rev: 0.36.0
     hooks:
       - id: check-github-workflows
       - id: check-renovate
