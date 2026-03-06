@@ -39,7 +39,7 @@ Tag | Python version | Node.js version | Distro
 `python3.14-nodejs20` | 3.14.3 | 20.20.1 | trixie
 `python3.14-nodejs20-bookworm` | 3.14.3 | 20.20.1 | bookworm
 `python3.14-nodejs20-slim` | 3.14.3 | 20.20.1 | slim
-`python3.14-nodejs20-alpine` | 3.14.3 | 20.20.0 | alpine
+`python3.14-nodejs20-alpine` | 3.14.3 | 20.20.1 | alpine
 `python3.13-nodejs25` | 3.13.12 | 25.8.0 | trixie
 `python3.13-nodejs25-bookworm` | 3.13.12 | 25.8.0 | bookworm
 `python3.13-nodejs25-slim` | 3.13.12 | 25.8.0 | slim
@@ -55,7 +55,7 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs20` | 3.13.12 | 20.20.1 | trixie
 `python3.13-nodejs20-bookworm` | 3.13.12 | 20.20.1 | bookworm
 `python3.13-nodejs20-slim` | 3.13.12 | 20.20.1 | slim
-`python3.13-nodejs20-alpine` | 3.13.12 | 20.20.0 | alpine
+`python3.13-nodejs20-alpine` | 3.13.12 | 20.20.1 | alpine
 `python3.12-nodejs25` | 3.12.13 | 25.8.0 | trixie
 `python3.12-nodejs25-bookworm` | 3.12.13 | 25.8.0 | bookworm
 `python3.12-nodejs25-slim` | 3.12.13 | 25.8.0 | slim
@@ -71,7 +71,7 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs20` | 3.12.13 | 20.20.1 | trixie
 `python3.12-nodejs20-bookworm` | 3.12.13 | 20.20.1 | bookworm
 `python3.12-nodejs20-slim` | 3.12.13 | 20.20.1 | slim
-`python3.12-nodejs20-alpine` | 3.12.13 | 20.20.0 | alpine
+`python3.12-nodejs20-alpine` | 3.12.13 | 20.20.1 | alpine
 `python3.11-nodejs25` | 3.11.15 | 25.8.0 | trixie
 `python3.11-nodejs25-bookworm` | 3.11.15 | 25.8.0 | bookworm
 `python3.11-nodejs25-slim` | 3.11.15 | 25.8.0 | slim
@@ -87,7 +87,7 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs20` | 3.11.15 | 20.20.1 | trixie
 `python3.11-nodejs20-bookworm` | 3.11.15 | 20.20.1 | bookworm
 `python3.11-nodejs20-slim` | 3.11.15 | 20.20.1 | slim
-`python3.11-nodejs20-alpine` | 3.11.15 | 20.20.0 | alpine
+`python3.11-nodejs20-alpine` | 3.11.15 | 20.20.1 | alpine
 `python3.10-nodejs25` | 3.10.20 | 25.8.0 | trixie
 `python3.10-nodejs25-bookworm` | 3.10.20 | 25.8.0 | bookworm
 `python3.10-nodejs25-slim` | 3.10.20 | 25.8.0 | slim
@@ -103,7 +103,7 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs20` | 3.10.20 | 20.20.1 | trixie
 `python3.10-nodejs20-bookworm` | 3.10.20 | 20.20.1 | bookworm
 `python3.10-nodejs20-slim` | 3.10.20 | 20.20.1 | slim
-`python3.10-nodejs20-alpine` | 3.10.20 | 20.20.0 | alpine
+`python3.10-nodejs20-alpine` | 3.10.20 | 20.20.1 | alpine
 
 <!-- TAGS_END -->
 
