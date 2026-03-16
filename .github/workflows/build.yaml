@@ -63,27 +63,30 @@ jobs:
           uv run dpn dockerfile --context "${context}"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-      - name: Login to Docker Hub
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Build and push
+      # Build
       - name: Build image
-        id: build-and-push
         uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
           platforms: ${{ matrix.platform }}
-          push: true
+          load: true
           tags: ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }}
 
       # Test
       - name: Run smoke tests
         run: |
-          docker run --rm ${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+          docker run --rm ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+
+      # Push
+      - name: Login to Docker Hub
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push image
+        run: docker push "${IMAGE_NAME}:${{ matrix.key }}-${{ matrix.arch }}"
 
   deploy:
     name: Publish ${{ matrix.key }}
