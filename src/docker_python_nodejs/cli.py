@@ -10,6 +10,7 @@ from .settings import DISTROS
 from .versions import (
     decide_version_combinations,
     find_new_or_updated,
+    latest_tag_key,
     load_build_contexts,
     load_versions,
     persist_versions,
@@ -23,7 +24,7 @@ class CLIArgs(argparse.Namespace):
     dry_run: bool
     distros: list[str]
     verbose: bool
-    command: Literal["dockerfile", "build-matrix", "release"]
+    command: Literal["dockerfile", "build-matrix", "release", "latest-key"]
     force: bool  # build-matrix and release command arg
 
     context: str  # dockerfile command arg
@@ -69,6 +70,11 @@ def run_release(args: CLIArgs) -> None:
     update_dynamic_readme(versions, supported_python_versions, supported_nodejs_versions, args.dry_run)
 
 
+def run_latest_key(args: CLIArgs) -> None:
+    builds = load_build_contexts(args.builds_dir)
+    print(latest_tag_key(list(builds.values())))
+
+
 def main(args: CLIArgs) -> None:
     if args.dry_run:
         logger.debug("Dry run, outputting only.")
@@ -79,6 +85,8 @@ def main(args: CLIArgs) -> None:
         run_build_matrix(args)
     elif args.command == "release":
         run_release(args)
+    elif args.command == "latest-key":
+        run_latest_key(args)
 
 
 def parse_args() -> CLIArgs:
@@ -125,8 +133,19 @@ def parse_args() -> CLIArgs:
         help="Builds directory with build context JSON files",
     )
 
+    parser_latest_key = subparsers.add_parser(
+        "latest-key",
+        help="Print the built tag that should also be published as latest",
+    )
+    parser_latest_key.add_argument(
+        "--builds-dir",
+        type=Path,
+        required=True,
+        help="Builds directory with build context JSON files",
+    )
+
     cli_args = cast("CLIArgs", parser.parse_args())
-    if cli_args.command == "release":
+    if cli_args.command in {"release", "latest-key"}:
         if not cli_args.builds_dir.exists():
             parser.error(f"Builds directory {cli_args.builds_dir.as_posix()} does not exist")
 

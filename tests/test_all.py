@@ -18,6 +18,7 @@ from docker_python_nodejs.versions import (
     decide_version_combinations,
     fetch_supported_nodejs_versions,
     find_new_or_updated,
+    latest_tag_key,
     load_build_contexts,
     scrape_supported_python_versions,
 )
@@ -289,3 +290,59 @@ def test_find_new_or_updated_with_digest() -> None:
     res = find_new_or_updated([new], {existing.key: existing})
 
     assert len(res) == 0
+
+
+def test_latest_tag_key_matches_latest_sources() -> None:
+    versions = [
+        BuildVersion(
+            key="python3.14-nodejs25",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-trixie",
+            nodejs="25",
+            nodejs_canonical="25.8.1",
+            distro="trixie",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+        BuildVersion(
+            key="python3.14-nodejs24-bookworm",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-bookworm",
+            nodejs="24",
+            nodejs_canonical="24.14.0",
+            distro="bookworm",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+    ]
+
+    with (
+        mock.patch("docker_python_nodejs.versions._latest_python_minor", return_value="3.14"),
+        mock.patch("docker_python_nodejs.versions.fetch_latest_nodejs_version", return_value="v25.8.1"),
+    ):
+        assert latest_tag_key(versions) == "python3.14-nodejs25"
+
+
+def test_latest_tag_key_fails_if_canonical_build_is_missing() -> None:
+    versions = [
+        BuildVersion(
+            key="python3.14-nodejs24",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-trixie",
+            nodejs="24",
+            nodejs_canonical="24.14.0",
+            distro="trixie",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+    ]
+
+    with (
+        mock.patch("docker_python_nodejs.versions._latest_python_minor", return_value="3.14"),
+        mock.patch("docker_python_nodejs.versions.fetch_latest_nodejs_version", return_value="v25.8.1"),
+        pytest.raises(
+            ValueError,
+            match=r"Computed latest tag 'python3\.14-nodejs25' was not part of the current build set",
+        ),
+    ):
+        latest_tag_key(versions)
