@@ -5,9 +5,21 @@ on:
     branches: [main]
   schedule:
     - cron: "0 00,12 * * *"  # Twice a day
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force rebuild and republish all image tags
+        required: false
+        default: true
+        type: boolean
+      image_name:
+        description: Override image name for this manual run
+        required: false
+        default: ""
+        type: string
 
 env:
-  IMAGE_NAME: ${{ vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
+  IMAGE_NAME: ${{ inputs.image_name || vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
 
 jobs:
   generate-matrix:
@@ -26,7 +38,7 @@ jobs:
       - name: Generate build matrix
         id: set-matrix
         run: |
-          FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
+          FORCE=$(if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force }}" == "true" ]]; then echo "--force"; elif git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
 
 
