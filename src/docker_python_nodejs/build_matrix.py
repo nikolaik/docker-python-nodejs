@@ -9,6 +9,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .versions import BuildVersion
 
+from .versions import latest_tag_key
+
 CI_EVENT_SCHEDULED = "scheduled"
 
 logger = logging.getLogger("dpn")
@@ -60,7 +62,9 @@ def build_matrix(new_or_updated: list[BuildVersion], ci_event: str) -> None:
 
     matrix = _build_matrix_json(new_or_updated)
     arch_matrix = _build_arch_matrix_json(new_or_updated)
+    latest_key = latest_tag_key(new_or_updated) if new_or_updated else ""
     _github_action_set_output("matrix", matrix)
     _github_action_set_output("arch_matrix", arch_matrix)
+    _github_action_set_output("latest_key", latest_key)
     logger.info("\n# New or updated versions:")
     logger.info("Nothing" if not new_or_updated else "\n".join(version.key for version in new_or_updated))
