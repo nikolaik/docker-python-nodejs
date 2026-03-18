@@ -9,17 +9,15 @@ on:
     inputs:
       force:
         description: Force rebuild and republish all image tags
-        required: false
         default: true
         type: boolean
-      image_name:
+      image-name:
         description: Override image name for this manual run
-        required: false
         default: ""
         type: string
 
 env:
-  IMAGE_NAME: ${{ inputs.image_name || vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
+  IMAGE_NAME: ${{ inputs.image-name || vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
 
 jobs:
   generate-matrix:
@@ -40,7 +38,12 @@ jobs:
       - name: Generate build matrix
         id: set-matrix
         run: |
-          FORCE=$(if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force }}" == "true" ]]; then echo "--force"; elif git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
+          FORCE=
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force }}" == "true" ]]; then
+            FORCE="--force"
+          elif git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then
+            FORCE="--force"
+          fi
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
 
 
@@ -78,7 +81,10 @@ jobs:
       # Test
       - name: Run smoke tests
         run: |
-          docker run --rm ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+          docker run --rm ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }} sh -c \
+            "node --version && npm --version && yarn --version && \
+            python --version && pip --version && pipenv --version && \
+            poetry --version && uv --version"
 
       # Push
       - name: Login to Docker Hub
@@ -132,7 +138,10 @@ jobs:
         run: |
           mkdir builds/
           digest="${{ steps.push-manifest.outputs.digest }}"
-          echo '${{ toJSON(matrix) }}' | jq --arg digest "$digest" '. +={"digest": $digest}' >> "builds/${{ matrix.key }}.json"
+          echo '${{ toJSON(matrix) }}' |
+            jq --arg digest "$digest" \
+              '. +={"digest": $digest}' \
+              >> "builds/${{ matrix.key }}.json"
 
       - name: Upload build context
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
