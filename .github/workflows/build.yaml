@@ -117,10 +117,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Install regctl
+        uses: regclient/actions/regctl-installer@1b705e32d40851370799ea5814e83d0a5f6a70dc # v0.1.0
+
       - name: Push multi-arch manifest
         id: push-manifest
         run: |
-          digest="$(docker manifest push "${IMAGE_NAME}:${{ matrix.key }}" | tail -n1)"
+          docker manifest push "${IMAGE_NAME}:${{ matrix.key }}"
+          digest="$(regctl image digest "${IMAGE_NAME}:${{ matrix.key }}")"
           echo "digest=${digest}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
