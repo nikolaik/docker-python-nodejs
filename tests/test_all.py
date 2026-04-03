@@ -8,6 +8,7 @@ from unittest import mock
 import pytest
 import responses
 
+from docker_python_nodejs.build_matrix import _build_arch_matrix_json, _build_matrix_json
 from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
 from docker_python_nodejs.readme import update_dynamic_readme
 from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
@@ -18,6 +19,7 @@ from docker_python_nodejs.versions import (
     decide_version_combinations,
     fetch_supported_nodejs_versions,
     find_new_or_updated,
+    latest_tag_key,
     load_build_contexts,
     scrape_supported_python_versions,
 )
@@ -289,3 +291,150 @@ def test_find_new_or_updated_with_digest() -> None:
     res = find_new_or_updated([new], {existing.key: existing})
 
     assert len(res) == 0
+
+
+def test_build_arch_matrix_json(build_version: BuildVersion) -> None:
+    matrix = json.loads(_build_arch_matrix_json([build_version]))
+
+    assert matrix == {
+        "include": [
+            {
+                "key": "python3.11-nodejs20",
+                "python": "3.11",
+                "python_canonical": "3.11.3",
+                "python_image": "3.11.3-trixie",
+                "nodejs": "20",
+                "nodejs_canonical": "20.2.0",
+                "distro": "trixie",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+                "platform": "linux/amd64",
+                "arch": "amd64",
+                "runner": "ubuntu-latest",
+            },
+            {
+                "key": "python3.11-nodejs20",
+                "python": "3.11",
+                "python_canonical": "3.11.3",
+                "python_image": "3.11.3-trixie",
+                "nodejs": "20",
+                "nodejs_canonical": "20.2.0",
+                "distro": "trixie",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+                "platform": "linux/arm64",
+                "arch": "arm64",
+                "runner": "ubuntu-24.04-arm",
+            },
+        ],
+    }
+
+
+def test_build_matrix_json() -> None:
+    versions = [
+        BuildVersion(
+            key="python3.14-nodejs25",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-trixie",
+            nodejs="25",
+            nodejs_canonical="25.8.1",
+            distro="trixie",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+        BuildVersion(
+            key="python3.14-nodejs24-bookworm",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-bookworm",
+            nodejs="24",
+            nodejs_canonical="24.14.0",
+            distro="bookworm",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+    ]
+
+    matrix = json.loads(_build_matrix_json(versions))
+
+    assert matrix == {
+        "include": [
+            {
+                "key": "python3.14-nodejs25",
+                "python": "3.14",
+                "python_canonical": "3.14.3",
+                "python_image": "3.14.3-trixie",
+                "nodejs": "25",
+                "nodejs_canonical": "25.8.1",
+                "distro": "trixie",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+            },
+            {
+                "key": "python3.14-nodejs24-bookworm",
+                "python": "3.14",
+                "python_canonical": "3.14.3",
+                "python_image": "3.14.3-bookworm",
+                "nodejs": "24",
+                "nodejs_canonical": "24.14.0",
+                "distro": "bookworm",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+            },
+        ],
+    }
+
+
+def test_latest_tag_key_matches_latest_sources() -> None:
+    versions = [
+        BuildVersion(
+            key="python3.14-nodejs25",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-trixie",
+            nodejs="25",
+            nodejs_canonical="25.8.1",
+            distro="trixie",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+        BuildVersion(
+            key="python3.14-nodejs24-bookworm",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-bookworm",
+            nodejs="24",
+            nodejs_canonical="24.14.0",
+            distro="bookworm",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+    ]
+
+    with (
+        mock.patch("docker_python_nodejs.versions._latest_python_minor", return_value="3.14"),
+        mock.patch("docker_python_nodejs.versions.fetch_latest_nodejs_version", return_value="v25.8.1"),
+    ):
+        assert latest_tag_key(versions) == "python3.14-nodejs25"
+
+
+def test_latest_tag_key_fails_if_canonical_build_is_missing() -> None:
+    versions = [
+        BuildVersion(
+            key="python3.14-nodejs24",
+            python="3.14",
+            python_canonical="3.14.3",
+            python_image="3.14.3-trixie",
+            nodejs="24",
+            nodejs_canonical="24.14.0",
+            distro="trixie",
+            platforms=["linux/amd64", "linux/arm64"],
+        ),
+    ]
+
+    with (
+        mock.patch("docker_python_nodejs.versions._latest_python_minor", return_value="3.14"),
+        mock.patch("docker_python_nodejs.versions.fetch_latest_nodejs_version", return_value="v25.8.1"),
+        pytest.raises(
+            ValueError,
+            match=r"Computed latest tag 'python3\.14-nodejs25' was not part of the current build set",
+        ),
+    ):
+        latest_tag_key(versions)

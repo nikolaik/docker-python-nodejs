@@ -5,6 +5,19 @@ on:
     branches: [main]
   schedule:
     - cron: "0 00,12 * * *"  # Twice a day
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force rebuild and republish all image tags
+        default: true
+        type: boolean
+      image-name:
+        description: Override image name for this manual run
+        default: ""
+        type: string
+
+env:
+  IMAGE_NAME: ${{ inputs.image-name || vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
 
 jobs:
   generate-matrix:
@@ -12,7 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test]
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      version_matrix: ${{ steps.set-matrix.outputs.matrix }}
+      arch_matrix: ${{ steps.set-matrix.outputs.arch_matrix }}
+      latest_key: ${{ steps.set-matrix.outputs.latest_key }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
@@ -23,17 +38,23 @@ jobs:
       - name: Generate build matrix
         id: set-matrix
         run: |
-          FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
+          FORCE=
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force }}" == "true" ]]; then
+            FORCE="--force"
+          elif git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then
+            FORCE="--force"
+          fi
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
 
 
-  deploy:
-    name: ${{ matrix.key }}
-    runs-on: ubuntu-latest
-    if: needs.generate-matrix.outputs.matrix != ''
+  build-arch:
+    name: ${{ matrix.key }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    if: needs.generate-matrix.outputs.arch_matrix != ''
     needs: [generate-matrix]
     strategy:
-      matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.generate-matrix.outputs.arch_matrix) }}
     steps:
       # Setup
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -41,16 +62,11 @@ jobs:
         with:
           enable-cache: true
       - name: Generate Dockerfile from config
-        run: uv run dpn dockerfile --context '${{ toJSON(matrix) }}'
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
+        run: |
+          context="$(echo '${{ toJSON(matrix) }}' | jq -c '{key, python, python_canonical, python_image, nodejs, nodejs_canonical, distro, platforms, digest}')"
+          uv run dpn dockerfile --context "${context}"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-      - name: Login to Docker Hub
-        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Build
       - name: Build image
@@ -58,31 +74,78 @@ jobs:
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
+          platforms: ${{ matrix.platform }}
           load: true
-          tags: nikolaik/python-nodejs:${{ matrix.key }}
+          tags: ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }}
 
       # Test
       - name: Run smoke tests
         run: |
-          docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+          docker run --rm ${{ env.IMAGE_NAME }}:${{ matrix.key }}-${{ matrix.arch }} sh -c \
+            "node --version && npm --version && yarn --version && \
+            python --version && pip --version && pipenv --version && \
+            poetry --version && uv --version"
 
-      # Push image
-      - name: Push image
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7
-        id: build-and-push
+      # Push
+      - name: Login to Docker Hub
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
         with:
-          context: .
-          file: dockerfiles/${{ matrix.key }}.Dockerfile
-          platforms: ${{ join(matrix.platforms) }}
-          push: true
-          tags: nikolaik/python-nodejs:${{ matrix.key }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push image
+        run: docker push "${IMAGE_NAME}:${{ matrix.key }}-${{ matrix.arch }}"
 
-      # Store build context
+  deploy:
+    name: Publish ${{ matrix.key }}
+    runs-on: ubuntu-latest
+    if: needs.generate-matrix.outputs.version_matrix != ''
+    needs: [generate-matrix, build-arch]
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.generate-matrix.outputs.version_matrix) }}
+    steps:
+      - name: Create local multi-arch manifest
+        run: |
+          refs=("${IMAGE_NAME}:${{ matrix.key }}-amd64")
+          if echo '${{ toJSON(matrix.platforms) }}' | jq -e '.[] == "linux/arm64"' > /dev/null; then
+            refs+=("${IMAGE_NAME}:${{ matrix.key }}-arm64")
+          fi
+          docker manifest create "${IMAGE_NAME}:${{ matrix.key }}" "${refs[@]}"
+          if [[ "${{ needs.generate-matrix.outputs.latest_key }}" == "${{ matrix.key }}" ]]; then
+            docker manifest create "${IMAGE_NAME}:latest" "${refs[@]}"
+          fi
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Install regctl
+        uses: regclient/actions/regctl-installer@1b705e32d40851370799ea5814e83d0a5f6a70dc # v0.1.0
+
+      - name: Push multi-arch manifest
+        id: push-manifest
+        run: |
+          docker manifest push "${IMAGE_NAME}:${{ matrix.key }}"
+          digest="$(regctl image digest "${IMAGE_NAME}:${{ matrix.key }}")"
+          echo "digest=${digest}" >> "$GITHUB_OUTPUT"
+
+      - name: Push latest manifest
+        if: needs.generate-matrix.outputs.latest_key == matrix.key
+        run: docker manifest push "${IMAGE_NAME}:latest"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+
       - name: Add digest to build context
         run: |
           mkdir builds/
-          digest="${{ steps.build-and-push.outputs.digest }}"
-          echo '${{ toJSON(matrix) }}' | jq --arg digest "$digest" '. +={"digest": $digest}' >> "builds/${{ matrix.key }}.json"
+          digest="${{ steps.push-manifest.outputs.digest }}"
+          echo '${{ toJSON(matrix) }}' |
+            jq --arg digest "$digest" \
+              '. +={"digest": $digest}' \
+              >> "builds/${{ matrix.key }}.json"
 
       - name: Upload build context
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
