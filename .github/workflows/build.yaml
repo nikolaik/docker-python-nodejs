@@ -54,7 +54,7 @@ jobs:
 
       # Build
       - name: Build image
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
@@ -68,7 +68,7 @@ jobs:
 
       # Push image
       - name: Push image
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         id: build-and-push
         with:
           context: .
