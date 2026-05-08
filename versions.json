@@ -48,12 +48,12 @@
       "python_canonical": "3.14.4",
       "python_image": "3.14.4-alpine",
       "nodejs": "26",
-      "nodejs_canonical": "26.0.0",
+      "nodejs_canonical": "26.1.0",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
       ],
-      "digest": "sha256:a1309070ec1d161e781e6bae15a8268ebc60a744071bc89777c972168612924a"
+      "digest": "sha256:3bced180179ace3f5f687029db96f10522ca0937c53997e07f9c4d8879484136"
     },
     {
       "key": "python3.14-nodejs25",
@@ -268,12 +268,12 @@
       "python_canonical": "3.13.13",
       "python_image": "3.13.13-alpine",
       "nodejs": "26",
-      "nodejs_canonical": "26.0.0",
+      "nodejs_canonical": "26.1.0",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
       ],
-      "digest": "sha256:c0a0b6f835c1a76830529aaede4f88803eb47a68cba7c6903edcd8fef322b0a9"
+      "digest": "sha256:5909113cdbceb424a19b9bc4c77e3c0cf8d15b23e42974f69f3271201e694f67"
     },
     {
       "key": "python3.13-nodejs25",
@@ -488,12 +488,12 @@
       "python_canonical": "3.12.13",
       "python_image": "3.12.13-alpine",
       "nodejs": "26",
-      "nodejs_canonical": "26.0.0",
+      "nodejs_canonical": "26.1.0",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
       ],
-      "digest": "sha256:990d015963634bd52f97cd79d33c9b4a55019d5220707dd252b508d545744458"
+      "digest": "sha256:230cf61058ab4aac3ff0c059dbf1a47811c39086fc56ca29ecf4f522ccfa223f"
     },
     {
       "key": "python3.12-nodejs25",
@@ -708,12 +708,12 @@
       "python_canonical": "3.11.15",
       "python_image": "3.11.15-alpine",
       "nodejs": "26",
-      "nodejs_canonical": "26.0.0",
+      "nodejs_canonical": "26.1.0",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
       ],
-      "digest": "sha256:9cb8c387264487b2d1187ac293ac3b2ed805b661f87e5430e79d034b4b16b037"
+      "digest": "sha256:0670d9fe4f8692a63c1504c6530b9e4d2470ceeffd1d31ec515c49bc498d5b0b"
     },
     {
       "key": "python3.11-nodejs25",
@@ -928,12 +928,12 @@
       "python_canonical": "3.10.20",
       "python_image": "3.10.20-alpine",
       "nodejs": "26",
-      "nodejs_canonical": "26.0.0",
+      "nodejs_canonical": "26.1.0",
       "distro": "alpine",
       "platforms": [
         "linux/amd64"
       ],
-      "digest": "sha256:b126d1a73497a922118aff574c1bad48a73a087747d54cbbcac4a518bcb70c02"
+      "digest": "sha256:4e9cb18228597a2dee9d43e33ec9745aaf7dded4a6d86cc432fdb4d754584772"
     },
     {
       "key": "python3.10-nodejs25",
