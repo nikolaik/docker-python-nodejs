@@ -14,6 +14,7 @@ from docker_python_nodejs.readme import format_supported_versions
 
 from .docker_hub import DockerImageDict, DockerTagDict, fetch_tags
 from .nodejs_versions import (
+    fetch_latest_nodejs_version,
     fetch_node_releases,
     fetch_node_unofficial_releases,
     fetch_nodejs_release_schedule,
@@ -103,6 +104,17 @@ def _wanted_tag(tag: DockerTagDict, ver: str, distro: str) -> bool:
 def _latest_patch(tags: list[DockerTagDict], ver: str, distro: str) -> str | None:
     tags = [tag for tag in tags if _wanted_tag(tag, ver, distro)]
     return sorted(tags, key=lambda x: Version.parse(x["name"]), reverse=True)[0]["name"] if tags else None
+
+
+def _latest_python_minor(distro: str) -> str:
+    python_patch_re = re.compile(rf"^(\d+\.\d+\.\d+)-{distro}$")
+    tags = [tag["name"] for tag in fetch_tags("python") if python_patch_re.match(tag["name"])]
+    if not tags:
+        msg = f"Could not determine latest Python version for distro '{distro}'"
+        raise ValueError(msg)
+
+    latest_patch = sorted(tags, key=lambda x: Version.parse(x.removesuffix(f"-{distro}")), reverse=True)[0]
+    return ".".join(latest_patch.removesuffix(f"-{distro}").split(".")[:2])
 
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
@@ -254,6 +266,18 @@ def decide_version_combinations(
     # Use the latest minor version from each major
     nodejs_versions = decide_nodejs_versions(distros, supported_node_versions)
     return version_combinations(nodejs_versions, python_versions)
+
+
+def latest_tag_key(versions: list[BuildVersion]) -> str:
+    python_minor = _latest_python_minor(DEFAULT_DISTRO)
+    node_major = fetch_latest_nodejs_version().removeprefix("v").split(".")[0]
+    key = f"python{python_minor}-nodejs{node_major}"
+
+    if key not in {version.key for version in versions}:
+        msg = f"Computed latest tag '{key}' was not part of the current build set"
+        raise ValueError(msg)
+
+    return key
 
 
 def persist_versions(versions: list[BuildVersion], dry_run: bool = False) -> None:

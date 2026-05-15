@@ -139,8 +139,6 @@ Versions are kept up to date using official sources. For Python we scrape the _S
 ```bash
 # Pull from Docker Hub
 docker pull nikolaik/python-nodejs:latest
-# Build from GitHub
-docker build -t nikolaik/python-nodejs github.com/nikolaik/docker-python-nodejs
 # Run image
 docker run -it nikolaik/python-nodejs bash
 ```

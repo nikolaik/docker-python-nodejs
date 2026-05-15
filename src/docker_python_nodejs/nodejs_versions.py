@@ -1,4 +1,5 @@
 import datetime
+import re
 from typing import TypedDict
 
 import requests
@@ -27,6 +28,17 @@ def fetch_node_unofficial_releases() -> list[NodeRelease]:
     res.raise_for_status()
     data: list[NodeRelease] = res.json()
     return data
+
+
+def fetch_latest_nodejs_version() -> str:
+    url = "https://nodejs.org/dist/latest/SHASUMS256.txt"
+    res = requests.get(url, timeout=10.0)
+    res.raise_for_status()
+    match = re.search(r"node-(v\d+\.\d+\.\d+)-", res.text)
+    if not match:
+        msg = "Could not determine latest Node.js version from SHASUMS256.txt"
+        raise ValueError(msg)
+    return match.group(1)
 
 
 class ReleaseScheduleItem(TypedDict):
