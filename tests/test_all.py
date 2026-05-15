@@ -8,6 +8,7 @@ from unittest import mock
 import pytest
 import responses
 
+from docker_python_nodejs.build_matrix import _build_arch_matrix_json
 from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
 from docker_python_nodejs.readme import update_dynamic_readme
 from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
@@ -289,3 +290,40 @@ def test_find_new_or_updated_with_digest() -> None:
     res = find_new_or_updated([new], {existing.key: existing})
 
     assert len(res) == 0
+
+
+def test_build_arch_matrix_json(build_version: BuildVersion) -> None:
+    matrix = json.loads(_build_arch_matrix_json([build_version]))
+
+    assert matrix == {
+        "include": [
+            {
+                "key": "python3.11-nodejs20",
+                "python": "3.11",
+                "python_canonical": "3.11.3",
+                "python_image": "3.11.3-trixie",
+                "nodejs": "20",
+                "nodejs_canonical": "20.2.0",
+                "distro": "trixie",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+                "platform": "linux/amd64",
+                "arch": "amd64",
+                "runner": "ubuntu-latest",
+            },
+            {
+                "key": "python3.11-nodejs20",
+                "python": "3.11",
+                "python_canonical": "3.11.3",
+                "python_image": "3.11.3-trixie",
+                "nodejs": "20",
+                "nodejs_canonical": "20.2.0",
+                "distro": "trixie",
+                "platforms": ["linux/amd64", "linux/arm64"],
+                "digest": "",
+                "platform": "linux/arm64",
+                "arch": "arm64",
+                "runner": "ubuntu-24.04-arm",
+            },
+        ],
+    }
