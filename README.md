@@ -27,7 +27,7 @@ Tag | Python version | Node.js version | Distro
 `python3.14-nodejs26` | 3.14.6 | 26.5.0 | trixie
 `python3.14-nodejs26-bookworm` | 3.14.6 | 26.5.0 | bookworm
 `python3.14-nodejs26-slim` | 3.14.6 | 26.5.0 | slim
-`python3.14-nodejs26-alpine` | 3.14.6 | 26.4.0 | alpine
+`python3.14-nodejs26-alpine` | 3.14.6 | 26.5.0 | alpine
 `python3.14-nodejs24` | 3.14.6 | 24.18.0 | trixie
 `python3.14-nodejs24-bookworm` | 3.14.6 | 24.18.0 | bookworm
 `python3.14-nodejs24-slim` | 3.14.6 | 24.18.0 | slim
@@ -39,7 +39,7 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs26` | 3.13.14 | 26.5.0 | trixie
 `python3.13-nodejs26-bookworm` | 3.13.14 | 26.5.0 | bookworm
 `python3.13-nodejs26-slim` | 3.13.14 | 26.5.0 | slim
-`python3.13-nodejs26-alpine` | 3.13.14 | 26.4.0 | alpine
+`python3.13-nodejs26-alpine` | 3.13.14 | 26.5.0 | alpine
 `python3.13-nodejs24` | 3.13.14 | 24.18.0 | trixie
 `python3.13-nodejs24-bookworm` | 3.13.14 | 24.18.0 | bookworm
 `python3.13-nodejs24-slim` | 3.13.14 | 24.18.0 | slim
@@ -51,7 +51,7 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs26` | 3.12.13 | 26.5.0 | trixie
 `python3.12-nodejs26-bookworm` | 3.12.13 | 26.5.0 | bookworm
 `python3.12-nodejs26-slim` | 3.12.13 | 26.5.0 | slim
-`python3.12-nodejs26-alpine` | 3.12.13 | 26.4.0 | alpine
+`python3.12-nodejs26-alpine` | 3.12.13 | 26.5.0 | alpine
 `python3.12-nodejs24` | 3.12.13 | 24.18.0 | trixie
 `python3.12-nodejs24-bookworm` | 3.12.13 | 24.18.0 | bookworm
 `python3.12-nodejs24-slim` | 3.12.13 | 24.18.0 | slim
@@ -63,7 +63,7 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs26` | 3.11.15 | 26.5.0 | trixie
 `python3.11-nodejs26-bookworm` | 3.11.15 | 26.5.0 | bookworm
 `python3.11-nodejs26-slim` | 3.11.15 | 26.5.0 | slim
-`python3.11-nodejs26-alpine` | 3.11.15 | 26.4.0 | alpine
+`python3.11-nodejs26-alpine` | 3.11.15 | 26.5.0 | alpine
 `python3.11-nodejs24` | 3.11.15 | 24.18.0 | trixie
 `python3.11-nodejs24-bookworm` | 3.11.15 | 24.18.0 | bookworm
 `python3.11-nodejs24-slim` | 3.11.15 | 24.18.0 | slim
@@ -75,7 +75,7 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs26` | 3.10.20 | 26.5.0 | trixie
 `python3.10-nodejs26-bookworm` | 3.10.20 | 26.5.0 | bookworm
 `python3.10-nodejs26-slim` | 3.10.20 | 26.5.0 | slim
-`python3.10-nodejs26-alpine` | 3.10.20 | 26.4.0 | alpine
+`python3.10-nodejs26-alpine` | 3.10.20 | 26.5.0 | alpine
 `python3.10-nodejs24` | 3.10.20 | 24.18.0 | trixie
 `python3.10-nodejs24-bookworm` | 3.10.20 | 24.18.0 | bookworm
 `python3.10-nodejs24-slim` | 3.10.20 | 24.18.0 | slim
