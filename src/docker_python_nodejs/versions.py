@@ -102,7 +102,7 @@ def _wanted_tag(tag: DockerTagDict, ver: str, distro: str) -> bool:
 
 def _latest_patch(tags: list[DockerTagDict], ver: str, distro: str) -> str | None:
     tags = [tag for tag in tags if _wanted_tag(tag, ver, distro)]
-    return sorted(tags, key=lambda x: Version.parse(x["name"]), reverse=True)[0]["name"] if tags else None
+    return max(tags, key=lambda x: Version.parse(x["name"]))["name"] if tags else None
 
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
@@ -195,7 +195,7 @@ def decide_nodejs_versions(distros: list[str], supported_versions: list[Supporte
                 if rel["version"][1:].startswith(ver) and _has_arch_files(rel["files"], distro)
             ]
             latest_patch_version = (
-                sorted(matching_releases, key=lambda x: Version.parse(x["version"][1:]), reverse=True)[0]["version"][1:]
+                max(matching_releases, key=lambda x: Version.parse(x["version"][1:]))["version"][1:]
                 if matching_releases
                 else None
             )
