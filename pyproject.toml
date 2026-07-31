@@ -21,7 +21,6 @@ dpn = "docker_python_nodejs:dpn"
 [dependency-groups]
 dev = [
   "pytest",
-  "pre-commit",
   "ruff",
   "pytest-cov",
   "mypy",
@@ -45,7 +44,8 @@ ignore = [
   "D", # FIXME: docs
   "TD", # Allow TODOs
   "FBT001", # Allow boolean function args
-  "FIX001" # Allow fixme's
+  "FIX001", # Allow fixme's
+  "CPY001", # No copyright headers
 ]
 
 [tool.ruff.lint.per-file-ignores]

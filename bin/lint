@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -eu
 
-pre-commit run -a
+prek run --all-files  --show-diff-on-failure
