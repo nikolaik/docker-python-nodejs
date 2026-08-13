@@ -5,6 +5,19 @@ on:
     branches: [main]
   schedule:
     - cron: "0 00,12 * * *"  # Twice a day
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force rebuild and republish all image tags
+        default: true
+        type: boolean
+      image-name:
+        description: Override image name for this manual run
+        default: ""
+        type: string
+
+env:
+  IMAGE_NAME: ${{ inputs.image-name || vars.IMAGE_NAME || 'nikolaik/python-nodejs' }}
 
 jobs:
   generate-matrix:
@@ -23,7 +36,12 @@ jobs:
       - name: Generate build matrix
         id: set-matrix
         run: |
-          FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
+          FORCE=
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force }}" == "true" ]]; then
+            FORCE="--force"
+          elif git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then
+            FORCE="--force"
+          fi
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
 
 
@@ -59,12 +77,15 @@ jobs:
           context: .
           file: dockerfiles/${{ matrix.key }}.Dockerfile
           load: true
-          tags: nikolaik/python-nodejs:${{ matrix.key }}
+          tags: ${{ env.IMAGE_NAME }}:${{ matrix.key }}
 
       # Test
       - name: Run smoke tests
         run: |
-          docker run --rm nikolaik/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+          docker run --rm ${{ env.IMAGE_NAME }}:${{ matrix.key }} sh -c \
+            "node --version && npm --version && yarn --version && \
+            python --version && pip --version && pipenv --version && \
+            poetry --version && uv --version"
 
       # Push image
       - name: Push image
@@ -75,14 +96,17 @@ jobs:
           file: dockerfiles/${{ matrix.key }}.Dockerfile
           platforms: ${{ join(matrix.platforms) }}
           push: true
-          tags: nikolaik/python-nodejs:${{ matrix.key }}
+          tags: ${{ env.IMAGE_NAME }}:${{ matrix.key }}
 
       # Store build context
       - name: Add digest to build context
         run: |
           mkdir builds/
           digest="${{ steps.build-and-push.outputs.digest }}"
-          echo '${{ toJSON(matrix) }}' | jq --arg digest "$digest" '. +={"digest": $digest}' >> "builds/${{ matrix.key }}.json"
+          echo '${{ toJSON(matrix) }}' |
+            jq --arg digest "$digest" \
+              '. +={"digest": $digest}' \
+              >> "builds/${{ matrix.key }}.json"
 
       - name: Upload build context
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
