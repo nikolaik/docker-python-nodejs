@@ -25,6 +25,9 @@ jobs:
         run: |
           FORCE=$(if git log --pretty=format:"%s" HEAD^..HEAD | grep -q '\[force\]'; then echo "--force"; else echo ""; fi)
           uv run dpn $FORCE build-matrix --event ${{ github.event_name }}
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PUBLIC_TOKEN: ${{ secrets.DOCKERHUB_PUBLIC_TOKEN }}
 
 
   deploy:
