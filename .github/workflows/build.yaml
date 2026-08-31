@@ -130,6 +130,9 @@ jobs:
           else
               echo "Nothing changed, nothing to archive."
           fi
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PUBLIC_TOKEN: ${{ secrets.DOCKERHUB_PUBLIC_TOKEN }}
 
   test:
     uses: ./.github/workflows/tests.yaml
