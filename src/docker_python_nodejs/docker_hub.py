@@ -1,3 +1,4 @@
+import os
 from typing import TypedDict
 
 import requests
@@ -43,15 +44,37 @@ class DockerTagResponse(TypedDict):
     results: list[DockerTagDict]
 
 
-def fetch_tags(package: str, page: int = 1) -> list[DockerTagDict]:
+class DockerCreateAccessTokenResponse(TypedDict):
+    access_token: str
+
+
+def token_auth() -> str:
+    """Return a short lived access token for Docker Hub authentication. Expires in 10min"""
+    user = os.getenv("DOCKERHUB_USERNAME", "")
+    token = os.getenv("DOCKERHUB_PUBLIC_TOKEN", "")
+    if not user or not token:
+        return ""
+
+    res = requests.post(
+        "https://hub.docker.com/v2/auth/token",
+        json={"identifier": user, "secret": token},
+        timeout=10.0,
+    )
+    res.raise_for_status()
+    data: DockerCreateAccessTokenResponse = res.json()
+    return data["access_token"]
+
+
+def fetch_tags(package: str, token_auth: str, page: int = 1) -> list[DockerTagDict]:
     """Fetch available docker tags."""
     result = requests.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
         params={"page": page, "page_size": 100},
+        headers={"Authorization": f"Bearer {token_auth}"} if token_auth else None,
         timeout=10.0,
     )
     result.raise_for_status()
     data: DockerTagResponse = result.json()
     if not data["next"]:
         return data["results"]
-    return data["results"] + fetch_tags(package, page=page + 1)
+    return data["results"] + fetch_tags(package, token_auth, page=page + 1)

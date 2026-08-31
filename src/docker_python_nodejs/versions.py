@@ -12,7 +12,7 @@ from semver.version import Version
 
 from docker_python_nodejs.readme import format_supported_versions
 
-from .docker_hub import DockerImageDict, DockerTagDict, fetch_tags
+from .docker_hub import DockerImageDict, DockerTagDict, fetch_tags, token_auth
 from .nodejs_versions import (
     fetch_node_releases,
     fetch_node_unofficial_releases,
@@ -129,7 +129,8 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
 
     # FIXME: can we avoid enumerating all tags to speed up things?
     logger.debug("Fetching tags for python")
-    tags = [tag for tag in fetch_tags("python") if python_wanted_tag_pattern.match(tag["name"])]
+    docker_auth = token_auth()
+    tags = [tag for tag in fetch_tags("python", token_auth=docker_auth) if python_wanted_tag_pattern.match(tag["name"])]
 
     versions: list[PythonVersion] = []
     for supported_version in supported_versions:
